@@ -17,7 +17,7 @@ export default function ContactButtons({
         className="block overflow-hidden rounded-xl transition hover:brightness-110"
       >
         <img
-          src="/카카오톡.webp"
+          src="/kakaotalk.webp"
           alt="카카오톡 상담"
           className="h-auto w-[180px] object-contain"
         />
@@ -31,7 +31,7 @@ export default function ContactButtons({
         className="block overflow-hidden rounded-xl transition hover:brightness-110"
       >
         <img
-          src="/텔레그램.webp"
+          src="/telegram.webp"
           alt="텔레그램 상담"
           className="h-auto w-[180px] object-contain"
         />
