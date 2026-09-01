@@ -18,7 +18,7 @@ export default function ContactButtons({
       >
         <img
           src="/카카오톡.webp"
-          alt="하노이 카카오톡 상담"
+          alt="카카오톡 상담"
           className="h-auto w-[180px] object-contain"
         />
       </a>
@@ -32,7 +32,7 @@ export default function ContactButtons({
       >
         <img
           src="/텔레그램.webp"
-          alt="하노이 텔레그램 상담"
+          alt="텔레그램 상담"
           className="h-auto w-[180px] object-contain"
         />
       </a>
