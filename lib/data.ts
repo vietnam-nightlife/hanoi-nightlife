@@ -1,129 +1,100 @@
-export type CitySlug = "hoan-kiem" | "my-dinh";
-export type CategorySlug = "massage" | "karaoke";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import PlaceCard from "@/components/PlaceCard";
+import { cities, getCity, getPlaces } from "@/lib/data";
 
-export type City = {
-  slug: CitySlug;
-  name: string;
-  english: string;
-  description: string;
-  image: string;
-};
-
-export type Place = {
-  slug: string;
-  name: string;
-  city: CitySlug;
-  category: CategorySlug;
-  district: string;
-  rating: number;
-  reviews: number;
-  description: string;
-  address: string;
-  hours: string;
-  image: string;
-  featured?: boolean;
-};
-
-export const cities: City[] = [
-  {
-    slug: "hoan-kiem",
-    name: "호안끼엠",
-    english: "HOAN KIEM",
-    description:
-      "하노이 호안끼엠 지역의 마사지와 가라오케 정보를 확인하세요. 가격, 위치, 영업시간 등 여행자에게 필요한 정보를 한곳에서 비교할 수 있습니다.",
-    image:
-      "https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1800&auto=format&fit=crop",
-  },
-  {
-    slug: "my-dinh",
-    name: "미딘",
-    english: "MY DINH",
-    description:
-      "하노이 미딘 지역의 마사지와 가라오케 정보를 확인하세요. 실제 업소 정보와 가격은 등록 후 계속 업데이트할 수 있습니다.",
-    image:
-      "https://images.unsplash.com/photo-1504457047772-27faf1c00561?q=80&w=1800&auto=format&fit=crop",
-  },
-];
-
-export const places: Place[] = [
-  {
-    slug: "hoan-kiem-massage-01",
-    name: "호안끼엠 프리미엄 마사지",
-    city: "hoan-kiem",
-    category: "massage",
-    district: "호안끼엠",
-    rating: 4.9,
-    reviews: 128,
-    description:
-      "하노이 호안끼엠 지역에서 이용하기 좋은 마사지샵 예시입니다. 실제 운영 정보와 메뉴는 업소 등록 후 수정할 수 있습니다.",
-    address: "하노이 호안끼엠",
-    hours: "10:00 - 02:00",
-    image:
-      "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1400&auto=format&fit=crop",
-    featured: true,
-  },
-  {
-    slug: "hoan-kiem-karaoke-01",
-    name: "호안끼엠 스타 가라오케",
-    city: "hoan-kiem",
-    category: "karaoke",
-    district: "호안끼엠",
-    rating: 4.8,
-    reviews: 96,
-    description:
-      "하노이 호안끼엠 지역의 가라오케 정보 예시입니다. 가격, 룸 정보, 영업시간은 실제 업소 정보로 교체할 수 있습니다.",
-    address: "하노이 호안끼엠",
-    hours: "19:00 - 05:00",
-    image:
-      "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1400&auto=format&fit=crop",
-    featured: true,
-  },
-  {
-    slug: "my-dinh-massage-01",
-    name: "미딘 오션 마사지",
-    city: "my-dinh",
-    category: "massage",
-    district: "미딘",
-    rating: 4.8,
-    reviews: 84,
-    description:
-      "하노이 미딘 지역에서 편안하게 이용할 수 있는 마사지샵 예시입니다. 실제 업소 정보와 가격표로 교체할 수 있습니다.",
-    address: "하노이 미딘",
-    hours: "10:00 - 01:00",
-    image:
-      "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=1400&auto=format&fit=crop",
-    featured: true,
-  },
-  {
-    slug: "my-dinh-karaoke-01",
-    name: "미딘 프리미엄 가라오케",
-    city: "my-dinh",
-    category: "karaoke",
-    district: "미딘",
-    rating: 4.7,
-    reviews: 61,
-    description:
-      "하노이 미딘 지역의 가라오케 정보 예시입니다. 가격, 룸 정보, 영업시간은 실제 업소 정보로 교체할 수 있습니다.",
-    address: "하노이 미딘",
-    hours: "19:00 - 04:00",
-    image:
-      "https://images.unsplash.com/photo-1571266028243-d220c9c3b1d2?q=80&w=1400&auto=format&fit=crop",
-    featured: true,
-  },
-];
-
-export function getCity(slug: string) {
-  return cities.find((c) => c.slug === slug);
-}
-
-export function getPlaces(city: string, category?: string) {
-  return places.filter(
-    (p) =>
-      p.city === city &&
-      (!category || p.category === category)
+export function generateStaticParams() {
+  return cities.flatMap((city) =>
+    ["massage", "karaoke"].map((category) => ({
+      city: city.slug,
+      category,
+    }))
   );
 }
 
-export function getPlace(slug: string) {
-  return places.find((p) => p.slug === slug);
+export default async function CategoryPage({
+  params,
+}: {
+  params: Promise<{
+    city: string;
+    category: string;
+  }>;
+}) {
+  const { city: citySlug, category } = await params;
+
+  const city = getCity(citySlug);
+
+  if (
+    !city ||
+    !["massage", "karaoke"].includes(category)
+  ) {
+    notFound();
+  }
+
+  const items = getPlaces(citySlug, category);
+
+  const title =
+    category === "massage"
+      ? "마사지"
+      : "가라오케";
+
+  const description =
+    category === "massage"
+      ? "하노이의 마사지 업소 정보를 지역별로 확인하세요."
+      : "하노이의 가라오케 정보를 지역별로 확인하세요.";
+
+  return (
+    <main>
+      {/* HEADER */}
+      <section className="border-b border-white/10">
+        <div className="container py-20">
+          <Link
+            href={`/${city.slug}`}
+            className="text-sm text-zinc-600 hover:text-white"
+          >
+            ← {city.name}
+          </Link>
+
+          <div className="mt-8 text-xs font-black tracking-[.3em] red">
+            {city.english} {category.toUpperCase()}
+          </div>
+
+          <h1 className="mt-3 text-5xl font-black">
+            {city.name} {title}
+          </h1>
+
+          <p className="mt-5 max-w-2xl text-zinc-500">
+            {description}
+          </p>
+        </div>
+      </section>
+
+      {/* PLACES */}
+      <section className="container py-16">
+        {items.length > 0 ? (
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {items.map((place) => (
+              <PlaceCard
+                key={place.slug}
+                place={place}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-3xl border border-white/10 bg-[#111] p-12 text-center">
+            <div className="text-4xl">📍</div>
+
+            <h2 className="mt-5 text-2xl font-black">
+              등록된 업소가 없습니다.
+            </h2>
+
+            <p className="mt-3 text-sm text-zinc-500">
+              하노이 {title} 업소 정보가 등록되면
+              이곳에서 확인할 수 있습니다.
+            </p>
+          </div>
+        )}
+      </section>
+    </main>
+  );
 }
