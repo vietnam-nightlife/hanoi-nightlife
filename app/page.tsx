@@ -52,7 +52,7 @@ export default function Home() {
 
             {/* 메인 제목 */}
             <h1 className="mt-5 text-5xl font-black leading-[1.02] tracking-tight sm:text-6xl md:text-8xl">
-              하노이에서
+              하노이 밤문화
               <br />
               <span className="red">
                 눈탱이 맞지 마세요.
