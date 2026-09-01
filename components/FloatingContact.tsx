@@ -1,6 +1,6 @@
 "use client";
 
-const KAKAO_URL = "https://open.kakao.com/o/snvQKD4h";
+const KAKAO_URL = "https://open.kakao.com/o/sZ2KKD4h";
 const TELEGRAM_URL = "https://t.me/boom3230";
 
 export default function FloatingContact() {
