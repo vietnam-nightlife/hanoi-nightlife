@@ -69,65 +69,95 @@ export default function Home() {
             </p>
 
 
-            {/* =================================================
-                하노이 바로가기 네온 버튼
-            ================================================== */}
-            <div className="mt-7 flex flex-wrap gap-4">
+{/* =================================================
+    하노이 바로가기 네온 버튼
+================================================== */}
+<div className="mt-7 flex flex-wrap gap-4">
 
-              <a
-                href="/hanoi/massage"
-                className="group relative min-w-[200px] overflow-hidden rounded-2xl border border-red-500/80 bg-black/10 px-7 py-5 text-center backdrop-blur-[2px] shadow-[0_0_8px_rgba(239,68,68,0.45),0_0_20px_rgba(239,68,68,0.15),inset_0_0_14px_rgba(239,68,68,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-red-400 hover:bg-red-500/5 hover:shadow-[0_0_12px_rgba(239,68,68,0.7),0_0_32px_rgba(239,68,68,0.28),inset_0_0_20px_rgba(239,68,68,0.1)]"
-              >
-                <div className="relative z-10">
+  {/* 마사지 */}
+  <a
+    href="/hanoi/massage"
+    className="group relative min-w-[200px] overflow-hidden rounded-2xl border border-red-500/80 bg-black/10 px-7 py-5 text-center backdrop-blur-[2px] shadow-[0_0_8px_rgba(239,68,68,0.45),0_0_20px_rgba(239,68,68,0.15),inset_0_0_14px_rgba(239,68,68,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-red-400 hover:bg-red-500/5 hover:shadow-[0_0_12px_rgba(239,68,68,0.7),0_0_32px_rgba(239,68,68,0.28),inset_0_0_20px_rgba(239,68,68,0.1)]"
+  >
+    <div className="relative z-10">
 
-                  <div className="text-[10px] font-black tracking-[0.25em] text-red-300">
-                    HANOI
-                  </div>
+      <div className="text-[10px] font-black tracking-[0.25em] text-red-300">
+        HANOI
+      </div>
 
-                  <div className="mt-1 text-lg font-black text-white drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]">
-                    하노이 마사지
-                  </div>
+      <div className="mt-1 text-lg font-black text-white drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]">
+        하노이 마사지
+      </div>
 
-                  <div className="mt-1 text-xs font-medium text-zinc-300">
-                    마사지 정보 보기 →
-                  </div>
+      <div className="mt-1 text-xs font-medium text-zinc-300">
+        마사지 정보 보기 →
+      </div>
 
-                </div>
+    </div>
 
-                <div className="pointer-events-none absolute inset-0 rounded-2xl border border-red-400/20" />
+    <div className="pointer-events-none absolute inset-0 rounded-2xl border border-red-400/20" />
 
-                <div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-red-500/10 blur-2xl transition-transform duration-300 group-hover:scale-150" />
+    <div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-red-500/10 blur-2xl transition-transform duration-300 group-hover:scale-150" />
 
-              </a>
+  </a>
 
 
-              <a
-                href="/hanoi/karaoke"
-                className="group relative min-w-[200px] overflow-hidden rounded-2xl border border-blue-500/80 bg-black/10 px-7 py-5 text-center backdrop-blur-[2px] shadow-[0_0_8px_rgba(59,130,246,0.45),0_0_20px_rgba(59,130,246,0.15),inset_0_0_14px_rgba(59,130,246,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 hover:bg-blue-500/5 hover:shadow-[0_0_12px_rgba(59,130,246,0.7),0_0_32px_rgba(59,130,246,0.28),inset_0_0_20px_rgba(59,130,246,0.1)]"
-              >
-                <div className="relative z-10">
+  {/* 가라오케 */}
+  <a
+    href="/hanoi/karaoke"
+    className="group relative min-w-[200px] overflow-hidden rounded-2xl border border-blue-500/80 bg-black/10 px-7 py-5 text-center backdrop-blur-[2px] shadow-[0_0_8px_rgba(59,130,246,0.45),0_0_20px_rgba(59,130,246,0.15),inset_0_0_14px_rgba(59,130,246,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 hover:bg-blue-500/5 hover:shadow-[0_0_12px_rgba(59,130,246,0.7),0_0_32px_rgba(59,130,246,0.28),inset_0_0_20px_rgba(59,130,246,0.1)]"
+  >
+    <div className="relative z-10">
 
-                  <div className="text-[10px] font-black tracking-[0.25em] text-blue-300">
-                    HANOI
-                  </div>
+      <div className="text-[10px] font-black tracking-[0.25em] text-blue-300">
+        HANOI
+      </div>
 
-                  <div className="mt-1 text-lg font-black text-white drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]">
-                    하노이 가라오케
-                  </div>
+      <div className="mt-1 text-lg font-black text-white drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]">
+        하노이 가라오케
+      </div>
 
-                  <div className="mt-1 text-xs font-medium text-zinc-300">
-                    가라오케 정보 보기 →
-                  </div>
+      <div className="mt-1 text-xs font-medium text-zinc-300">
+        가라오케 정보 보기 →
+      </div>
 
-                </div>
+    </div>
 
-                <div className="pointer-events-none absolute inset-0 rounded-2xl border border-blue-400/20" />
+    <div className="pointer-events-none absolute inset-0 rounded-2xl border border-blue-400/20" />
 
-                <div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-blue-500/10 blur-2xl transition-transform duration-300 group-hover:scale-150" />
+    <div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-blue-500/10 blur-2xl transition-transform duration-300 group-hover:scale-150" />
 
-              </a>
+  </a>
 
-            </div>
+
+  {/* 에코걸 */}
+  <a
+    href="/hanoi/ecogirl"
+    className="group relative min-w-[200px] overflow-hidden rounded-2xl border border-yellow-500/80 bg-black/10 px-7 py-5 text-center backdrop-blur-[2px] shadow-[0_0_8px_rgba(234,179,8,0.45),0_0_20px_rgba(234,179,8,0.15),inset_0_0_14px_rgba(234,179,8,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-500/5 hover:shadow-[0_0_12px_rgba(234,179,8,0.7),0_0_32px_rgba(234,179,8,0.28),inset_0_0_20px_rgba(234,179,8,0.1)]"
+  >
+    <div className="relative z-10">
+
+      <div className="text-[10px] font-black tracking-[0.25em] text-yellow-300">
+        HANOI
+      </div>
+
+      <div className="mt-1 text-lg font-black text-white drop-shadow-[0_0_8px_rgba(234,179,8,0.6)]">
+        하노이 에코걸
+      </div>
+
+      <div className="mt-1 text-xs font-medium text-zinc-300">
+        에코걸 정보 보기 →
+      </div>
+
+    </div>
+
+    <div className="pointer-events-none absolute inset-0 rounded-2xl border border-yellow-400/20" />
+
+    <div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-yellow-500/10 blur-2xl transition-transform duration-300 group-hover:scale-150" />
+
+  </a>
+
+</div>
 
           </div>
 
