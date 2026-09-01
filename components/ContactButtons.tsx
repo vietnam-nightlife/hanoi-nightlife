@@ -11,7 +11,7 @@ export default function ContactButtons({
     >
       {/* 카카오톡 */}
       <a
-        href="https://open.kakao.com/o/snvQKD4h"
+        href="https://open.kakao.com/o/sZ2KKD4h"
         target="_blank"
         rel="noopener noreferrer"
         className="flex min-w-0 flex-1 items-center gap-2 overflow-hidden rounded-xl border border-yellow-400/70 bg-[#111] px-3 py-3 transition-all hover:border-yellow-400 hover:bg-yellow-400/10"
