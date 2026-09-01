@@ -1,6 +1,3 @@
-import kakaoImage from "../kakaotalk.webp";
-import telegramImage from "../telegram.webp";
-
 type ContactButtonsProps = {
   className?: string;
 };
@@ -21,7 +18,7 @@ export default function ContactButtons({
       >
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-yellow-400/60 bg-black">
           <img
-            src={kakaoImage.src}
+            src="/kakaotalk.webp"
             alt="카카오톡"
             className="h-6 w-6 object-contain"
           />
@@ -33,6 +30,7 @@ export default function ContactButtons({
           <div className="truncate text-sm font-black text-yellow-400">
             카카오톡 상담
           </div>
+
           <div className="truncate text-[11px] text-zinc-400">
             24시간 빠른 상담 →
           </div>
@@ -48,7 +46,7 @@ export default function ContactButtons({
       >
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-sky-400/60 bg-black">
           <img
-            src={telegramImage.src}
+            src="/telegram.webp"
             alt="텔레그램"
             className="h-6 w-6 object-contain"
           />
@@ -60,6 +58,7 @@ export default function ContactButtons({
           <div className="truncate text-sm font-black text-sky-400">
             텔레그램 상담
           </div>
+
           <div className="truncate text-[11px] text-zinc-400">
             24시간 빠른 상담 →
           </div>
