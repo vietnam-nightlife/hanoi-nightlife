@@ -8,10 +8,19 @@ export default function Home() {
   return (
     <main>
       {/* HERO */}
-      <section className="hero-grid relative overflow-hidden border-b border-white/10">
-        <div className="absolute left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-red-600/10 blur-[120px]" />
+<section
+  className="relative overflow-hidden border-b border-white/10 bg-cover bg-center bg-no-repeat"
+  style={{
+    backgroundImage: "url('/하노이눈탱이방지피씨.webp')",
+  }}
+>
+  {/* 배경 어둡게 처리 */}
+  <div className="absolute inset-0 bg-black/60" />
 
-        <div className="container relative py-28 md:py-36">
+  {/* 기존 분위기 유지용 어두운 그라데이션 */}
+  <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/30" />
+
+  <div className="container relative py-28 md:py-36">
           <div className="max-w-4xl">
             <div className="inline-flex rounded-full border border-red-500/20 bg-red-500/10 px-4 py-2 text-xs font-black tracking-widest text-red-400">
               HANOI TRAVEL & NIGHTLIFE
