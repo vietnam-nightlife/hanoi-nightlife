@@ -1,25 +1,42 @@
 const KAKAO_URL = "https://open.kakao.com/o/snvQKD4h";
 const TELEGRAM_URL = "https://t.me/boom3230";
 
-export default function ContactButtons({ className = "" }: { className?: string }) {
+export default function ContactButtons({
+  className = "",
+}: {
+  className?: string;
+}) {
   return (
-    <div className={`flex flex-wrap gap-3 ${className}`}>
+    <div className={`flex flex-wrap items-center gap-3 ${className}`}>
+
+      {/* 카카오톡 */}
       <a
         href={KAKAO_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center justify-center rounded-xl bg-[#FEE500] px-5 py-3 text-sm font-black text-black transition hover:brightness-110"
+        className="block overflow-hidden rounded-xl transition hover:brightness-110"
       >
-        💬 카카오톡 상담
+        <img
+          src="/카카오톡.webp"
+          alt="하노이 카카오톡 상담"
+          className="h-auto w-[180px] object-contain"
+        />
       </a>
+
+      {/* 텔레그램 */}
       <a
         href={TELEGRAM_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center justify-center rounded-xl bg-[#229ED9] px-5 py-3 text-sm font-black text-white transition hover:brightness-110"
+        className="block overflow-hidden rounded-xl transition hover:brightness-110"
       >
-        ✈️ 텔레그램 상담
+        <img
+          src="/텔레그램.webp"
+          alt="하노이 텔레그램 상담"
+          className="h-auto w-[180px] object-contain"
+        />
       </a>
+
     </div>
   );
 }
