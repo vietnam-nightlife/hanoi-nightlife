@@ -203,187 +203,82 @@ export default function Home() {
       {/* =================================================
           2. 하노이 어느 지역을 찾으세요?
       ================================================== */}
-      <section className="container py-14 sm:py-20">
+      {/* CATEGORY */}
+<section className="container py-14 sm:py-20">
   <div className="mb-8">
     <p className="text-xs font-black tracking-[0.25em] text-red-500">
-      DESTINATION
+      HANOI
     </p>
 
     <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">
-      하노이 어느 지역을 찾으세요?
+      하노이 무엇을 찾으세요?
     </h2>
 
-    <p className="mt-2 text-sm text-zinc-500">
-      하노이 주요 지역의 마사지와 가라오케 정보를 확인하세요.
+    <p className="mt-3 text-sm leading-6 text-zinc-500">
+      남성 전용 마사지 / 가라오케 (한인, 로컬)
     </p>
   </div>
 
   <div className="grid gap-5 md:grid-cols-2">
 
-    {/* 미딩 */}
+    {/* 마사지 */}
     <a
-      href="/hanoi/miding"
-      className="group relative min-h-[360px] overflow-hidden rounded-3xl border border-white/10 bg-[#111] transition-all duration-300 hover:-translate-y-1 hover:border-red-500/50"
+      href="/hanoi/massage"
+      className="group relative flex min-h-[280px] flex-col justify-end overflow-hidden rounded-3xl border border-white/10 bg-[#111] p-8 transition-all duration-300 hover:-translate-y-1 hover:border-red-500/60 hover:bg-[#151515]"
     >
-      {/* 배경 */}
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-        style={{
-          backgroundImage: "url('/hanoi-night.webp')",
-        }}
-      />
+      <div className="absolute right-7 top-5 text-8xl font-black text-red-500/[0.06]">
+        M
+      </div>
 
-      {/* 어두운 오버레이 */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/65 to-black/10" />
+      <div className="relative z-10">
+        <div className="text-xs font-black tracking-[0.3em] text-red-500">
+          MASSAGE
+        </div>
 
-      {/* 내용 */}
-      <div className="absolute inset-x-0 bottom-0 p-7 sm:p-8">
-        <p className="text-xs font-black tracking-[0.3em] text-red-500">
-          MIDING
-        </p>
-
-        <h3 className="mt-2 text-3xl font-black text-white sm:text-4xl">
-          미딩
+        <h3 className="mt-4 text-3xl font-black">
+          남성 전용 마사지
         </h3>
 
-        <p className="mt-3 max-w-lg text-sm leading-6 text-zinc-300">
-          하노이 미딩 지역의 마사지와 가라오케 정보를
-          지역별로 확인하세요.
+        <p className="mt-4 text-sm leading-7 text-zinc-400">
+          한인 / 로컬 마사지 정보를 확인하세요.
         </p>
 
-        <div className="mt-6 text-sm font-black text-white">
-          미딩 정보 보기 →
+        <div className="mt-7 text-sm font-black text-white transition-colors group-hover:text-red-400">
+          마사지 정보 보기 →
         </div>
       </div>
     </a>
 
-    {/* 중화 */}
+    {/* 가라오케 */}
     <a
-      href="/hanoi/jungwha"
-      className="group relative min-h-[360px] overflow-hidden rounded-3xl border border-white/10 bg-[#111] transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50"
+      href="/hanoi/karaoke"
+      className="group relative flex min-h-[280px] flex-col justify-end overflow-hidden rounded-3xl border border-white/10 bg-[#111] p-8 transition-all duration-300 hover:-translate-y-1 hover:border-red-500/60 hover:bg-[#151515]"
     >
-      {/* 배경 */}
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-        style={{
-          backgroundImage: "url('/hanoi-night.webp')",
-        }}
-      />
+      <div className="absolute right-7 top-5 text-8xl font-black text-red-500/[0.06]">
+        K
+      </div>
 
-      {/* 어두운 오버레이 */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/65 to-black/10" />
+      <div className="relative z-10">
+        <div className="text-xs font-black tracking-[0.3em] text-red-500">
+          KARAOKE
+        </div>
 
-      {/* 내용 */}
-      <div className="absolute inset-x-0 bottom-0 p-7 sm:p-8">
-        <p className="text-xs font-black tracking-[0.3em] text-blue-400">
-          JUNGWHA
-        </p>
-
-        <h3 className="mt-2 text-3xl font-black text-white sm:text-4xl">
-          중화
+        <h3 className="mt-4 text-3xl font-black">
+          가라오케
         </h3>
 
-        <p className="mt-3 max-w-lg text-sm leading-6 text-zinc-300">
-          하노이 중화 지역의 마사지와 가라오케 정보를
-          지역별로 확인하세요.
+        <p className="mt-4 text-sm leading-7 text-zinc-400">
+          한인 / 로컬 가라오케 정보를 확인하세요.
         </p>
 
-        <div className="mt-6 text-sm font-black text-white">
-          중화 정보 보기 →
+        <div className="mt-7 text-sm font-black text-white transition-colors group-hover:text-red-400">
+          가라오케 정보 보기 →
         </div>
       </div>
     </a>
 
   </div>
 </section>
-
-
-      {/* =================================================
-          3. 무엇을 찾으세요?
-      ================================================== */}
-      <section className="container py-12 md:py-16">
-
-        <div className="text-xs font-black tracking-[.3em] red">
-          CATEGORIES
-        </div>
-
-        <h2 className="mt-3 text-3xl font-black md:text-4xl">
-          무엇을 찾으세요?
-        </h2>
-
-
-        <div className="mt-7">
-
-          {/* =========================
-              하노이
-          ========================== */}
-          <div
-            className="relative overflow-hidden rounded-3xl border border-red-500/70 bg-[#111] p-8
-            shadow-[0_0_12px_rgba(239,68,68,0.25),inset_0_0_20px_rgba(239,68,68,0.04)]"
-          >
-
-            <div className="text-[10px] font-black tracking-[0.3em] text-red-400">
-              HANOI
-            </div>
-
-            <h3 className="mt-2 text-3xl font-black text-white">
-              하노이
-            </h3>
-
-            <p className="mt-2 text-sm text-zinc-500">
-              하노이의 마사지와 가라오케 정보를 확인하세요.
-            </p>
-
-
-            {/* 마사지 / 가라오케 */}
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-
-              <a
-                href="/hanoi/massage"
-                className="rounded-2xl border border-red-500/40 bg-red-500/5 px-5 py-5 transition-all duration-300 hover:border-red-400 hover:bg-red-500/10"
-              >
-
-                <div className="text-3xl">
-                  💆
-                </div>
-
-                <div className="mt-3 text-lg font-black text-white">
-                  하노이 마사지
-                </div>
-
-                <div className="mt-1 text-xs font-bold text-red-400">
-                  마사지 보기 →
-                </div>
-
-              </a>
-
-
-              <a
-                href="/hanoi/karaoke"
-                className="rounded-2xl border border-red-500/40 bg-red-500/5 px-5 py-5 transition-all duration-300 hover:border-red-400 hover:bg-red-500/10"
-              >
-
-                <div className="text-3xl">
-                  🎤
-                </div>
-
-                <div className="mt-3 text-lg font-black text-white">
-                  하노이 가라오케
-                </div>
-
-                <div className="mt-1 text-xs font-bold text-red-400">
-                  가라오케 보기 →
-                </div>
-
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
 
 
       {/* =================================================
