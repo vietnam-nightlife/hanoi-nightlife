@@ -784,11 +784,39 @@ export function GangnamSpaPage() {
 }
 function MoonMassagePage() {
   const galleryImages = [
-    {
-      src: "/하노이 문 마사지 메인.webp",
-      title: "문 마사지 메인",
-    },
-  ];
+  {
+    src: "/하노이 문 마사지 메인.webp",
+    title: "문 마사지 메인",
+  },
+  {
+    src: "/하노이 문 마사지 입구.webp",
+    title: "문 마사지 입구",
+  },
+  {
+    src: "/하노이 문 마사지 리셉션.webp",
+    title: "문 마사지 리셉션",
+  },
+  {
+    src: "/하노이 문 마사지 휴게실.webp",
+    title: "문 마사지 휴게실",
+  },
+  {
+    src: "/하노이 문 마사지 룸1.webp",
+    title: "문 마사지 룸1",
+  },
+  {
+    src: "/하노이 문 마사지 룸2.webp",
+    title: "문 마사지 룸2",
+  },
+  {
+    src: "/하노이 문 마사지 룸3.webp",
+    title: "문 마사지 룸3",
+  },
+  {
+    src: "/하노이 문 마사지 룸4.webp",
+    title: "문 마사지 룸4",
+  },
+];
 
   return (
     <main className="min-h-screen bg-[#050505] text-white">
