@@ -1373,3 +1373,13 @@ function MoonMassagePage() {
     </main>
   );
 }
+export default function PlaceDetailPage() {
+  const params = useParams();
+  const slug = typeof params?.slug === "string" ? params.slug : "";
+
+  if (slug === "hanoi-mun-massage") {
+    return <MoonMassagePage />;
+  }
+
+  return <GangnamSpaPage />;
+}
