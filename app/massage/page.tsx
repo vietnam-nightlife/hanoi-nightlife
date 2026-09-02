@@ -35,6 +35,12 @@ const spas = [
     price: "A 140만동 · B 180만동 · C 210만동",
     summary:
       "하노이 미딩 딘톤 지역에 위치한 강남스파입니다. 외관, 리셉션, 마사지룸, 휴게공간과 스낵바 등 실제 시설 사진과 코스별 가격을 확인할 수 있습니다.",
+
+    // 카드 표시용
+    popular: true,
+    recommended: true,
+    koreanSupport: true,
+    revisitRecommended: true,
   },
 ];
 
@@ -108,6 +114,36 @@ export default function MassagePage() {
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+
+
+                {/* BADGES */}
+                <div className="absolute left-4 top-4 z-10 flex max-w-[90%] flex-wrap gap-2">
+
+                  {spa.popular && (
+                    <span className="rounded-full bg-red-500 px-3 py-1.5 text-[11px] font-black text-white shadow-lg">
+                      인기
+                    </span>
+                  )}
+
+                  {spa.recommended && (
+                    <span className="rounded-full bg-amber-400 px-3 py-1.5 text-[11px] font-black text-black shadow-lg">
+                      추천
+                    </span>
+                  )}
+
+                  {spa.koreanSupport && (
+                    <span className="rounded-full bg-blue-500 px-3 py-1.5 text-[11px] font-black text-white shadow-lg">
+                      한국어 응대 가능
+                    </span>
+                  )}
+
+                  {spa.revisitRecommended && (
+                    <span className="rounded-full bg-emerald-500 px-3 py-1.5 text-[11px] font-black text-white shadow-lg">
+                      재방문 추천
+                    </span>
+                  )}
+
+                </div>
 
 
                 <div className="absolute bottom-0 left-0 right-0 p-6">
