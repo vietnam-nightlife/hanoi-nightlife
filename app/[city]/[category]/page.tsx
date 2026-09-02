@@ -66,10 +66,23 @@ export default async function CategoryPage({
         {items.length > 0 ? (
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {items.map((place) => (
-              <PlaceCard
-                key={place.slug}
-                place={place}
-              />
+              <div key={place.slug}>
+                {/* TAGS */}
+                {place.tags && place.tags.length > 0 && (
+                  <div className="mb-3 flex flex-wrap gap-2">
+                    {place.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-xs font-bold text-red-400"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <PlaceCard place={place} />
+              </div>
             ))}
           </div>
         ) : (
