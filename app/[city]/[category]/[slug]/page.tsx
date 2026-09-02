@@ -783,631 +783,371 @@ export function GangnamSpaPage() {
   );
 }
 function MoonMassagePage() {
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
   const galleryImages = [
-  {
-    src: "/하노이 문 마사지 메인.webp",
-    title: "문 마사지 메인",
-  },
-  {
-    src: "/하노이 문 마사지 입구.webp",
-    title: "문 마사지 입구",
-  },
-  {
-    src: "/하노이 문 마사지 리셉션.webp",
-    title: "문 마사지 리셉션",
-  },
-  {
-    src: "/하노이 문 마사지 휴게실.webp",
-    title: "문 마사지 휴게실",
-  },
-  {
-    src: "/하노이 문 마사지 룸1.webp",
-    title: "문 마사지 룸1",
-  },
-  {
-    src: "/하노이 문 마사지 룸2.webp",
-    title: "문 마사지 룸2",
-  },
-  {
-    src: "/하노이 문 마사지 룸3.webp",
-    title: "문 마사지 룸3",
-  },
-  {
-    src: "/하노이 문 마사지 룸4.webp",
-    title: "문 마사지 룸4",
-  },
-];
+    {
+      src: "/하노이 문 마사지 메인.webp",
+      title: "문 마사지 메인",
+    },
+    {
+      src: "/하노이 문 마사지 입구.webp",
+      title: "문 마사지 입구",
+    },
+    {
+      src: "/하노이 문 마사지 리셉션.webp",
+      title: "문 마사지 리셉션",
+    },
+    {
+      src: "/하노이 문 마사지 휴게실.webp",
+      title: "문 마사지 휴게실",
+    },
+    {
+      src: "/하노이 문 마사지 룸1.webp",
+      title: "문 마사지 룸1",
+    },
+    {
+      src: "/하노이 문 마사지 룸2.webp",
+      title: "문 마사지 룸2",
+    },
+    {
+      src: "/하노이 문 마사지 룸3.webp",
+      title: "문 마사지 룸3",
+    },
+    {
+      src: "/하노이 문 마사지 룸4.webp",
+      title: "문 마사지 룸4",
+    },
+  ];
+
+  const nextImage = () => {
+    if (selectedImage === null) return;
+
+    setSelectedImage(
+      selectedImage === galleryImages.length - 1
+        ? 0
+        : selectedImage + 1
+    );
+  };
+
+  const prevImage = () => {
+    if (selectedImage === null) return;
+
+    setSelectedImage(
+      selectedImage === 0
+        ? galleryImages.length - 1
+        : selectedImage - 1
+    );
+  };
 
   return (
-    <main className="min-h-screen bg-[#050505] text-white">
+    <main className="bg-black text-white">
 
-      {/* =========================================================
+      {/* =========================
           HERO
-      ========================================================= */}
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-14">
+      ========================= */}
+      <section className="relative h-[520px] overflow-hidden">
+        <img
+          src="/하노이 문 마사지 메인.webp"
+          alt="하노이 문 마사지"
+          className="h-full w-full object-cover brightness-110"
+        />
 
-          <div className="mb-8">
-            <div className="text-xs font-black tracking-[0.35em] text-red-500">
-              HANOI · MY DINH · MASSAGE
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+
+        <div className="absolute bottom-0 left-0 right-0">
+          <div className="container pb-12">
+            <div className="text-xs font-black tracking-[0.3em] text-red-500">
+              HANOI · MASSAGE
             </div>
 
-            <h1 className="mt-3 text-4xl font-black tracking-tight md:text-6xl">
-              문 마사지
+            <h1 className="mt-3 text-4xl font-black md:text-6xl">
+              하노이 문 마사지
             </h1>
 
-            <div className="mt-3 text-lg font-medium tracking-[0.25em] text-zinc-500">
-              MOON MASSAGE & 98 SPA
-            </div>
-
-            <p className="mt-6 max-w-3xl text-sm leading-8 text-zinc-400 md:text-base">
-              하노이 미딩 한인촌에서 이용할 수 있는 문 마사지 & 98 SPA
-              안내입니다. 매장 위치와 운영시간, 시설, 코스 및 가격 정보를
-              한눈에 확인할 수 있도록 정리했습니다.
+            <p className="mt-4 text-sm text-zinc-300">
+              하노이 문 마사지 · 마사지 코스 및 가격 안내
             </p>
-
-            <div className="mt-7 flex flex-wrap gap-3">
-              <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-zinc-300">
-                미딩 한인촌
-              </span>
-
-              <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-zinc-300">
-                12:00 ~ 01:00
-              </span>
-
-              <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-zinc-300">
-                마사지 · 스파
-              </span>
-
-              <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-zinc-300">
-                한국어 예약 가능
-              </span>
-            </div>
           </div>
-
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#101010]">
-            <div className="aspect-[16/8] overflow-hidden">
-              <img
-                src={galleryImages[0].src}
-                alt={galleryImages[0].title}
-                className="h-full w-full object-cover brightness-110"
-              />
-            </div>
-
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-6">
-              <div className="text-xs font-bold tracking-[0.25em] text-red-400">
-                MOON MASSAGE & 98 SPA
-              </div>
-
-              <div className="mt-2 text-xl font-black">
-                하노이 문 마사지
-              </div>
-
-              <div className="mt-1 text-xs text-zinc-300">
-                미딩 한인촌 프리미엄 마사지 & 스파
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
 
+      {/* =========================
+          INTRO
+      ========================= */}
+      <section className="container py-20">
+        <div className="max-w-4xl">
+          <div className="text-xs font-black tracking-[0.3em] text-red-500">
+            MOON MASSAGE
+          </div>
 
-      {/* =========================================================
+          <h2 className="mt-3 text-3xl font-black md:text-4xl">
+            하노이 문 마사지
+          </h2>
+
+          <p className="mt-6 leading-8 text-zinc-400">
+            하노이에서 이용할 수 있는 문 마사지 정보를 정리했습니다.
+            매장 내부 시설과 마사지 코스, 가격 정보를 한눈에 확인할 수
+            있도록 구성했습니다.
+          </p>
+        </div>
+      </section>
+
+      {/* =========================
+          PHOTO GALLERY
+      ========================= */}
+      <section className="container pb-20">
+        <div className="mb-8">
+          <div className="text-xs font-black tracking-[0.3em] text-red-500">
+            GALLERY
+          </div>
+
+          <h2 className="mt-3 text-3xl font-black">
+            문 마사지 시설
+          </h2>
+
+          <p className="mt-3 text-sm text-zinc-500">
+            매장 외관과 내부 시설을 사진으로 확인하세요.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+          {galleryImages.map((image, index) => (
+            <button
+              key={image.src}
+              type="button"
+              onClick={() => setSelectedImage(index)}
+              className="group overflow-hidden rounded-2xl border border-white/10 bg-[#101010] text-left"
+            >
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={image.src}
+                  alt={image.title}
+                  className="h-full w-full object-cover brightness-110 transition duration-700 group-hover:scale-105"
+                />
+              </div>
+
+              <div className="px-4 py-3">
+                <p className="text-sm font-bold text-white">
+                  {image.title}
+                </p>
+              </div>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* =========================
           PRICE
-      ========================================================= */}
-      <section className="border-y border-white/10 bg-[#090909]">
-        <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-20">
+      ========================= */}
+      <section className="container pb-20">
+        <div className="rounded-3xl border border-white/10 bg-[#101010] p-6 md:p-10">
 
           <div className="text-center">
             <div className="text-xs font-black tracking-[0.3em] text-red-500">
               PRICE
             </div>
 
-            <h2 className="mt-3 text-3xl font-black md:text-4xl">
+            <h2 className="mt-3 text-3xl font-black">
               문 마사지 가격표
             </h2>
 
             <p className="mt-3 text-sm text-zinc-500">
-              제공된 최신 가격표를 기준으로 정리했습니다.
+              마사지 코스별 가격을 확인하세요.
             </p>
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-3xl border border-[#8c6a3d]/40 bg-gradient-to-b from-[#17130e] to-[#0c0c0c] shadow-2xl">
-
-            <div className="border-b border-[#8c6a3d]/30 px-6 py-8 text-center md:px-10">
-              <div className="text-2xl font-black tracking-[0.25em] text-[#e5c28d]">
-                MOON MASSAGE
-              </div>
-
-              <div className="mt-2 text-xs tracking-[0.4em] text-[#9d896c]">
-                PRICE MENU
-              </div>
-
-              <div className="mx-auto mt-5 h-px max-w-xs bg-[#8c6a3d]/50" />
-            </div>
-
-
-            {/* 60 MIN */}
-            <div className="border-b border-white/10 px-6 py-9 md:px-10">
-              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-
-                <div>
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-2xl font-black text-[#e7c793]">
-                      마사지
-                    </span>
-
-                    <span className="text-sm text-zinc-400">
-                      (60분)
-                    </span>
-                  </div>
-
-                  <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
-                    <p>사우나</p>
-                    <p>동반 목욕</p>
-                    <p>바디 마사지</p>
-                    <p>누루 마사지</p>
-                    <p>마무리</p>
-                  </div>
-                </div>
-
-                <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
-                  <div className="text-2xl font-black text-[#e7c793]">
-                    150만동
-                  </div>
-
-                  <div className="mt-1 text-xs text-[#9d896c]">
-                    팁 포함
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-
-            {/* 90 MIN */}
-            <div className="px-6 py-9 md:px-10">
-              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-
-                <div>
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-2xl font-black text-[#e7c793]">
-                      때밀이
-                    </span>
-
-                    <span className="text-sm text-zinc-400">
-                      (90분)
-                    </span>
-                  </div>
-
-                  <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
-                    <p>사우나</p>
-                    <p>동반 목욕</p>
-                    <p>때밀이</p>
-                    <p>얼굴 관리</p>
-                    <p>누루 마사지</p>
-                    <p>마무리</p>
-                  </div>
-                </div>
-
-                <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
-                  <div className="text-2xl font-black text-[#e7c793]">
-                    200만동
-                  </div>
-
-                  <div className="mt-1 text-xs text-[#9d896c]">
-                    팁 포함
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-
-            <div className="border-t border-[#8c6a3d]/30 px-6 py-7 text-center">
-              <div className="text-sm font-bold text-[#c9aa7b]">
-                모든 금액은 팁 포함 가격입니다
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-
-      {/* =========================================================
-          BASIC INFORMATION
-      ========================================================= */}
-      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
-
-        <div className="grid gap-6 md:grid-cols-3">
-
-          <div className="rounded-3xl border border-white/10 bg-[#101010] p-7">
-            <div className="text-xs font-black tracking-[0.25em] text-zinc-600">
-              LOCATION
-            </div>
-
-            <div className="mt-4 text-lg font-black">
-              하노이 미딩 · 딘톤
-            </div>
-
-            <p className="mt-3 text-sm leading-7 text-zinc-500">
-              미딩 한인촌 중심에서 방문할 수 있는 마사지·스파입니다.
-              정확한 위치는 예약 전 다시 확인해 주세요.
-            </p>
-          </div>
-
-
-          <div className="rounded-3xl border border-white/10 bg-[#101010] p-7">
-            <div className="text-xs font-black tracking-[0.25em] text-zinc-600">
-              OPENING HOURS
-            </div>
-
-            <div className="mt-4 text-lg font-black">
-              12:00 ~ 01:00
-            </div>
-
-            <p className="mt-3 text-sm leading-7 text-zinc-500">
-              운영시간은 현지 상황에 따라 변경될 수 있으므로
-              방문 전 확인을 권장합니다.
-            </p>
-          </div>
-
-
-          <div className="rounded-3xl border border-white/10 bg-[#101010] p-7">
-            <div className="text-xs font-black tracking-[0.25em] text-zinc-600">
-              SERVICE
-            </div>
-
-            <div className="mt-4 text-lg font-black">
-              마사지 · 스파
-            </div>
-
-            <p className="mt-3 text-sm leading-7 text-zinc-500">
-              사우나와 목욕 시설을 포함한 다양한 마사지 코스를
-              이용할 수 있도록 구성되어 있습니다.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================================================
-          ABOUT
-      ========================================================= */}
-      <section className="border-y border-white/10 bg-[#080808]">
-        <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
-
-          <div className="max-w-4xl">
-
-            <div className="text-xs font-black tracking-[0.3em] text-red-500">
-              ABOUT
-            </div>
-
-            <h2 className="mt-3 text-3xl font-black md:text-4xl">
-              하노이 문 마사지 소개
-            </h2>
-
-            <div className="mt-7 space-y-5 text-sm leading-8 text-zinc-400 md:text-base">
-
-              <p>
-                하노이 문 마사지는 미딩 한인촌에서 이용할 수 있는
-                마사지·스파 업소로 안내되고 있습니다.
-              </p>
-
-              <p>
-                마사지 코스와 때밀이 코스를 중심으로 운영되며,
-                사우나와 목욕 시설을 함께 이용할 수 있는 것이
-                특징입니다.
-              </p>
-
-              <p>
-                처음 방문하는 경우 예약 전에 원하는 코스와
-                이용 가능 시간, 가격을 확인하면 더욱 편리하게
-                방문할 수 있습니다.
-              </p>
-
-              <p>
-                가격표에 안내된 금액은 팁 포함 기준으로 정리했으며,
-                실제 방문 시에는 당일 운영 상황과 가격 변동 여부를
-                다시 확인하는 것을 권장합니다.
-              </p>
-
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================================================
-          FACILITIES
-      ========================================================= */}
-      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
-
-        <div className="text-xs font-black tracking-[0.3em] text-red-500">
-          FACILITIES
-        </div>
-
-        <h2 className="mt-3 text-3xl font-black md:text-4xl">
-          시설 및 이용환경
-        </h2>
-
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
-
-          {[
-            "사우나 시설",
-            "목욕 시설",
-            "마사지 공간",
-            "프라이빗 룸",
-            "샤워 시설",
-            "예약 상담",
-          ].map((item) => (
-            <div
-              key={item}
-              className="rounded-2xl border border-white/10 bg-[#101010] p-6"
-            >
-              <div className="flex items-center gap-4">
-
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-600/10 text-sm font-black text-red-500">
-                  ✓
-                </div>
-
-                <div>
-                  <div className="font-bold">
-                    {item}
-                  </div>
-
-                  <div className="mt-1 text-xs leading-6 text-zinc-600">
-                    이용 전 실제 운영 여부를 확인해 주세요.
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          ))}
-
-        </div>
-      </section>
-
-
-      {/* =========================================================
-          LOCATION
-      ========================================================= */}
-      <section className="border-y border-white/10 bg-[#090909]">
-        <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
-
-          <div className="grid gap-12 lg:grid-cols-2">
-
-            <div>
-              <div className="text-xs font-black tracking-[0.3em] text-red-500">
-                LOCATION
-              </div>
-
-              <h2 className="mt-3 text-3xl font-black">
-                위치 및 방문 안내
-              </h2>
-
-              <p className="mt-6 text-sm leading-8 text-zinc-400">
-                문 마사지는 하노이 미딩 한인촌 딘톤 지역에서
-                방문할 수 있는 마사지·스파 업소로 안내되고 있습니다.
-                방문 전 정확한 위치를 확인해 주세요.
-              </p>
-
-              <div className="mt-6 rounded-2xl border border-white/10 bg-[#111] p-5">
-                <div className="text-xs tracking-[0.2em] text-zinc-600">
-                  ADDRESS
-                </div>
-
-                <div className="mt-3 font-bold leading-7">
-                  2 Ngõ 178 Đ. Đình Thôn,
-                  <br />
-                  Mỹ Đình 1, Nam Từ Liêm, Hà Nội
-                </div>
-              </div>
-            </div>
-
-
-            <div>
-              <div className="text-xs font-black tracking-[0.3em] text-red-500">
-                VISIT
-              </div>
-
-              <h2 className="mt-3 text-3xl font-black">
-                방문 전 확인
-              </h2>
-
-              <div className="mt-6 space-y-4">
-
-                <div className="rounded-2xl border border-white/10 bg-[#111] p-5">
-                  <div className="font-bold">
-                    예약 후 방문
-                  </div>
-
-                  <p className="mt-2 text-sm leading-7 text-zinc-500">
-                    원하는 시간대에 이용하려면 방문 전에
-                    예약 가능 여부를 확인하는 것을 권장합니다.
-                  </p>
-                </div>
-
-                <div className="rounded-2xl border border-white/10 bg-[#111] p-5">
-                  <div className="font-bold">
-                    위치 확인
-                  </div>
-
-                  <p className="mt-2 text-sm leading-7 text-zinc-500">
-                    차량이나 그랩 이용 시 예약 담당자에게
-                    정확한 위치를 확인한 후 이동해 주세요.
-                  </p>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================================================
-          CHECK
-      ========================================================= */}
-      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
-
-        <div className="rounded-3xl border border-white/10 bg-[#101010] p-7 md:p-10">
-
-          <div className="text-xs font-black tracking-[0.3em] text-red-500">
-            CHECK
-          </div>
-
-          <h2 className="mt-3 text-3xl font-black">
-            방문 전 확인사항
-          </h2>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-
-            {[
-              "방문 전 영업시간 확인",
-              "원하는 코스 및 가격 확인",
-              "예약 가능 여부 확인",
-              "정확한 위치 확인",
-              "당일 운영 상황 확인",
-              "가격 변동 여부 확인",
-            ].map((item) => (
-              <div
-                key={item}
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/20 px-5 py-4"
-              >
-                <span className="text-red-500">
-                  ✓
-                </span>
-
-                <span className="text-sm text-zinc-300">
-                  {item}
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+
+            {/* 90분 */}
+            <div className="rounded-2xl border border-white/10 bg-black p-7">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-black">
+                  마사지 90분
+                </h3>
+
+                <span className="text-2xl font-black text-red-500">
+                  150만동
                 </span>
               </div>
-            ))}
 
-          </div>
-        </div>
-      </section>
+              <div className="mt-6 space-y-3 text-sm text-zinc-400">
+                <div className="flex justify-between">
+                  <span>마사지</span>
+                  <span className="text-white">90분</span>
+                </div>
 
-
-      {/* =========================================================
-          FAQ
-      ========================================================= */}
-      <section className="border-y border-white/10 bg-[#080808]">
-        <div className="mx-auto max-w-4xl px-5 py-16 md:px-8 md:py-20">
-
-          <div className="text-center">
-
-            <div className="text-xs font-black tracking-[0.3em] text-red-500">
-              FAQ
+                <div className="flex justify-between">
+                  <span>팁</span>
+                  <span className="text-white">포함</span>
+                </div>
+              </div>
             </div>
 
-            <h2 className="mt-3 text-3xl font-black md:text-4xl">
-              자주 묻는 질문
+            {/* 120분 */}
+            <div className="rounded-2xl border border-white/10 bg-black p-7">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-black">
+                  마사지 120분
+                </h3>
+
+                <span className="text-2xl font-black text-red-500">
+                  200만동
+                </span>
+              </div>
+
+              <div className="mt-6 space-y-3 text-sm text-zinc-400">
+                <div className="flex justify-between">
+                  <span>마사지</span>
+                  <span className="text-white">120분</span>
+                </div>
+
+                <div className="flex justify-between">
+                  <span>팁</span>
+                  <span className="text-white">포함</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* =========================
+          BASIC INFO
+      ========================= */}
+      <section className="container pb-20">
+        <div className="grid gap-6 md:grid-cols-2">
+
+          <div className="rounded-3xl border border-white/10 bg-[#101010] p-7">
+            <h2 className="text-xl font-black">
+              기본 정보
             </h2>
 
-          </div>
-
-          <div className="mt-10 space-y-3">
-
-            {[
-              {
-                q: "문 마사지는 어디에 있나요?",
-                a: "하노이 미딩 한인촌 딘톤 지역에서 이용할 수 있습니다. 방문 전 정확한 위치를 확인해 주세요.",
-              },
-              {
-                q: "영업시간은 어떻게 되나요?",
-                a: "기본 안내 기준 12:00 ~ 01:00입니다. 당일 운영시간은 방문 전 확인을 권장합니다.",
-              },
-              {
-                q: "60분 코스 가격은 얼마인가요?",
-                a: "60분 마사지 코스는 150만동이며 팁 포함 기준으로 안내되어 있습니다.",
-              },
-              {
-                q: "90분 코스 가격은 얼마인가요?",
-                a: "90분 때밀이 코스는 200만동이며 팁 포함 기준으로 안내되어 있습니다.",
-              },
-              {
-                q: "한국어로 예약할 수 있나요?",
-                a: "한국어 예약이 가능한 것으로 안내되어 있습니다. 예약 시 당일 이용 가능 여부를 함께 확인해 주세요.",
-              },
-              {
-                q: "방문 전에 예약해야 하나요?",
-                a: "원하는 시간에 이용하려면 사전 예약을 권장합니다.",
-              },
-            ].map((item) => (
-              <details
-                key={item.q}
-                className="group rounded-2xl border border-white/10 bg-[#101010]"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-6 py-5 font-bold">
-                  <span>{item.q}</span>
-
-                  <span className="text-xl text-zinc-500 transition group-open:rotate-45">
-                    +
-                  </span>
-                </summary>
-
-                <div className="border-t border-white/10 px-6 py-5 text-sm leading-7 text-zinc-500">
-                  {item.a}
+            <div className="mt-6 space-y-5 text-sm">
+              <div>
+                <div className="text-zinc-600">
+                  위치
                 </div>
-              </details>
-            ))}
 
+                <div className="mt-1 text-zinc-300">
+                  하노이
+                </div>
+              </div>
+
+              <div>
+                <div className="text-zinc-600">
+                  영업시간
+                </div>
+
+                <div className="mt-1 text-zinc-300">
+                  영업시간 확인 필요
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-[#101010] p-7">
+            <h2 className="text-xl font-black">
+              이용 안내
+            </h2>
+
+            <p className="mt-6 text-sm leading-7 text-zinc-400">
+              방문 전 영업시간과 이용 가능한 코스를 확인하는 것을
+              권장합니다. 가격 및 운영 정보는 실제 매장 상황에 따라
+              변경될 수 있습니다.
+            </p>
           </div>
 
         </div>
       </section>
 
+      {/* =========================
+          BOTTOM BUTTONS
+      ========================= */}
+      <section className="container pb-24">
+        <div className="grid gap-4 md:grid-cols-2">
 
-      {/* =========================================================
-          FINAL
-      ========================================================= */}
-      <section className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-24">
+          <a
+            href="#"
+            className="rounded-2xl bg-red-600 px-6 py-5 text-center font-black transition hover:bg-red-500"
+          >
+            문의하기
+          </a>
 
-        <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-[#171717] to-[#0c0c0c] p-8 text-center md:p-14">
-
-          <div className="text-xs font-black tracking-[0.3em] text-red-500">
-            MOON MASSAGE
-          </div>
-
-          <h2 className="mt-4 text-3xl font-black md:text-4xl">
-            문 마사지 이용을 원하시나요?
-          </h2>
-
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-zinc-500">
-            예약 전 코스와 가격, 운영시간 및 위치를 확인하고
-            편하게 문의해 주세요.
-          </p>
-
-          <div className="mt-8">
-            <Link
-              href="/hanoi/massage"
-              className="rounded-xl border border-white/15 bg-white/[0.03] px-8 py-4 text-sm font-black transition hover:bg-white/[0.08]"
-            >
-              하노이 마사지 더보기
-            </Link>
-          </div>
+          <Link
+            href="/hanoi/massage"
+            className="rounded-2xl border border-white/10 bg-[#111] px-6 py-5 text-center font-black transition hover:bg-white/10"
+          >
+            하노이 마사지 더보기
+          </Link>
 
         </div>
       </section>
 
+      {/* =========================
+          IMAGE LIGHTBOX
+      ========================= */}
+      {selectedImage !== null && (
+        <div
+          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/95 p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          {/* 닫기 */}
+          <button
+            type="button"
+            onClick={() => setSelectedImage(null)}
+            className="absolute right-5 top-5 z-[1001] flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/60 text-3xl text-white"
+            aria-label="닫기"
+          >
+            ×
+          </button>
+
+          {/* 이전 */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImage();
+            }}
+            className="absolute left-4 top-1/2 z-[1001] flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-4xl text-white transition hover:bg-white/20"
+            aria-label="이전 사진"
+          >
+            ‹
+          </button>
+
+          {/* 사진 */}
+          <div
+            className="relative max-h-[90vh] max-w-[92vw]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={galleryImages[selectedImage].src}
+              alt={galleryImages[selectedImage].title}
+              className="max-h-[85vh] max-w-[90vw] object-contain brightness-110"
+            />
+
+            <div className="mt-3 text-center text-sm text-zinc-400">
+              {galleryImages[selectedImage].title}
+              {" · "}
+              {selectedImage + 1} / {galleryImages.length}
+            </div>
+          </div>
+
+          {/* 다음 */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
+            className="absolute right-4 top-1/2 z-[1001] flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-4xl text-white transition hover:bg-white/20"
+            aria-label="다음 사진"
+          >
+            ›
+          </button>
+        </div>
+      )}
     </main>
   );
-}
-export default function PlaceDetailPage() {
-  const params = useParams();
-  const slug = typeof params?.slug === "string" ? params.slug : "";
-
-  if (slug === "hanoi-mun-massage") {
-    return <MoonMassagePage />;
-  }
-
-  return <GangnamSpaPage />;
 }
