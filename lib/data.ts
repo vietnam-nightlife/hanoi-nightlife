@@ -105,8 +105,8 @@ export const places: Place[] = [
 
     district: "하노이",
 
-    rating: 0,
-    reviews: 0,
+    rating: 4.8,
+    reviews: 146,
 
     description:
       "하노이에서 이용할 수 있는 문 마사지 업소 정보입니다. 매장 위치, 영업시간, 마사지 코스와 가격, 내부 시설 등의 정보를 한눈에 확인할 수 있도록 정리했습니다.",
