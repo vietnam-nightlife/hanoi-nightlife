@@ -4,9 +4,10 @@ import type { Place } from "@/lib/data";
 export default function PlaceCard({ place }: { place: Place }) {
   return (
     <Link href={`/${place.city}/${place.category}/${place.slug}`}>
-      <article className="card-hover overflow-hidden rounded-3xl border border-white/10 bg-[#101010]">
+      <article className="card-hover overflow-hidden rounded-2xl border border-white/10 bg-[#101010]">
+
         {/* IMAGE */}
-        <div className="relative h-56 overflow-hidden">
+        <div className="relative h-28 overflow-hidden sm:h-40 lg:h-56">
           <img
             src={place.image}
             alt={place.name}
@@ -17,19 +18,20 @@ export default function PlaceCard({ place }: { place: Place }) {
         </div>
 
         {/* CONTENT */}
-        <div className="p-6">
+        <div className="p-3 sm:p-4 lg:p-6">
+
           {/* DISTRICT */}
-          <div className="text-xs text-zinc-600">
+          <div className="text-[9px] text-zinc-600 sm:text-xs">
             {place.district}
           </div>
 
           {/* NAME */}
-          <h3 className="mt-2 text-lg font-black">
+          <h3 className="mt-1.5 text-sm font-black leading-5 sm:text-base lg:text-lg">
             {place.name}
           </h3>
 
           {/* RATING */}
-          <div className="mt-3 flex items-center gap-2 text-sm">
+          <div className="mt-2 flex items-center gap-1.5 text-xs sm:text-sm">
             <span className="text-yellow-400">
               ★
             </span>
@@ -40,19 +42,20 @@ export default function PlaceCard({ place }: { place: Place }) {
           </div>
 
           {/* REVIEWS */}
-          <div className="mt-3 text-xs text-zinc-600">
+          <div className="mt-1.5 text-[9px] text-zinc-600 sm:text-xs">
             후기 {place.reviews}
           </div>
 
           {/* DESCRIPTION */}
-          <p className="mt-4 line-clamp-2 text-sm leading-6 text-zinc-500">
+          <p className="mt-2 line-clamp-2 text-[10px] leading-4 text-zinc-500 sm:text-xs sm:leading-5 lg:mt-4 lg:text-sm lg:leading-6">
             {place.description}
           </p>
 
           {/* DETAIL */}
-          <div className="mt-5 text-sm font-black red">
+          <div className="mt-3 text-[10px] font-black red sm:mt-4 sm:text-xs lg:mt-5 lg:text-sm">
             자세히 보기 →
           </div>
+
         </div>
       </article>
     </Link>
