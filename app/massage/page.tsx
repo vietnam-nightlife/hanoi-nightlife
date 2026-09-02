@@ -2,19 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "하노이 마사지 | 미딩 마사지·스파",
+  title: "하노이 불건마 | 미딩 불건마·스파",
   description:
-    "하노이 미딩 지역 마사지와 스파 정보를 정리했습니다. 위치, 운영시간, 시설, 가격과 방문 전 확인사항을 확인하세요.",
+    "하노이 미딩 지역 불건마와 스파 정보를 정리했습니다. 위치, 운영시간, 시설, 가격과 방문 전 확인사항을 확인하세요.",
   keywords: [
-    "하노이 마사지",
-    "하노이 스파",
-    "하노이 마사지 추천",
-    "하노이 마사지샵",
-    "하노이 마사지 가격",
-    "미딩 마사지",
+    "하노이 불건마사지",
+    "하노이 불건 스파",
+    "하노이 불건마 추천",
+    "하노이 불건마 위치",
+    "하노이 불건마 가격",
+    "미딩 불건마",
     "미딩 스파",
-    "미딩 마사지 추천",
-    "딘톤 마사지",
+    "미딩 불건마 추천",
+    "딘톤 불건마",
     "하노이 강남스파",
     "강남스파",
     "Gangnam Spa Hanoi",
@@ -53,12 +53,12 @@ export default function MassagePage() {
           </p>
 
           <h1 className="mt-4 text-4xl font-black leading-tight sm:text-5xl md:text-6xl">
-            하노이 마사지
+            하노이 불건마
           </h1>
 
           <p className="mt-5 max-w-2xl text-sm leading-8 text-zinc-400 sm:text-base">
-            하노이에서 방문할 만한 마사지와 스파 정보를 지역별로 정리합니다.
-            미딩 마사지, 딘톤 마사지 등 지역별 정보를 확인하고
+            하노이에서 방문할 만한 불건마와 스파 정보를 지역별로 정리합니다.
+            미딩 불건마, 딘톤 불건마 등 지역별 정보를 확인하고
             각 매장의 위치와 운영시간, 시설, 가격 및 방문 전 확인사항을
             한곳에서 확인해보세요.
           </p>
@@ -77,11 +77,11 @@ export default function MassagePage() {
           </p>
 
           <h2 className="mt-3 text-3xl font-black md:text-4xl">
-            미딩 마사지·스파
+            미딩 불건마·스파
           </h2>
 
           <p className="mt-3 max-w-2xl text-sm leading-7 text-zinc-500">
-            하노이 미딩 지역에서 찾을 수 있는 마사지와 스파 정보를
+            하노이 미딩 지역에서 찾을 수 있는 불건마와 스파 정보를
             하나씩 정리하고 있습니다.
           </p>
 
@@ -212,11 +212,11 @@ export default function MassagePage() {
           </p>
 
           <h2 className="mt-3 text-3xl font-black">
-            하노이 마사지 방문 전 체크
+            하노이 불건마 방문 전 체크
           </h2>
 
           <p className="mt-4 max-w-3xl text-sm leading-8 text-zinc-500">
-            마사지나 스파를 방문하기 전 영업시간과 위치, 코스별 가격,
+            불건마나 스파를 방문하기 전 영업시간과 위치, 코스별 가격,
             포함사항 및 추가 비용 등을 미리 확인하면 더욱 편리하게
             이용할 수 있습니다.
           </p>
@@ -265,26 +265,26 @@ export default function MassagePage() {
           </p>
 
           <h2 className="mt-3 text-3xl font-black md:text-4xl">
-            하노이 마사지와 미딩 스파 찾기
+            하노이 불건마와 미딩 스파 찾기
           </h2>
 
           <div className="mt-8 space-y-6 text-[15px] leading-8 text-zinc-400">
 
             <p>
               하노이에는 여행객과 출장객들이 이용할 수 있는 다양한
-              마사지와 스파가 있습니다. 특히 미딩 지역은 한국인 여행객이
-              많이 찾는 지역 중 하나로 마사지와 스파를 함께 찾아보기
+              불건마와 스파가 있습니다. 특히 미딩 지역은 한국인 여행객이
+              많이 찾는 지역 중 하나로 불건마와 스파를 함께 찾아보기
               편리합니다.
             </p>
 
             <p>
-              하노이 마사지 추천 정보를 찾을 때는 단순히 가격만 확인하기보다
+              하노이 불건마 추천 정보를 찾을 때는 단순히 가격만 확인하기보다
               매장 위치, 영업시간, 시설, 마사지 코스와 실제 이용조건을
               함께 확인하는 것이 좋습니다.
             </p>
 
             <p>
-              이 페이지에서는 하노이 마사지와 미딩 마사지 정보를 지속적으로
+              이 페이지에서는 하노이 불건마와 미딩 불건마 정보를 지속적으로
               정리하고 있으며, 각 매장별 상세 페이지에서 사진과 위치,
               가격 및 방문 전 체크사항을 확인할 수 있도록 구성하고 있습니다.
             </p>
