@@ -10,7 +10,7 @@ export default function PlaceCard({ place }: { place: Place }) {
           <img
             src={place.image}
             alt={place.name}
-            className="img-cover transition duration-700 hover:scale-105"
+            className="img-cover brightness-110 transition duration-700 hover:scale-105"
           />
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
