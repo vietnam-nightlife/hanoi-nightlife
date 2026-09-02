@@ -2,12 +2,6 @@ export type CitySlug = "hanoi";
 
 export type CategorySlug = "massage" | "karaoke";
 
-export type PlaceBadge =
-  | "인기"
-  | "추천"
-  | "한국어 응대 가능"
-  | "재방문 추천";
-
 export type City = {
   slug: CitySlug;
   name: string;
@@ -29,11 +23,6 @@ export type Place = {
   hours: string;
   image: string;
   featured?: boolean;
-
-  tags?: PlaceBadge[];
-  recommended?: boolean;
-  koreanSupport?: boolean;
-  revisitRecommended?: boolean;
 };
 
 export const cities: City[] = [
@@ -48,56 +37,26 @@ export const cities: City[] = [
 ];
 
 export const places: Place[] = [
-  {
-    slug: "hanoi-hoankiem-massage-01",
-    name: "하노이 호안끼엠 마사지",
-    city: "hanoi",
-    category: "massage",
-    district: "호안끼엠",
-    rating: 4.9,
-    reviews: 128,
-    description:
-      "하노이 호안끼엠 지역에서 이용할 수 있는 마사지 업소 정보입니다. 가격, 위치, 영업시간 등의 정보는 실제 업소 정보에 맞게 수정할 수 있습니다.",
-    address: "하노이 호안끼엠",
-    hours: "10:00 - 02:00",
-    image: "/하노이눈탱이방지피씨.webp",
-    featured: true,
-
-    tags: [
-      "인기",
-      "추천",
-      "한국어 응대 가능",
-      "재방문 추천",
-    ],
-    recommended: true,
-    koreanSupport: true,
-    revisitRecommended: true,
-  },
+  /*
+   * ==========================================
+   * 하노이 마사지
+   * ==========================================
+   */
 
   {
-    slug: "hanoi-mydinh-massage-01",
-    name: "하노이 미딩 마사지",
+    slug: "moon-massage",
+    name: "하노이 문 마사지",
     city: "hanoi",
     category: "massage",
-    district: "미딩",
+    district: "하노이",
     rating: 4.8,
-    reviews: 84,
+    reviews: 0,
     description:
-      "하노이 미딩 지역에서 이용할 수 있는 마사지 업소 정보입니다. 실제 운영 정보와 가격표에 맞게 내용을 수정할 수 있습니다.",
-    address: "하노이 미딩",
+      "하노이에서 이용할 수 있는 문 마사지 업소 정보입니다. 매장 위치와 운영시간, 내부 시설, 마사지 코스와 가격 정보를 한눈에 확인할 수 있도록 정리했습니다.",
+    address: "하노이",
     hours: "10:00 - 01:00",
-    image: "/하노이눈탱이방지피씨.webp",
+    image: "/하노이 문 마사지 메인.webp",
     featured: true,
-
-    tags: [
-      "인기",
-      "추천",
-      "한국어 응대 가능",
-      "재방문 추천",
-    ],
-    recommended: true,
-    koreanSupport: true,
-    revisitRecommended: true,
   },
 
   {
@@ -114,17 +73,13 @@ export const places: Place[] = [
     hours: "12:00 - 01:00",
     image: "/하노이 강남스파 메인.webp",
     featured: true,
-
-    tags: [
-      "인기",
-      "추천",
-      "한국어 응대 가능",
-      "재방문 추천",
-    ],
-    recommended: true,
-    koreanSupport: true,
-    revisitRecommended: true,
   },
+
+  /*
+   * ==========================================
+   * 하노이 가라오케
+   * ==========================================
+   */
 
   {
     slug: "hanoi-hoankiem-karaoke-01",
@@ -135,21 +90,11 @@ export const places: Place[] = [
     rating: 4.8,
     reviews: 96,
     description:
-      "하노이 호안끼엠 지역의 가라오케 정보입니다. 가격, 룸 정보, 영업시간 등의 실제 업소 정보로 교체할 수 있습니다.",
+      "하노이 호안끼엠 지역의 가라오케 정보입니다. 가격, 룸 정보, 영업시간 등의 실제 업소 정보를 확인할 수 있습니다.",
     address: "하노이 호안끼엠",
     hours: "19:00 - 05:00",
     image: "/하노이눈탱이방지피씨.webp",
     featured: true,
-
-    tags: [
-      "인기",
-      "추천",
-      "한국어 응대 가능",
-      "재방문 추천",
-    ],
-    recommended: true,
-    koreanSupport: true,
-    revisitRecommended: true,
   },
 
   {
@@ -161,21 +106,11 @@ export const places: Place[] = [
     rating: 4.7,
     reviews: 61,
     description:
-      "하노이 미딩 지역의 가라오케 정보입니다. 실제 업소 정보와 가격, 영업시간에 맞게 수정할 수 있습니다.",
+      "하노이 미딩 지역의 가라오케 정보입니다. 실제 업소 정보와 가격, 영업시간에 맞게 확인할 수 있습니다.",
     address: "하노이 미딩",
     hours: "19:00 - 04:00",
     image: "/하노이눈탱이방지피씨.webp",
     featured: true,
-
-    tags: [
-      "인기",
-      "추천",
-      "한국어 응대 가능",
-      "재방문 추천",
-    ],
-    recommended: true,
-    koreanSupport: true,
-    revisitRecommended: true,
   },
 ];
 
