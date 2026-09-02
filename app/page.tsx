@@ -186,7 +186,7 @@ export default function Home() {
           하노이에서 이용할 수 있는 추천 마사지와 가라오케 정보를 확인하세요.
         </p>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-3 gap-2 sm:grid-cols-2 lg:grid-cols-4">
 
           {featured.map((place) => (
             <PlaceCard
