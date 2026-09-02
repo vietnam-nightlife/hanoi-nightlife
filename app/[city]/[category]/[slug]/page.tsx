@@ -1151,3 +1151,12 @@ function MoonMassagePage() {
     </main>
   );
 }
+export default function PlaceDetailPage() {
+  const { slug } = useParams();
+
+  if (slug === "hanoi-mun-massage") {
+    return <MoonMassagePage />;
+  }
+
+  return <GangnamSpaPage />;
+}
