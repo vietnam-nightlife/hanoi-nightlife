@@ -822,129 +822,75 @@ function MoonMassagePage() {
 
   const nextImage = () => {
     if (selectedImage === null) return;
-
     setSelectedImage(
-      selectedImage === galleryImages.length - 1
-        ? 0
-        : selectedImage + 1
+      (selectedImage + 1) % galleryImages.length
     );
   };
 
   const prevImage = () => {
     if (selectedImage === null) return;
-
     setSelectedImage(
-      selectedImage === 0
-        ? galleryImages.length - 1
-        : selectedImage - 1
+      (selectedImage - 1 + galleryImages.length) %
+        galleryImages.length
     );
   };
 
   return (
-    <main className="bg-black text-white">
+    <main className="min-h-screen bg-black text-white">
 
-      {/* =========================
-          HERO
-      ========================= */}
-      <section className="relative h-[520px] overflow-hidden">
-        <img
-          src="/하노이 문 마사지 메인.webp"
-          alt="하노이 문 마사지"
-          className="h-full w-full object-cover brightness-110"
-        />
+      {/* HERO */}
+      <section className="relative max-w-6xl mx-auto px-4 pt-6">
+        <div
+          className="relative overflow-hidden rounded-3xl border border-white/10"
+          onClick={() => setSelectedImage(0)}
+        >
+          <img
+            src={galleryImages[0].src}
+            alt={galleryImages[0].title}
+            className="w-full aspect-[16/7] object-cover cursor-pointer"
+          />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
-        <div className="absolute bottom-0 left-0 right-0">
-          <div className="container pb-12">
-            <div className="text-xs font-black tracking-[0.3em] text-red-500">
+          <div className="absolute left-6 bottom-6">
+            <div className="text-red-500 font-bold tracking-[0.35em] text-sm">
               HANOI · MASSAGE
             </div>
 
-            <h1 className="mt-3 text-4xl font-black md:text-6xl">
+            <h1 className="mt-2 text-4xl md:text-5xl font-black">
               하노이 문 마사지
             </h1>
 
-            <p className="mt-4 text-sm text-zinc-300">
+            <p className="mt-2 text-sm md:text-base text-white/70">
               하노이 문 마사지 · 마사지 코스 및 가격 안내
             </p>
           </div>
         </div>
       </section>
 
-      {/* =========================
-          INTRO
-      ========================= */}
-      <section className="container py-20">
-        <div className="max-w-4xl">
-          <div className="text-xs font-black tracking-[0.3em] text-red-500">
+      {/* INTRO */}
+      <section className="max-w-6xl mx-auto px-4 py-12">
+        <div className="mb-8">
+          <div className="text-red-500 font-bold tracking-[0.3em] text-xs">
             MOON MASSAGE
           </div>
 
-          <h2 className="mt-3 text-3xl font-black md:text-4xl">
+          <h2 className="mt-2 text-3xl md:text-4xl font-black">
             하노이 문 마사지
           </h2>
 
-          <p className="mt-6 leading-8 text-zinc-400">
+          <p className="mt-4 text-white/60 leading-8">
             하노이에서 이용할 수 있는 문 마사지 정보를 정리했습니다.
             매장 내부 시설과 마사지 코스, 가격 정보를 한눈에 확인할 수
             있도록 구성했습니다.
           </p>
         </div>
-      </section>
 
-      {/* =========================
-          PHOTO GALLERY
-      ========================= */}
-      <section className="container pb-20">
-        <div className="mb-8">
-          <div className="text-xs font-black tracking-[0.3em] text-red-500">
-            GALLERY
-          </div>
+        {/* PRICE */}
+        <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-10">
 
-          <h2 className="mt-3 text-3xl font-black">
-            문 마사지 시설
-          </h2>
-
-          <p className="mt-3 text-sm text-zinc-500">
-            매장 외관과 내부 시설을 사진으로 확인하세요.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-          {galleryImages.map((image, index) => (
-            <button
-              key={image.src}
-              type="button"
-              onClick={() => setSelectedImage(index)}
-              className="group overflow-hidden rounded-2xl border border-white/10 bg-[#101010] text-left"
-            >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={image.src}
-                  alt={image.title}
-                  className="h-full w-full object-cover brightness-110 transition duration-700 group-hover:scale-105"
-                />
-              </div>
-
-              <div className="px-4 py-3">
-                <p className="text-sm font-bold text-white">
-                  {image.title}
-                </p>
-              </div>
-            </button>
-          ))}
-        </div>
-      </section>
-
-      {/* =========================
-          PRICE
-      ========================= */}
-      <section className="container pb-20">
-        <div className="rounded-3xl border border-white/10 bg-[#101010] p-6 md:p-10">
-
-          <div className="text-center">
-            <div className="text-xs font-black tracking-[0.3em] text-red-500">
+          <div className="text-center mb-10">
+            <div className="text-red-500 font-bold tracking-[0.4em] text-xs">
               PRICE
             </div>
 
@@ -952,59 +898,59 @@ function MoonMassagePage() {
               문 마사지 가격표
             </h2>
 
-            <p className="mt-3 text-sm text-zinc-500">
+            <p className="mt-2 text-sm text-white/40">
               마사지 코스별 가격을 확인하세요.
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <div className="grid md:grid-cols-2 gap-5">
 
             {/* 90분 */}
-            <div className="rounded-2xl border border-white/10 bg-black p-7">
+            <div className="rounded-2xl border border-white/10 bg-black p-6">
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-black">
                   마사지 90분
                 </h3>
 
-                <span className="text-2xl font-black text-red-500">
+                <div className="text-2xl font-black text-red-500">
                   150만동
-                </span>
+                </div>
               </div>
 
-              <div className="mt-6 space-y-3 text-sm text-zinc-400">
+              <div className="mt-6 space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span>마사지</span>
-                  <span className="text-white">90분</span>
+                  <span className="text-white/50">마사지</span>
+                  <span>90분</span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span>팁</span>
-                  <span className="text-white">포함</span>
+                  <span className="text-white/50">팁</span>
+                  <span>포함</span>
                 </div>
               </div>
             </div>
 
             {/* 120분 */}
-            <div className="rounded-2xl border border-white/10 bg-black p-7">
+            <div className="rounded-2xl border border-white/10 bg-black p-6">
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-black">
                   마사지 120분
                 </h3>
 
-                <span className="text-2xl font-black text-red-500">
+                <div className="text-2xl font-black text-red-500">
                   200만동
-                </span>
+                </div>
               </div>
 
-              <div className="mt-6 space-y-3 text-sm text-zinc-400">
+              <div className="mt-6 space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span>마사지</span>
-                  <span className="text-white">120분</span>
+                  <span className="text-white/50">마사지</span>
+                  <span>120분</span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span>팁</span>
-                  <span className="text-white">포함</span>
+                  <span className="text-white/50">팁</span>
+                  <span>포함</span>
                 </div>
               </div>
             </div>
@@ -1013,46 +959,86 @@ function MoonMassagePage() {
         </div>
       </section>
 
-      {/* =========================
-          BASIC INFO
-      ========================= */}
-      <section className="container pb-20">
-        <div className="grid gap-6 md:grid-cols-2">
+      {/* GALLERY */}
+      <section className="max-w-6xl mx-auto px-4 pb-12">
 
-          <div className="rounded-3xl border border-white/10 bg-[#101010] p-7">
-            <h2 className="text-xl font-black">
+        <div className="mb-8">
+          <div className="text-red-500 font-bold tracking-[0.3em] text-xs">
+            GALLERY
+          </div>
+
+          <h2 className="mt-2 text-3xl font-black">
+            문 마사지 시설
+          </h2>
+
+          <p className="mt-2 text-white/50">
+            사진을 클릭하면 크게 볼 수 있습니다.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+          {galleryImages.map((image, index) => (
+            <button
+              key={image.src}
+              type="button"
+              onClick={() => setSelectedImage(index)}
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5"
+            >
+              <img
+                src={image.src}
+                alt={image.title}
+                className="w-full aspect-[4/3] object-cover transition duration-500 group-hover:scale-105"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
+
+              <div className="absolute bottom-3 left-3 text-sm font-bold">
+                {image.title}
+              </div>
+            </button>
+          ))}
+
+        </div>
+      </section>
+
+      {/* BASIC INFO */}
+      <section className="max-w-6xl mx-auto px-4 pb-12">
+
+        <div className="grid md:grid-cols-2 gap-5">
+
+          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-7">
+            <h3 className="text-xl font-black mb-6">
               기본 정보
-            </h2>
+            </h3>
 
-            <div className="mt-6 space-y-5 text-sm">
+            <div className="space-y-5 text-sm">
               <div>
-                <div className="text-zinc-600">
+                <div className="text-white/40 mb-1">
                   위치
                 </div>
-
-                <div className="mt-1 text-zinc-300">
+                <div>
                   하노이
                 </div>
               </div>
 
               <div>
-                <div className="text-zinc-600">
+                <div className="text-white/40 mb-1">
                   영업시간
                 </div>
-
-                <div className="mt-1 text-zinc-300">
-                  영업시간 확인 필요
+                <div>
+                  방문 전 영업시간 확인 필요
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-[#101010] p-7">
-            <h2 className="text-xl font-black">
+          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-7">
+            <h3 className="text-xl font-black mb-6">
               이용 안내
-            </h2>
+            </h3>
 
-            <p className="mt-6 text-sm leading-7 text-zinc-400">
+            <p className="text-sm text-white/60 leading-7">
               방문 전 영업시간과 이용 가능한 코스를 확인하는 것을
               권장합니다. 가격 및 운영 정보는 실제 매장 상황에 따라
               변경될 수 있습니다.
@@ -1062,92 +1048,97 @@ function MoonMassagePage() {
         </div>
       </section>
 
-      {/* =========================
-          BOTTOM BUTTONS
-      ========================= */}
-      <section className="container pb-24">
-        <div className="grid gap-4 md:grid-cols-2">
+      {/* BUTTONS */}
+      <section className="max-w-6xl mx-auto px-4 pb-16">
+
+        <div className="grid md:grid-cols-2 gap-4">
 
           <a
             href="#"
-            className="rounded-2xl bg-red-600 px-6 py-5 text-center font-black transition hover:bg-red-500"
+            className="flex items-center justify-center rounded-2xl bg-red-600 hover:bg-red-500 transition py-5 font-black"
           >
             문의하기
           </a>
 
-          <Link
+          <a
             href="/hanoi/massage"
-            className="rounded-2xl border border-white/10 bg-[#111] px-6 py-5 text-center font-black transition hover:bg-white/10"
+            className="flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] transition py-5 font-black"
           >
             하노이 마사지 더보기
-          </Link>
+          </a>
 
         </div>
+
       </section>
 
-      {/* =========================
-          IMAGE LIGHTBOX
-      ========================= */}
+      {/* IMAGE LIGHTBOX */}
       {selectedImage !== null && (
         <div
-          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/95 p-4"
+          className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
-          {/* 닫기 */}
+
+          {/* CLOSE */}
           <button
             type="button"
             onClick={() => setSelectedImage(null)}
-            className="absolute right-5 top-5 z-[1001] flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/60 text-3xl text-white"
+            className="absolute top-5 right-5 z-20 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-2xl"
             aria-label="닫기"
           >
             ×
           </button>
 
-          {/* 이전 */}
+          {/* PREVIOUS */}
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               prevImage();
             }}
-            className="absolute left-4 top-1/2 z-[1001] flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-4xl text-white transition hover:bg-white/20"
+            className="absolute left-4 md:left-8 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-3xl"
             aria-label="이전 사진"
           >
             ‹
           </button>
 
-          {/* 사진 */}
+          {/* IMAGE */}
           <div
-            className="relative max-h-[90vh] max-w-[92vw]"
+            className="relative max-w-6xl max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={galleryImages[selectedImage].src}
               alt={galleryImages[selectedImage].title}
-              className="max-h-[85vh] max-w-[90vw] object-contain brightness-110"
+              className="max-w-[90vw] max-h-[85vh] object-contain rounded-xl"
             />
 
-            <div className="mt-3 text-center text-sm text-zinc-400">
+            <div className="text-center mt-3 text-sm text-white/70">
               {galleryImages[selectedImage].title}
-              {" · "}
+              <span className="mx-2">·</span>
               {selectedImage + 1} / {galleryImages.length}
             </div>
           </div>
 
-          {/* 다음 */}
+          {/* NEXT */}
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               nextImage();
             }}
-            className="absolute right-4 top-1/2 z-[1001] flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-4xl text-white transition hover:bg-white/20"
+            className="absolute right-4 md:right-8 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-3xl"
             aria-label="다음 사진"
           >
             ›
           </button>
+
+          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-xs text-white/40">
+            ← → 사진 이동 · ESC 닫기
+          </div>
+
         </div>
       )}
+
     </main>
   );
 }
