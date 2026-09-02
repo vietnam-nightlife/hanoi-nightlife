@@ -1116,8 +1116,9 @@ function MoonMassagePage() {
                     <p>사우나</p>
                     <p>동반 목욕</p>
                     <p>바디 마사지</p>
-                    <p>마사지 서비스</p>
-                    <p>마무리</p>
+                    <p>누루 마사지 (올탈,BJ)</p>
+                    <p>ㅇㅆ마무리</p>
+                    <p>(2:1 추가시 + 100만동)</p>
                   </div>
 
                 </div>
@@ -1160,10 +1161,10 @@ function MoonMassagePage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
                     <p>사우나</p>
                     <p>동반 목욕</p>
-                    <p>때밀이</p>
-                    <p>얼굴 관리</p>
-                    <p>마사지 서비스</p>
-                    <p>마무리</p>
+                    <p>얼굴 관리 + 때밀이</p>
+                    <p>누루마사지(올탈,BJ)</p>
+                    <p>ㅇㅆ마무리</p>
+                    <p>(2:1 추가시 + 100만동)</p>
                   </div>
 
                 </div>
