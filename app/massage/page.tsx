@@ -25,15 +25,6 @@ export const metadata: Metadata = {
   },
 };
 
-const badgeStyle: Record<string, string> = {
-  인기: "border-red-500/30 bg-red-500/10 text-red-300",
-  추천: "border-amber-400/30 bg-amber-400/10 text-amber-300",
-  "한국어 응대 가능":
-    "border-blue-400/30 bg-blue-400/10 text-blue-300",
-  "재방문 추천":
-    "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
-};
-
 export default function MassagePage() {
   const spas = getPlaces("hanoi", "massage");
 
@@ -107,35 +98,6 @@ export default function MassagePage() {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
 
-
-                {/* FEATURED */}
-                {spa.featured && (
-                  <div className="absolute left-4 top-4 rounded-full bg-red-500 px-3 py-1 text-[10px] font-black tracking-wide text-white">
-                    FEATURED
-                  </div>
-                )}
-
-
-                {/* BADGES */}
-                {spa.tags && spa.tags.length > 0 && (
-                  <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
-
-                    {spa.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className={`rounded-full border px-2.5 py-1 text-[10px] font-bold backdrop-blur-md ${
-                          badgeStyle[tag] ??
-                          "border-white/20 bg-black/50 text-white"
-                        }`}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-
-                  </div>
-                )}
-
-
                 <div className="absolute bottom-0 left-0 right-0 p-6">
 
                   <p className="text-xs font-black tracking-[0.25em] text-amber-300">
@@ -154,31 +116,44 @@ export default function MassagePage() {
               {/* CARD CONTENT */}
               <div className="p-7">
 
-                {/* BADGE ROW */}
-                <div className="mb-5 flex flex-wrap gap-2">
+                {/* RATING + BADGES */}
+                <div className="flex flex-wrap items-center gap-2">
 
-                  {spa.recommended && (
-                    <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-[11px] font-bold text-amber-300">
-                      추천
+                  <div className="flex items-center gap-2 text-sm">
+                    <span className="text-amber-400">
+                      ★
                     </span>
-                  )}
+
+                    <span className="font-bold">
+                      {spa.rating}
+                    </span>
+                  </div>
+
 
                   {spa.koreanSupport && (
-                    <span className="rounded-full border border-blue-400/30 bg-blue-400/10 px-3 py-1 text-[11px] font-bold text-blue-300">
-                      한국어 응대 가능
+                    <span className="rounded-lg border border-blue-400/30 bg-blue-400/10 px-3 py-1.5 text-[11px] font-bold text-blue-300">
+                      🔵 한국어 응대 가능
                     </span>
                   )}
 
+
                   {spa.revisitRecommended && (
-                    <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-[11px] font-bold text-emerald-300">
-                      재방문 추천
+                    <span className="rounded-lg border border-red-400/30 bg-red-500/10 px-3 py-1.5 text-[11px] font-bold text-red-300">
+                      🔥 재방문 추천
                     </span>
                   )}
 
                 </div>
 
 
-                <p className="text-sm leading-7 text-zinc-400">
+                {/* REVIEWS */}
+                <div className="mt-3 text-xs text-zinc-500">
+                  후기 {spa.reviews}
+                </div>
+
+
+                {/* DESCRIPTION */}
+                <p className="mt-4 text-sm leading-7 text-zinc-400">
                   {spa.description}
                 </p>
 
@@ -208,32 +183,6 @@ export default function MassagePage() {
                     <p className="mt-2 font-bold">
                       {spa.hours}
                     </p>
-
-                  </div>
-
-                </div>
-
-
-                {/* RATING */}
-                <div className="mt-3 rounded-2xl bg-white/[0.04] p-4">
-
-                  <p className="text-xs text-zinc-500">
-                    이용자 평가
-                  </p>
-
-                  <div className="mt-2 flex items-center gap-2">
-
-                    <span className="text-amber-400">
-                      ★
-                    </span>
-
-                    <span className="font-bold">
-                      {spa.rating}
-                    </span>
-
-                    <span className="text-xs text-zinc-500">
-                      후기 {spa.reviews}
-                    </span>
 
                   </div>
 
