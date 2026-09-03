@@ -35,11 +35,6 @@ export type Place = {
 
   featured?: boolean;
 
-  /*
-   * 기존 PlaceCard / category 페이지와의 호환을 위해
-   * 타입 자체는 유지합니다.
-   * 실제 카드에서는 값을 넣지 않아 배지가 표시되지 않습니다.
-   */
   tags?: PlaceBadge[];
   recommended?: boolean;
   koreanSupport?: boolean;
@@ -119,10 +114,38 @@ export const places: Place[] = [
 
     featured: true,
   },
+
+  /*
+   * =======================================================
+   * 하노이 수 사우나
+   * =======================================================
+   */
+
+  {
+    slug: "su-sauna",
+    name: "하노이 수 사우나",
+    city: "hanoi",
+    category: "massage",
+
+    district: "미딩 · 딘톤",
+
+    rating: 4.7,
+    reviews: 138,
+
+    description:
+      "하노이 미딩·딘톤에서 오랫동안 운영되어 온 수 사우나 정보입니다. 위치와 영업시간, 코스 구성, 가격 및 내부 시설 등 방문 전에 확인할 수 있는 정보를 정리했습니다.",
+
+    address:
+      "32 Ng. 154 Đ. Đình Thôn, Đình Thôn, Từ Liêm, Hà Nội",
+
+    hours: "12:00 - 01:00",
+
+    image: "/하노이 수 사우나 메인.webp",
+
     featured: true,
   },
 
-
+  /*
    * =======================================================
    * 하노이 호안끼엠 가라오케
    * =======================================================
