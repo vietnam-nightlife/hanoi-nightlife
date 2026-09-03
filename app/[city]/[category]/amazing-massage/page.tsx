@@ -504,7 +504,6 @@ export default function AmazingMassagePage() {
             </div>
 
           </div>
-        </div>
       </section>
 
       {/* =========================================================
