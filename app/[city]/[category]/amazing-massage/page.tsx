@@ -322,8 +322,9 @@ export default function AmazingMassagePage() {
 
                   </div>
 
-                  <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
-                    <p>동반샤워+기본마사지+누루서비스(핸플>립마무리)</p>
+                  <p className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
+  동반샤워 + 기본마사지 + 누루서비스 (핸플 &gt; 립마무리)
+</p>
                     <p>가볍게 즐기는 코</p>
                   </div>
 
