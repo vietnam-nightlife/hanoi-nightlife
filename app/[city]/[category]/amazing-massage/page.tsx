@@ -494,7 +494,7 @@ export default function AmazingMassagePage() {
 
             </div>
 
-            <div className="border-t border-[#8c6a3d]/30 px-6 py-7 text-center">
+                        <div className="border-t border-[#8c6a3d]/30 px-6 py-7 text-center">
 
               <div className="text-sm font-bold text-[#c9aa7b]">
                 가격은 2026년 1월 인상 전 제공 자료 기준이며,
@@ -504,7 +504,9 @@ export default function AmazingMassagePage() {
             </div>
 
           </div>
+
         </div>
+
       </section>
 
       {/* =========================================================
