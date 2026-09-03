@@ -160,7 +160,7 @@ export const places: Place[] = [
     district: "미딩 · 딘톤",
 
     rating: 4.8,
-    reviews: 0,
+    reviews: 26,
 
     description:
       "하노이 미딩 한인타운에 위치한 어메이징 마사지입니다. 한국어로 편하게 이용할 수 있으며 호텔식 프라이빗 룸, 마사지 코스와 가격, 누루 포함 여부, 영업시간 및 이용 팁 등 방문 전에 필요한 정보를 확인할 수 있습니다.",
