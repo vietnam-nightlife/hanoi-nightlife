@@ -302,7 +302,7 @@ export default function SuSaunaPage() {
                   </div>
 
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
-                    <p동반샤워 + 간단 마사지 + 서비스</p>
+                    <p>동반샤워 + 간단 마사지 + 서비스</p>
                     <p>짧은 시간에 이용하기 좋은 구성</p>
                   </div>
                 </div>
