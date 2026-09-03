@@ -14,6 +14,10 @@ const galleryImages = [
     title: "수 사우나 외관",
   },
   {
+    src: "/하노이 수 사우나 포스터.webp",
+    title: "수 사우나 포스터",
+  },
+  {
     src: "/하노이 수 사우나 리셉션.webp",
     title: "수 사우나 리셉션",
   },
@@ -28,10 +32,6 @@ const galleryImages = [
   {
     src: "/하노이 수 사우나 룸2.webp",
     title: "수 사우나 룸 2",
-  },
-  {
-    src: "/하노이 수 사우나 포스터.webp",
-    title: "수 사우나 포스터",
   },
 ];
 
@@ -297,12 +297,12 @@ export default function SuSaunaPage() {
                     </span>
 
                     <span className="text-sm text-zinc-400">
-                      (30분)
+                      (30분 코스)
                     </span>
                   </div>
 
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
-                    <p>30분 기본 코스</p>
+                    <p동반샤워 + 간단 마사지 + 서비스</p>
                     <p>짧은 시간에 이용하기 좋은 구성</p>
                   </div>
                 </div>
@@ -327,12 +327,12 @@ export default function SuSaunaPage() {
                     </span>
 
                     <span className="text-sm text-zinc-400">
-                      (60분)
+                      (60분 코스)
                     </span>
                   </div>
 
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
-                    <p>60분 기본 코스</p>
+                    <p>동반샤워 + 간단 마사지 + 누루 + 서비스</p>
                     <p>가장 무난하게 선택하기 좋은 구성</p>
                   </div>
                 </div>
@@ -357,13 +357,13 @@ export default function SuSaunaPage() {
                     </span>
 
                     <span className="text-sm text-zinc-400">
-                      (90분 · 1:1)
+                      (90분 · 릴레이 코스)
                     </span>
                   </div>
 
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
-                    <p>90분 1:1 구성</p>
-                    <p>시간을 여유 있게 이용하는 코스</p>
+                    <p>동반 샤워 + 마사지 + 서비스 + 20분 휴식 + 누루 + 서비스</p>
+                    <p>스페셜 황제 코스</p>
                   </div>
                 </div>
 
@@ -387,12 +387,12 @@ export default function SuSaunaPage() {
                     </span>
 
                     <span className="text-sm text-zinc-400">
-                      (90분 · 2:1)
+                      (90분 · 2:1 코스)
                     </span>
                   </div>
 
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
-                    <p>90분 2:1 릴레이 구성</p>
+                    <p>동반샤워 + 2:1서비스 + 마사지 + 누루 + 2:1서비스</p>
                     <p>제공된 가격표 기준으로 안내</p>
                   </div>
                 </div>
