@@ -7,12 +7,12 @@ export default function PlaceCard({ place }: { place: Place }) {
       <article className="card-hover overflow-hidden rounded-2xl border border-white/10 bg-[#101010]">
 
         {/* IMAGE */}
-        <div className="relative h-28 overflow-hidden sm:h-40 lg:h-56">
-          <img
-            src={place.image}
-            alt={place.name}
-            className="img-cover brightness-110 transition duration-700 hover:scale-105"
-          />
+        <div className="relative aspect-[3/2] overflow-hidden">
+  <img
+    src={place.image}
+    alt={place.name}
+    className="h-full w-full object-cover transition duration-700 hover:scale-105"
+  />
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         </div>
