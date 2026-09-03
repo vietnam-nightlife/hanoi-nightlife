@@ -1,676 +1,844 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "하노이 수 사우나 | 미딩 딘톤 사우나 · Lolly Spa",
-  description:
-    "하노이 미딩 딘톤에 위치한 수 사우나(Lolly Spa) 정보. 위치, 운영시간, 코스 및 가격, 시설, 예약 안내와 현장 이용 포인트를 정리했습니다.",
-};
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 const galleryImages = [
-  "/images/su-sauna/01.jpg",
-  "/images/su-sauna/02.jpg",
-  "/images/su-sauna/03.jpg",
-  "/images/su-sauna/04.jpg",
-  "/images/su-sauna/05.jpg",
-  "/images/su-sauna/06.jpg",
-];
-
-const courses = [
   {
-    name: "A",
-    price: "190만 동",
-    time: "30분",
-    type: "기본 코스",
-    description: "짧은 시간 동안 핵심적인 케어를 받고 싶은 분께 적합합니다.",
+    src: "/하노이 수 사우나 메인.webp",
+    title: "수 사우나 메인",
   },
   {
-    name: "B",
-    price: "250만 동",
-    time: "60분",
-    type: "표준 코스",
-    description: "가장 무난하게 선택하기 좋은 한 시간 구성입니다.",
+    src: "/하노이 수 사우나 외관.webp",
+    title: "수 사우나 외관",
   },
   {
-    name: "C",
-    price: "450만 동",
-    time: "90분",
-    type: "1:1",
-    description: "충분한 시간을 두고 전신 케어를 원하는 분께 추천합니다.",
+    src: "/하노이 수 사우나 리셉션.webp",
+    title: "수 사우나 리셉션",
   },
   {
-    name: "D",
-    price: "450만 동",
-    time: "90분",
-    type: "2:1 릴레이",
-    description: "두 명이 함께 진행하는 릴레이 누루 구성입니다.",
+    src: "/하노이 수 사우나 로비.webp",
+    title: "수 사우나 로비",
+  },
+  {
+    src: "/하노이 수 사우나 룸1.webp",
+    title: "수 사우나 룸 1",
+  },
+  {
+    src: "/하노이 수 사우나 룸2.webp",
+    title: "수 사우나 룸 2",
+  },
+  {
+    src: "/하노이 수 사우나 포스터.webp",
+    title: "수 사우나 포스터",
   },
 ];
 
-const faqs = [
+const faqItems = [
   {
-    question: "수 사우나는 어디에 있나요?",
-    answer:
-      "하노이 미딩 딘톤 지역의 32 Ng. 154 Đ. Đình Thôn에 있습니다. 백제갈비 뒤편에 위치하며 지도 앱에서는 Lolly Spa로 검색하면 찾기 편합니다.",
+    q: "수 사우나는 어디에 있나요?",
+    a: "하노이 미딩 딘톤 지역에 위치해 있습니다. 주소는 32 Ng. 154 Đ. Đình Thôn이며, 백제갈비 뒤편에서 찾을 수 있습니다. 지도 앱에서는 Lolly Spa로 검색하면 위치를 확인할 수 있습니다.",
   },
   {
-    question: "영업시간은 어떻게 되나요?",
-    answer:
-      "매일 정오 12시부터 다음 날 새벽 1시까지 운영하는 것으로 안내되어 있습니다. 100% 예약제로 운영되므로 방문 전 시간을 먼저 확인하는 것이 좋습니다.",
+    q: "수 사우나는 예약제로 운영되나요?",
+    a: "100% 예약제로 운영되는 곳으로 안내되어 있습니다. 방문 전에 원하는 날짜와 시간을 미리 문의하고 이용 가능 여부를 확인하는 것을 권장합니다.",
   },
   {
-    question: "예약 없이 방문할 수 있나요?",
-    answer:
-      "100% 예약제로 운영되기 때문에 워크인 방문은 어려울 수 있습니다. 원하는 시간대가 있다면 미리 예약하는 것을 권장합니다.",
+    q: "영업시간은 어떻게 되나요?",
+    a: "기본 안내 기준으로 매일 12:00부터 익일 01:00까지 운영됩니다. 당일 운영 상황이나 예약 가능 여부는 방문 전에 다시 확인해 주세요.",
   },
   {
-    question: "당일 출근부를 확인할 수 있나요?",
-    answer:
-      "당일 출근부를 확인한 뒤 선택할 수 있는 방식으로 안내되고 있습니다. 원하는 스타일이 있다면 예약 과정에서 미리 문의하는 것이 좋습니다.",
+    q: "수 사우나 가격은 어떻게 되나요?",
+    a: "제공받은 가격표 기준으로 A코스 30분 190만 동, B코스 60분 250만 동, C코스 90분 450만 동, D코스 90분 450만 동입니다. 실제 결제 전 최신 금액을 확인해 주세요.",
   },
   {
-    question: "코스는 어떻게 구성되어 있나요?",
-    answer:
-      "A부터 D까지 총 네 가지 구성으로 나뉩니다. 30분부터 90분까지 선택할 수 있으며 1:1과 2:1 릴레이 구성으로 구분됩니다.",
-  },
-  {
-    question: "결제는 어떻게 하나요?",
-    answer:
-      "베트남 동 현금 결제가 가장 무난하며, 카드 결제 가능 여부 등은 방문 전에 확인하는 것이 좋습니다.",
+    q: "지도에서는 어떤 이름으로 검색하면 되나요?",
+    a: "지도 앱에서는 Lolly Spa라는 이름으로 검색하면 위치를 찾을 수 있습니다. 처음 방문한다면 예약 담당자에게 위치를 한 번 더 확인하는 것이 좋습니다.",
   },
 ];
 
 export default function SuSaunaPage() {
+  const params = useParams();
+  const city =
+    typeof params?.city === "string" ? params.city : "hanoi";
+
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+  const openGallery = (index: number) => {
+    setSelectedImage(index);
+  };
+
+  const closeGallery = () => {
+    setSelectedImage(null);
+  };
+
+  const previousImage = () => {
+    if (selectedImage === null) return;
+
+    setSelectedImage(
+      selectedImage === 0
+        ? galleryImages.length - 1
+        : selectedImage - 1
+    );
+  };
+
+  const nextImage = () => {
+    if (selectedImage === null) return;
+
+    setSelectedImage(
+      selectedImage === galleryImages.length - 1
+        ? 0
+        : selectedImage + 1
+    );
+  };
+
+  useEffect(() => {
+    if (selectedImage === null) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeGallery();
+      }
+
+      if (event.key === "ArrowLeft") {
+        previousImage();
+      }
+
+      if (event.key === "ArrowRight") {
+        nextImage();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [selectedImage]);
+
   return (
-    <main className="min-h-screen bg-white text-neutral-900">
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-neutral-950">
-        <div className="mx-auto max-w-6xl">
-          <div className="relative aspect-[3/2] w-full overflow-hidden">
-            <img
-              src="/images/su-sauna/main.jpg"
-              alt="하노이 수 사우나 외관"
-              className="h-full w-full object-cover"
-            />
+    <main className="min-h-screen bg-[#050505] text-white">
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+      {/* =========================================================
+          HERO
+      ========================================================= */}
+      <section className="relative overflow-hidden border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-14">
 
-            <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10">
-              <p className="mb-2 text-sm font-medium text-white/80">
-                HANOI · MY DINH · DINH THON
-              </p>
+          <div className="mb-8">
+            <div className="text-xs font-black tracking-[0.35em] text-red-500">
+              HANOI · MY DINH · SAUNA
+            </div>
 
-              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                수 사우나
-              </h1>
+            <h1 className="mt-3 text-4xl font-black tracking-tight md:text-6xl">
+              하노이 수 사우나
+            </h1>
 
-              <p className="mt-3 text-lg text-white/90">
-                미딩 딘톤에서 오래 자리 잡은 Lolly Spa
-              </p>
+            <div className="mt-3 text-lg font-medium tracking-[0.25em] text-zinc-500">
+              SU SAUNA · LOLLY SPA
+            </div>
+
+            <p className="mt-6 max-w-3xl text-sm leading-8 text-zinc-400 md:text-base">
+              하노이 미딩 딘톤 지역에서 오랫동안 운영되어 온
+              수 사우나를 정리했습니다. 위치와 운영시간, 시설,
+              코스 및 가격 정보를 한눈에 확인할 수 있도록
+              구성했습니다.
+            </p>
+
+            <div className="mt-7 flex flex-wrap gap-3">
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-zinc-300">
+                미딩 · 딘톤
+              </span>
+
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-zinc-300">
+                12:00 ~ 01:00
+              </span>
+
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-zinc-300">
+                사우나 · 스파
+              </span>
+
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-zinc-300">
+                100% 예약제
+              </span>
             </div>
           </div>
+
+          {/* =========================================================
+              MAIN IMAGE
+          ========================================================= */}
+          <button
+            type="button"
+            onClick={() => openGallery(0)}
+            className="group relative block w-full overflow-hidden rounded-3xl border border-white/10 bg-[#101010] text-left"
+          >
+            <div className="aspect-[16/8] overflow-hidden">
+              <img
+                src={galleryImages[0].src}
+                alt={galleryImages[0].title}
+                className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]"
+              />
+            </div>
+
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+              <div className="text-xs font-bold tracking-[0.25em] text-red-400">
+                SU SAUNA
+              </div>
+
+              <div className="mt-2 text-xl font-black">
+                하노이 수 사우나
+              </div>
+
+              <div className="mt-1 text-xs text-zinc-300">
+                사진을 클릭하면 크게 볼 수 있습니다
+              </div>
+            </div>
+          </button>
         </div>
       </section>
 
-      {/* INTRO */}
-      <section className="mx-auto max-w-5xl px-5 py-12 sm:px-8 sm:py-16">
-        <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-neutral-500">
-            SU SAUNA · LOLLY SPA
-          </p>
+      {/* =========================================================
+          FACILITY GALLERY
+      ========================================================= */}
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
 
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            미딩에서 오래 찾는 수 사우나
+        <div className="mb-8">
+          <div className="text-xs font-black tracking-[0.3em] text-red-500">
+            GALLERY
+          </div>
+
+          <h2 className="mt-3 text-3xl font-black md:text-4xl">
+            시설 사진
           </h2>
 
-          <div className="mt-7 space-y-5 text-[16px] leading-8 text-neutral-700">
-            <p>
-              하노이 미딩 딘톤 일대에서 오랫동안 운영된 곳을 찾는다면 수
-              사우나는 빼놓기 어려운 선택지입니다. 딘톤 거리 끝쪽, 백제갈비
-              뒤편에 자리하고 있으며 지도 앱에서는{" "}
-              <strong className="font-semibold text-neutral-900">
-                Lolly Spa
-              </strong>
-              라는 이름으로 확인할 수 있습니다.
-            </p>
-
-            <p>
-              오랜 기간 같은 자리에서 운영되어 온 만큼 한국인 이용객들에게
-              익숙한 곳이라는 점이 특징입니다. 특히 예약부터 코스 안내까지
-              한국인 손님을 기준으로 비교적 편하게 이용할 수 있는 환경을
-              갖추고 있습니다.
-            </p>
-
-            <p>
-              기본적으로 예약을 먼저 잡고 방문하는 방식이며, 당일 출근부를
-              확인한 뒤 선택할 수 있는 시스템도 운영되고 있습니다. 30분부터
-              90분까지 시간별 구성이 나뉘어 있어 원하는 이용 시간에 맞춰
-              선택하기 편합니다.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* SUMMARY INFO */}
-      <section className="border-y border-neutral-200 bg-neutral-50">
-        <div className="mx-auto max-w-5xl px-5 py-10 sm:px-8">
-          <div className="grid gap-0 overflow-hidden rounded-2xl border border-neutral-200 bg-white sm:grid-cols-2">
-            <InfoRow
-              label="위치"
-              value="32 Ng. 154 Đ. Đình Thôn, Đình Thôn, Từ Liêm, Hà Nội"
-            />
-
-            <InfoRow
-              label="검색명"
-              value="Lolly Spa · 백제갈비 뒤편"
-            />
-
-            <InfoRow
-              label="영업시간"
-              value="매일 12:00 ~ 익일 01:00"
-            />
-
-            <InfoRow
-              label="운영방식"
-              value="100% 예약제"
-            />
-
-            <InfoRow
-              label="코스"
-              value="A ~ D · 30분 ~ 90분"
-            />
-
-            <InfoRow
-              label="구성"
-              value="1:1 / 2:1 릴레이"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* WHY SU SAUNA */}
-      <section className="mx-auto max-w-5xl px-5 py-14 sm:px-8 sm:py-18">
-        <SectionHeading
-          eyebrow="WHY SU SAUNA"
-          title="수 사우나를 찾는 이유"
-        />
-
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          <FeatureCard
-            number="01"
-            title="오랜 운영 경험"
-            text="미딩 딘톤에서 오랫동안 운영되어 온 곳으로, 처음 생긴 신규 업소보다 익숙하고 안정적인 분위기를 선호하는 분들이 선택하기 좋습니다."
-          />
-
-          <FeatureCard
-            number="02"
-            title="한국인 직영"
-            text="한국인 이용객을 대상으로 한 안내와 응대가 익숙해 처음 방문하더라도 코스와 이용 방법을 확인하기 편합니다."
-          />
-
-          <FeatureCard
-            number="03"
-            title="예약 중심 운영"
-            text="100% 예약제로 운영되며 원하는 시간대를 미리 조율할 수 있어 대기 시간을 줄이고 차분하게 이용하기 좋습니다."
-          />
-        </div>
-
-        <div className="mt-8 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 sm:p-8">
-          <p className="text-[16px] leading-8 text-neutral-700">
-            수 사우나의 가장 큰 장점은 화려한 신규 매장보다는{" "}
-            <strong className="font-semibold text-neutral-900">
-              오랜 기간 운영되며 쌓인 익숙함과 안정감
-            </strong>
-            에 있습니다. 미딩에서 처음 방문하는 분이나 검증된 곳을 선호하는
-            분이라면 이런 부분을 우선적으로 살펴볼 만합니다.
+          <p className="mt-3 text-sm leading-7 text-zinc-500">
+            수 사우나의 외관과 리셉션, 로비 및 내부 공간을
+            확인해 보세요. 사진을 클릭하면 전체 화면으로
+            확대해서 볼 수 있습니다.
           </p>
         </div>
+
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          {galleryImages.slice(1).map((image, index) => {
+            const realIndex = index + 1;
+
+            return (
+              <button
+                key={image.src}
+                type="button"
+                onClick={() => openGallery(realIndex)}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#111]"
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={image.src}
+                    alt={image.title}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                </div>
+
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-4 pb-4 pt-10 text-left">
+                  <div className="text-sm font-bold">
+                    {image.title}
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
       </section>
 
-      {/* FACILITIES */}
-      <section className="bg-neutral-950 text-white">
-        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-18">
-          <SectionHeading
-            dark
-            eyebrow="ROOM · FACILITIES"
-            title="룸과 시설 분위기"
-          />
+      {/* =========================================================
+          PRICE
+      ========================================================= */}
+      <section className="border-y border-white/10 bg-[#090909]">
+        <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-20">
 
-          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {galleryImages.slice(0, 6).map((image, index) => (
-              <div
-                key={image}
-                className={`overflow-hidden rounded-xl bg-neutral-900 ${
-                  index === 0 ? "sm:col-span-2 sm:row-span-2" : ""
-                }`}
-              >
-                <img
-                  src={image}
-                  alt={`수 사우나 내부 시설 ${index + 1}`}
-                  className="h-full min-h-[220px] w-full object-cover transition duration-300 hover:scale-[1.02]"
-                />
-              </div>
-            ))}
+          <div className="text-center">
+            <div className="text-xs font-black tracking-[0.3em] text-red-500">
+              PRICE
+            </div>
+
+            <h2 className="mt-3 text-3xl font-black md:text-4xl">
+              수 사우나 가격표
+            </h2>
+
+            <p className="mt-3 text-sm text-zinc-500">
+              제공받은 가격 정보를 기준으로 정리했습니다.
+            </p>
           </div>
 
-          <div className="mt-10 max-w-3xl space-y-5 text-[16px] leading-8 text-white/75">
-            <p>
-              수 사우나는 미딩에서 오랫동안 운영되어 온 곳답게 전체적인
-              이용 동선이 익숙하게 정리되어 있는 편입니다. 새로 생긴 곳의
-              화려함보다는 단골집처럼 편하게 이용할 수 있는 분위기를
-              선호한다면 이런 부분이 장점으로 느껴질 수 있습니다.
-            </p>
+          <div className="mt-10 overflow-hidden rounded-3xl border border-[#8c6a3d]/40 bg-gradient-to-b from-[#17130e] to-[#0c0c0c] shadow-2xl">
 
-            <p>
-              예약제로 운영되기 때문에 방문 시간대를 미리 맞춰둘 수 있으며,
-              당일 출근부를 확인한 뒤 선택할 수 있다는 점도 이용 전에
-              확인해둘 만한 부분입니다.
-            </p>
+            {/* PRICE HEADER */}
+            <div className="border-b border-[#8c6a3d]/30 px-6 py-8 text-center md:px-10">
+              <div className="text-2xl font-black tracking-[0.25em] text-[#e5c28d]">
+                SU SAUNA
+              </div>
+
+              <div className="mt-2 text-xs tracking-[0.4em] text-[#9d896c]">
+                PRICE MENU
+              </div>
+
+              <div className="mx-auto mt-5 h-px max-w-xs bg-[#8c6a3d]/50" />
+            </div>
+
+            {/* A COURSE */}
+            <div className="border-b border-white/10 px-6 py-9 md:px-10">
+              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+
+                <div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-2xl font-black text-[#e7c793]">
+                      A코스
+                    </span>
+
+                    <span className="text-sm text-zinc-400">
+                      (30분)
+                    </span>
+                  </div>
+
+                  <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
+                    <p>30분 기본 코스</p>
+                    <p>짧은 시간에 이용하기 좋은 구성</p>
+                  </div>
+                </div>
+
+                <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
+                  <div className="text-2xl font-black text-[#e7c793]">
+                    190만동
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            {/* B COURSE */}
+            <div className="border-b border-white/10 px-6 py-9 md:px-10">
+              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+
+                <div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-2xl font-black text-[#e7c793]">
+                      B코스
+                    </span>
+
+                    <span className="text-sm text-zinc-400">
+                      (60분)
+                    </span>
+                  </div>
+
+                  <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
+                    <p>60분 기본 코스</p>
+                    <p>가장 무난하게 선택하기 좋은 구성</p>
+                  </div>
+                </div>
+
+                <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
+                  <div className="text-2xl font-black text-[#e7c793]">
+                    250만동
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            {/* C COURSE */}
+            <div className="border-b border-white/10 px-6 py-9 md:px-10">
+              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+
+                <div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-2xl font-black text-[#e7c793]">
+                      C코스
+                    </span>
+
+                    <span className="text-sm text-zinc-400">
+                      (90분 · 1:1)
+                    </span>
+                  </div>
+
+                  <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
+                    <p>90분 1:1 구성</p>
+                    <p>시간을 여유 있게 이용하는 코스</p>
+                  </div>
+                </div>
+
+                <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
+                  <div className="text-2xl font-black text-[#e7c793]">
+                    450만동
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            {/* D COURSE */}
+            <div className="px-6 py-9 md:px-10">
+              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+
+                <div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-2xl font-black text-[#e7c793]">
+                      D코스
+                    </span>
+
+                    <span className="text-sm text-zinc-400">
+                      (90분 · 2:1)
+                    </span>
+                  </div>
+
+                  <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
+                    <p>90분 2:1 릴레이 구성</p>
+                    <p>제공된 가격표 기준으로 안내</p>
+                  </div>
+                </div>
+
+                <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
+                  <div className="text-2xl font-black text-[#e7c793]">
+                    450만동
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div className="border-t border-[#8c6a3d]/30 px-6 py-7 text-center">
+              <div className="text-sm font-bold text-[#c9aa7b]">
+                실제 이용 전 최신 가격과 조건을 확인해 주세요
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* COURSE */}
-      <section className="mx-auto max-w-5xl px-5 py-14 sm:px-8 sm:py-18">
-        <SectionHeading
-          eyebrow="COURSE & PRICE"
-          title="코스와 서비스 구성"
-        />
+      {/* =========================================================
+          BASIC INFORMATION
+      ========================================================= */}
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
 
-        <p className="mt-6 max-w-3xl text-[16px] leading-8 text-neutral-700">
-          코스는 이용 시간과 인원 구성에 따라 A부터 D까지 구분되어 있습니다.
-          짧은 시간의 기본 코스부터 90분 구성까지 선택할 수 있으며, 90분
-          코스는 1:1과 2:1 릴레이 방식으로 나뉩니다.
-        </p>
+        <div className="grid gap-6 md:grid-cols-3">
 
-        <div className="mt-9 grid gap-4 sm:grid-cols-2">
-          {courses.map((course) => (
+          <div className="rounded-3xl border border-white/10 bg-[#101010] p-7">
+            <div className="text-xs font-black tracking-[0.25em] text-zinc-600">
+              LOCATION
+            </div>
+
+            <div className="mt-4 text-lg font-black">
+              하노이 미딩 · 딘톤
+            </div>
+
+            <p className="mt-3 text-sm leading-7 text-zinc-500">
+              32 Ng. 154 Đ. Đình Thôn, Đình Thôn,
+              Từ Liêm, Hà Nội. 백제갈비 뒤편에 위치하며
+              지도에서는 Lolly Spa로 검색할 수 있습니다.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-[#101010] p-7">
+            <div className="text-xs font-black tracking-[0.25em] text-zinc-600">
+              OPENING HOURS
+            </div>
+
+            <div className="mt-4 text-lg font-black">
+              12:00 ~ 01:00
+            </div>
+
+            <p className="mt-3 text-sm leading-7 text-zinc-500">
+              매일 운영 기준으로 안내되어 있습니다.
+              방문 전 당일 운영 및 예약 가능 여부를
+              확인하는 것을 권장합니다.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-[#101010] p-7">
+            <div className="text-xs font-black tracking-[0.25em] text-zinc-600">
+              CATEGORY
+            </div>
+
+            <div className="mt-4 text-lg font-black">
+              사우나 · 스파
+            </div>
+
+            <p className="mt-3 text-sm leading-7 text-zinc-500">
+              미딩 딘톤 권역에서 오래 운영되어 온
+              사우나·스파 업소로 소개되고 있습니다.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* =========================================================
+          ABOUT
+      ========================================================= */}
+      <section className="border-y border-white/10 bg-[#080808]">
+        <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+
+          <div className="max-w-4xl">
+            <div className="text-xs font-black tracking-[0.3em] text-red-500">
+              ABOUT
+            </div>
+
+            <h2 className="mt-3 text-3xl font-black md:text-4xl">
+              하노이 수 사우나 소개
+            </h2>
+
+            <div className="mt-7 space-y-5 text-sm leading-8 text-zinc-400 md:text-base">
+
+              <p>
+                하노이 미딩 딘톤 지역에서 오래 운영되어 온
+                수 사우나는 현지에서 Lolly Spa라는 이름으로
+                지도 검색이 가능한 곳입니다. 딘톤 거리
+                안쪽에서 접근할 수 있으며 백제갈비 뒤편에
+                위치한 것으로 안내되어 있습니다.
+              </p>
+
+              <p>
+                오랜 기간 같은 지역에서 운영되어 왔다는 점과
+                한국인 이용객이 꾸준히 찾는다는 점이 특징입니다.
+                처음 방문하는 경우에도 예약 과정에서 위치와
+                이용 방법을 미리 확인하면 보다 편하게 방문할
+                수 있습니다.
+              </p>
+
+              <p>
+                이용 시간과 구성에 따라 A부터 D까지 코스가
+                나뉘어 있어 원하는 시간에 맞춰 선택할 수
+                있습니다. 30분부터 90분까지 구성되어 있어
+                짧게 이용하거나 여유 있게 방문하는 방식으로
+                선택할 수 있습니다.
+              </p>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* =========================================================
+          FACILITIES
+      ========================================================= */}
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+
+        <div className="text-xs font-black tracking-[0.3em] text-red-500">
+          FACILITIES
+        </div>
+
+        <h2 className="mt-3 text-3xl font-black md:text-4xl">
+          시설 및 이용환경
+        </h2>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+
+          {[
+            "사우나 시설",
+            "리셉션 공간",
+            "휴게 공간",
+            "개별 이용 공간",
+            "샤워 시설",
+            "예약 상담",
+          ].map((item) => (
             <div
-              key={course.name}
-              className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm"
+              key={item}
+              className="rounded-2xl border border-white/10 bg-[#101010] p-6"
             >
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex items-center gap-4">
+
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-600/10 text-sm font-black text-red-500">
+                  ✓
+                </div>
+
                 <div>
-                  <span className="text-sm font-semibold text-neutral-500">
-                    COURSE
-                  </span>
+                  <div className="font-bold">
+                    {item}
+                  </div>
 
-                  <h3 className="mt-1 text-3xl font-bold">
-                    {course.name}
-                  </h3>
+                  <div className="mt-1 text-xs leading-6 text-zinc-600">
+                    실제 운영 및 이용 가능 여부는 방문 전 확인해 주세요.
+                  </div>
                 </div>
 
-                <div className="text-right">
-                  <p className="text-xl font-bold">{course.price}</p>
-                  <p className="mt-1 text-sm text-neutral-500">
-                    {course.time}
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-5 border-t border-neutral-100 pt-5">
-                <p className="font-semibold text-neutral-900">
-                  {course.type}
-                </p>
-
-                <p className="mt-2 text-sm leading-6 text-neutral-600">
-                  {course.description}
-                </p>
               </div>
             </div>
           ))}
-        </div>
 
-        <div className="mt-7 rounded-xl bg-neutral-100 p-5">
-          <p className="text-sm leading-6 text-neutral-600">
-            ※ 위 금액은 제공받은 자료를 기준으로 정리한 가격입니다. 실제
-            결제 금액이나 프로모션은 방문 시점에 달라질 수 있으므로 예약
-            전에 최신 조건을 확인하는 것을 권장합니다.
-          </p>
         </div>
       </section>
 
-      {/* FIELD TIPS */}
-      <section className="border-y border-neutral-200 bg-neutral-50">
-        <div className="mx-auto max-w-5xl px-5 py-14 sm:px-8">
-          <SectionHeading
-            eyebrow="LOCAL TIPS"
-            title="방문 전에 알아둘 현장 포인트"
-          />
+      {/* =========================================================
+          LOCATION / TRANSPORT
+      ========================================================= */}
+      <section className="border-y border-white/10 bg-[#090909]">
+        <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
 
-          <div className="mt-8 space-y-3">
+          <div className="grid gap-12 lg:grid-cols-2">
+
+            <div>
+              <div className="text-xs font-black tracking-[0.3em] text-red-500">
+                LOCATION
+              </div>
+
+              <h2 className="mt-3 text-3xl font-black">
+                위치 및 방문 안내
+              </h2>
+
+              <p className="mt-6 text-sm leading-8 text-zinc-400">
+                주소는 32 Ng. 154 Đ. Đình Thôn,
+                Đình Thôn, Từ Liêm, Hà Nội입니다.
+                미딩 딘톤 거리 안쪽에 있으며 백제갈비
+                뒤편에서 찾을 수 있습니다.
+              </p>
+
+              <p className="mt-4 text-sm leading-8 text-zinc-400">
+                지도 앱에서는 Lolly Spa로 검색할 수 있습니다.
+                초행이라면 출발 전에 지도 위치를 확인하고
+                예약 담당자에게 정확한 위치를 다시 확인하는
+                것이 좋습니다.
+              </p>
+            </div>
+
+            <div>
+              <div className="text-xs font-black tracking-[0.3em] text-red-500">
+                TRANSPORT
+              </div>
+
+              <h2 className="mt-3 text-3xl font-black">
+                이동 및 방문
+              </h2>
+
+              <div className="mt-6 space-y-4">
+
+                <div className="rounded-2xl border border-white/10 bg-[#111] p-5">
+                  <div className="font-bold">
+                    택시 · 그랩 이동
+                  </div>
+
+                  <p className="mt-2 text-sm leading-7 text-zinc-500">
+                    기사에게 지도상의 위치를 보여주거나
+                    예약 담당자에게 정확한 위치를 전달받은
+                    후 이동하는 것을 권장합니다.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-[#111] p-5">
+                  <div className="font-bold">
+                    예약 후 방문
+                  </div>
+
+                  <p className="mt-2 text-sm leading-7 text-zinc-500">
+                    100% 예약제로 안내되어 있으므로 방문 전
+                    날짜와 시간을 미리 확인하는 것이 좋습니다.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
+          CHECK
+      ========================================================= */}
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+
+        <div className="rounded-3xl border border-white/10 bg-[#101010] p-7 md:p-10">
+
+          <div className="text-xs font-black tracking-[0.3em] text-red-500">
+            CHECK
+          </div>
+
+          <h2 className="mt-3 text-3xl font-black">
+            방문 전 확인사항
+          </h2>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+
             {[
-              "100% 예약제로 운영되므로 원하는 시간대가 있다면 미리 예약하는 편이 좋습니다.",
-              "당일 출근부 확인이 가능한 만큼 선호하는 스타일이 있다면 예약할 때 미리 문의해 두는 것이 편합니다.",
-              "90분 코스는 C가 1:1, D가 2:1 릴레이 구성으로 구분되므로 예약 전에 원하는 방식을 정확히 확인하세요.",
-              "결제는 베트남 동 현금이 가장 무난하며 카드 결제 가능 여부는 방문 전에 확인하는 것이 좋습니다.",
-              "지도에서는 Lolly Spa로 검색하는 것이 편하며, 백제갈비 뒤편이라는 위치 정보를 함께 확인하면 초행길에 도움이 됩니다.",
-            ].map((item, index) => (
+              "방문 전 영업시간 확인",
+              "원하는 코스 및 가격 확인",
+              "예약 가능 여부 확인",
+              "Lolly Spa 지도 위치 확인",
+              "당일 운영 상황 확인",
+              "최신 가격 변동 여부 확인",
+            ].map((item) => (
               <div
                 key={item}
-                className="flex gap-4 rounded-xl border border-neutral-200 bg-white p-5"
+                className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/20 px-5 py-4"
               >
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-xs font-bold text-white">
-                  {index + 1}
+                <span className="text-red-500">
+                  ✓
                 </span>
 
-                <p className="text-[15px] leading-7 text-neutral-700">
+                <span className="text-sm text-zinc-300">
                   {item}
-                </p>
+                </span>
               </div>
             ))}
+
           </div>
         </div>
       </section>
 
-      {/* RECOMMEND */}
-      <section className="mx-auto max-w-5xl px-5 py-14 sm:px-8 sm:py-18">
-        <SectionHeading
-          eyebrow="RECOMMENDED FOR"
-          title="이런 분께 잘 맞습니다"
-        />
+      {/* =========================================================
+          FAQ
+      ========================================================= */}
+      <section className="border-y border-white/10 bg-[#080808]">
+        <div className="mx-auto max-w-4xl px-5 py-16 md:px-8 md:py-20">
 
-        <div className="mt-8 rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
-          <ul className="space-y-4">
-            {[
-              "미딩 딘톤에서 오래 운영된 곳을 우선적으로 찾는 분",
-              "한국인 직영의 편한 안내와 소통을 선호하는 분",
-              "예약을 잡고 비교적 차분하게 이용하고 싶은 분",
-              "당일 출근부를 확인한 뒤 선택하고 싶은 분",
-              "30분부터 90분까지 시간에 맞춰 코스를 고르고 싶은 분",
-              "1:1뿐 아니라 2:1 릴레이 구성도 함께 확인하고 싶은 분",
-            ].map((item) => (
-              <li
-                key={item}
-                className="flex items-center gap-3 text-[15px] leading-7 text-neutral-700"
-              >
-                <span className="h-2 w-2 shrink-0 rounded-full bg-neutral-900" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* LOCATION */}
-      <section className="bg-neutral-950 text-white">
-        <div className="mx-auto max-w-5xl px-5 py-14 sm:px-8 sm:py-18">
-          <SectionHeading
-            dark
-            eyebrow="LOCATION & RESERVATION"
-            title="찾아가는 길과 예약"
-          />
-
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl bg-white/10 p-6">
-              <p className="text-sm font-semibold text-white/60">
-                ADDRESS
-              </p>
-
-              <p className="mt-3 text-lg font-semibold leading-8">
-                32 Ng. 154 Đ. Đình Thôn,
-                <br />
-                Đình Thôn, Từ Liêm, Hà Nội
-              </p>
-
-              <p className="mt-5 text-sm leading-7 text-white/65">
-                미딩 딘톤 거리 끝쪽, 백제갈비 뒤편에 위치합니다. 지도 앱에서는
-                Lolly Spa라는 검색명을 사용하는 것이 편합니다.
-              </p>
+          <div className="text-center">
+            <div className="text-xs font-black tracking-[0.3em] text-red-500">
+              FAQ
             </div>
 
-            <div className="rounded-2xl bg-white/10 p-6">
-              <p className="text-sm font-semibold text-white/60">
-                RESERVATION
-              </p>
-
-              <p className="mt-3 text-lg font-semibold">
-                100% 예약제
-              </p>
-
-              <p className="mt-4 text-sm leading-7 text-white/65">
-                방문 예정 시간과 원하는 코스를 미리 전달하고, 당일 출근부와
-                최신 가격을 확인한 뒤 방문하는 것을 권장합니다.
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="https://open.kakao.com/o/sZJKveyi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-lg bg-white px-5 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-neutral-200"
-                >
-                  카카오톡 문의
-                </a>
-
-                <a
-                  href="https://t.me/nambamvn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-lg border border-white/30 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-                >
-                  텔레그램 문의
-                </a>
-              </div>
-            </div>
+            <h2 className="mt-3 text-3xl font-black md:text-4xl">
+              자주 묻는 질문
+            </h2>
           </div>
-        </div>
-      </section>
 
-      {/* PRICE TABLE */}
-      <section className="mx-auto max-w-5xl px-5 py-14 sm:px-8 sm:py-18">
-        <SectionHeading
-          eyebrow="PRICE"
-          title="수 사우나 코스 가격표"
-        />
+          <div className="mt-10 space-y-3">
 
-        <div className="mt-8 overflow-hidden rounded-2xl border border-neutral-200">
-          <table className="w-full border-collapse text-left">
-            <thead className="bg-neutral-900 text-white">
-              <tr>
-                <th className="px-5 py-4 text-sm font-semibold">코스</th>
-                <th className="px-5 py-4 text-sm font-semibold">가격</th>
-                <th className="px-5 py-4 text-sm font-semibold">시간</th>
-                <th className="hidden px-5 py-4 text-sm font-semibold sm:table-cell">
-                  구성
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {courses.map((course, index) => (
-                <tr
-                  key={course.name}
-                  className={
-                    index % 2 === 0
-                      ? "bg-white"
-                      : "bg-neutral-50"
-                  }
-                >
-                  <td className="px-5 py-5 font-bold">
-                    {course.name}
-                  </td>
-
-                  <td className="px-5 py-5 font-semibold">
-                    {course.price}
-                  </td>
-
-                  <td className="px-5 py-5 text-neutral-600">
-                    {course.time}
-                  </td>
-
-                  <td className="hidden px-5 py-5 text-neutral-600 sm:table-cell">
-                    {course.type}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div className="mt-6 space-y-2 text-sm leading-6 text-neutral-500">
-          <p>
-            <strong className="text-neutral-700">요금 안내 ·</strong>{" "}
-            위 가격은 제공받은 자료를 바탕으로 정리한 기준입니다.
-          </p>
-
-          <p>
-            시즌, 프로모션, 이용 조건 등에 따라 실제 결제 금액이 달라질
-            가능성이 있으므로 방문 전 최신 가격과 조건을 확인하시기
-            바랍니다.
-          </p>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="border-t border-neutral-200 bg-neutral-50">
-        <div className="mx-auto max-w-5xl px-5 py-14 sm:px-8 sm:py-18">
-          <SectionHeading
-            eyebrow="FAQ"
-            title="자주 묻는 질문"
-          />
-
-          <div className="mt-8 space-y-4">
-            {faqs.map((faq) => (
+            {faqItems.map((item) => (
               <details
-                key={faq.question}
-                className="group rounded-2xl border border-neutral-200 bg-white"
+                key={item.q}
+                className="group rounded-2xl border border-white/10 bg-[#101010]"
               >
-                <summary className="cursor-pointer list-none px-6 py-5 font-semibold">
-                  <div className="flex items-center justify-between gap-4">
-                    <span>{faq.question}</span>
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-6 py-5 font-bold">
+                  <span>
+                    {item.q}
+                  </span>
 
-                    <span className="text-xl text-neutral-400 transition group-open:rotate-45">
-                      +
-                    </span>
-                  </div>
+                  <span className="text-xl text-zinc-500 transition group-open:rotate-45">
+                    +
+                  </span>
                 </summary>
 
-                <div className="border-t border-neutral-100 px-6 py-5 text-sm leading-7 text-neutral-600">
-                  {faq.answer}
+                <div className="border-t border-white/10 px-6 py-5 text-sm leading-7 text-zinc-500">
+                  {item.a}
                 </div>
               </details>
             ))}
+
           </div>
         </div>
       </section>
 
-      {/* BOTTOM CTA */}
-      <section className="bg-neutral-900 text-white">
-        <div className="mx-auto max-w-4xl px-5 py-14 text-center sm:px-8">
-          <p className="text-sm font-semibold tracking-widest text-white/50">
-            HANOI · MY DINH
-          </p>
+      {/* =========================================================
+          FINAL CTA
+      ========================================================= */}
+      <section className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-24">
 
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
-            수 사우나 · Lolly Spa
+        <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-[#171717] to-[#0c0c0c] p-8 text-center md:p-14">
+
+          <div className="text-xs font-black tracking-[0.3em] text-red-500">
+            SU SAUNA
+          </div>
+
+          <h2 className="mt-4 text-3xl font-black md:text-4xl">
+            하노이 수 사우나를 확인해 보세요
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-white/60">
-            미딩 딘톤에서 오래 운영된 곳을 찾는다면 방문 전 위치와 예약
-            가능 시간, 최신 코스 및 가격을 확인해 보세요.
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-zinc-500">
+            방문 전 코스와 가격, 운영시간 및 위치를
+            확인하고 예약 가능 여부를 문의해 주세요.
           </p>
 
-          <div className="mt-7 flex justify-center gap-3">
-            <a
-              href="https://open.kakao.com/o/sZJKveyi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-neutral-900"
-            >
-              카카오톡 문의
-            </a>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
 
             <a
-              href="https://t.me/nambamvn"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white"
+              href="#"
+              className="rounded-xl bg-red-600 px-8 py-4 text-sm font-black transition hover:bg-red-500"
             >
-              텔레그램
+              문의하기
             </a>
+
+            <Link
+              href={`/${city}/massage`}
+              className="rounded-xl border border-white/15 bg-white/[0.03] px-8 py-4 text-sm font-black transition hover:bg-white/[0.08]"
+            >
+              하노이 마사지 더보기
+            </Link>
+
           </div>
         </div>
       </section>
+
+      {/* =========================================================
+          IMAGE LIGHTBOX
+      ========================================================= */}
+      {selectedImage !== null && (
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 p-4"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              closeGallery();
+            }
+          }}
+        >
+
+          {/* CLOSE */}
+          <button
+            type="button"
+            onClick={closeGallery}
+            aria-label="닫기"
+            className="absolute right-5 top-5 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/60 text-2xl text-white transition hover:bg-white/10"
+          >
+            ×
+          </button>
+
+          {/* PREVIOUS */}
+          <button
+            type="button"
+            onClick={previousImage}
+            aria-label="이전 사진"
+            className="absolute left-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-3xl text-white transition hover:bg-white/10 md:left-8"
+          >
+            ‹
+          </button>
+
+          {/* IMAGE */}
+          <div className="relative flex max-h-[90vh] max-w-[92vw] flex-col items-center">
+
+            <img
+              src={galleryImages[selectedImage].src}
+              alt={galleryImages[selectedImage].title}
+              className="max-h-[82vh] max-w-[92vw] rounded-xl object-contain shadow-2xl"
+            />
+
+            <div className="mt-4 text-center text-sm text-zinc-300">
+              {galleryImages[selectedImage].title}
+            </div>
+
+            <div className="mt-1 text-xs text-zinc-600">
+              {selectedImage + 1} / {galleryImages.length}
+            </div>
+
+          </div>
+
+          {/* NEXT */}
+          <button
+            type="button"
+            onClick={nextImage}
+            aria-label="다음 사진"
+            className="absolute right-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-3xl text-white transition hover:bg-white/10 md:right-8"
+          >
+            ›
+          </button>
+
+          {/* BOTTOM HINT */}
+          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-center text-xs text-zinc-600">
+            ← → 사진 이동 · ESC 닫기
+          </div>
+
+        </div>
+      )}
+
     </main>
-  );
-}
-
-/* ---------------------------------------------
-   COMPONENTS
---------------------------------------------- */
-
-function SectionHeading({
-  eyebrow,
-  title,
-  dark = false,
-}: {
-  eyebrow: string;
-  title: string;
-  dark?: boolean;
-}) {
-  return (
-    <div>
-      <p
-        className={`text-sm font-semibold tracking-widest ${
-          dark ? "text-white/50" : "text-neutral-500"
-        }`}
-      >
-        {eyebrow}
-      </p>
-
-      <h2
-        className={`mt-2 text-3xl font-bold tracking-tight sm:text-4xl ${
-          dark ? "text-white" : "text-neutral-900"
-        }`}
-      >
-        {title}
-      </h2>
-    </div>
-  );
-}
-
-function InfoRow({
-  label,
-  value,
-}: {
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="border-b border-neutral-100 p-5 last:border-b-0 sm:nth-last-[1]:border-b-0">
-      <p className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
-        {label}
-      </p>
-
-      <p className="mt-2 text-[15px] font-medium leading-6 text-neutral-800">
-        {value}
-      </p>
-    </div>
-  );
-}
-
-function FeatureCard({
-  number,
-  title,
-  text,
-}: {
-  number: string;
-  title: string;
-  text: string;
-}) {
-  return (
-    <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
-      <span className="text-sm font-bold text-neutral-400">
-        {number}
-      </span>
-
-      <h3 className="mt-4 text-xl font-bold">
-        {title}
-      </h3>
-
-      <p className="mt-3 text-sm leading-7 text-neutral-600">
-        {text}
-      </p>
-    </div>
   );
 }
