@@ -264,250 +264,301 @@ export default function AmazingMassagePage() {
       </section>
 
       {/* =========================================================
-          PRICE
-      ========================================================= */}
-      <section className="border-y border-white/10 bg-[#090909]">
+    PRICE
+========================================================= */}
+<section className="border-y border-white/10 bg-[#090909]">
 
-        <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-20">
+  <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-20">
 
-          <div className="text-center">
+    <div className="text-center">
 
-            <div className="text-xs font-black tracking-[0.3em] text-red-500">
-              PRICE
+      <div className="text-xs font-black tracking-[0.3em] text-red-500">
+        PRICE
+      </div>
+
+      <h2 className="mt-3 text-3xl font-black md:text-4xl">
+        어메이징 마사지 가격표
+      </h2>
+
+      <p className="mt-3 text-sm text-zinc-500">
+        아래 금액은 제공받은 가격표를 기준으로 정리했습니다.
+      </p>
+
+    </div>
+
+    <div className="mt-10 overflow-hidden rounded-3xl border border-[#8c6a3d]/40 bg-gradient-to-b from-[#17130e] to-[#0c0c0c] shadow-2xl">
+
+      {/* PRICE HEADER */}
+      <div className="border-b border-[#8c6a3d]/30 px-6 py-8 text-center md:px-10">
+
+        <div className="text-2xl font-black tracking-[0.25em] text-[#e5c28d]">
+          AMAZING MASSAGE
+        </div>
+
+        <div className="mt-2 text-xs tracking-[0.4em] text-[#9d896c]">
+          PRICE MENU
+        </div>
+
+        <div className="mx-auto mt-5 h-px max-w-xs bg-[#8c6a3d]/50" />
+
+      </div>
+
+
+      {/* =====================================================
+          A COURSE
+      ===================================================== */}
+      <div className="border-b border-white/10 px-6 py-9 md:px-10">
+
+        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+
+          <div>
+
+            <div className="flex items-baseline gap-3">
+
+              <span className="text-2xl font-black text-[#e7c793]">
+                A코스
+              </span>
+
+              <span className="text-sm text-zinc-400">
+                기본 코스
+              </span>
+
             </div>
 
-            <h2 className="mt-3 text-3xl font-black md:text-4xl">
-              어메이징 마사지 가격표
-            </h2>
+            <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
+              <p>
+                동반샤워 + 기본마사지 + 누루서비스 (핸플 &gt; 립마무리)
+              </p>
 
-            <p className="mt-3 text-sm text-zinc-500">
-              아래 금액은 제공받은 가격표를 기준으로 정리했습니다.
-            </p>
+              <p>
+                가볍게 즐기는 코스
+              </p>
+            </div>
 
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-3xl border border-[#8c6a3d]/40 bg-gradient-to-b from-[#17130e] to-[#0c0c0c] shadow-2xl">
+          <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
 
-            {/* PRICE HEADER */}
-            <div className="border-b border-[#8c6a3d]/30 px-6 py-8 text-center md:px-10">
-
-              <div className="text-2xl font-black tracking-[0.25em] text-[#e5c28d]">
-                AMAZING MASSAGE
-              </div>
-
-              <div className="mt-2 text-xs tracking-[0.4em] text-[#9d896c]">
-                PRICE MENU
-              </div>
-
-              <div className="mx-auto mt-5 h-px max-w-xs bg-[#8c6a3d]/50" />
-
-            </div>
-
-            {/* A COURSE */}
-            <div className="border-b border-white/10 px-6 py-9 md:px-10">
-
-              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-
-                <div>
-
-                  <div className="flex items-baseline gap-3">
-
-                    <span className="text-2xl font-black text-[#e7c793]">
-                      A코스
-                    </span>
-
-                    <span className="text-sm text-zinc-400">
-                      기본 코스
-                    </span>
-
-                  </div>
-
-                  <p className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
-  동반샤워 + 기본마사지 + 누루서비스 (핸플 &gt; 립마무리)
-</p>
-                    <p>가볍게 즐기는 코스</p>
-                  </div>
-
-                </div>
-
-                <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
-
-                  <div className="text-2xl font-black text-[#e7c793]">
-                    160만동
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            {/* B COURSE */}
-            <div className="border-b border-white/10 px-6 py-9 md:px-10">
-
-              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-
-                <div>
-
-                  <div className="flex items-baseline gap-3">
-
-                    <span className="text-2xl font-black text-[#e7c793]">
-                      B코스
-                    </span>
-
-                    <span className="text-sm text-zinc-400">
-                      VIP · 인기
-                    </span>
-
-                  </div>
-
-                  <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
-                    <p>A코스+연애</p>
-                    <p>가장 인기, 처음 추천</p>
-                  </div>
-
-                </div>
-
-                <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
-
-                  <div className="text-2xl font-black text-[#e7c793]">
-                    210만동
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            {/* C COURSE */}
-            <div className="border-b border-white/10 px-6 py-9 md:px-10">
-
-              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-
-                <div>
-
-                  <div className="flex items-baseline gap-3">
-
-                    <span className="text-2xl font-black text-[#e7c793]">
-                      C코스
-                    </span>
-
-                    <span className="text-sm text-zinc-400">
-                      프리미엄
-                    </span>
-
-                  </div>
-
-                  <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
-                    <p>동반샤워+연애</p>
-                    <p>A코스보다 한 단계 위 코스</p>
-                  </div>
-
-                </div>
-
-                <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
-
-                  <div className="text-2xl font-black text-[#e7c793]">
-                    170만동
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            {/* D COURSE */}
-            <div className="border-b border-white/10 px-6 py-9 md:px-10">
-
-              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-
-                <div>
-
-                  <div className="flex items-baseline gap-3">
-
-                    <span className="text-2xl font-black text-[#e7c793]">
-                      D코스
-                    </span>
-
-                    <span className="text-sm text-zinc-400">
-                      스페셜 황제코
-                    </span>
-
-                  </div>
-
-                  <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
-                    <p>B코스+2:1 연애</p>
-                    <p>2:1 황제 코스</p>
-                  </div>
-
-                </div>
-
-                <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
-
-                  <div className="text-2xl font-black text-[#e7c793]">
-                    350만동
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            {/* E COURSE */}
-            <div className="px-6 py-9 md:px-10">
-
-              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-
-                <div>
-
-                  <div className="flex items-baseline gap-3">
-
-                    <span className="text-2xl font-black text-[#e7c793]">
-                      E코스
-                    </span>
-
-                    <span className="text-sm text-zinc-400">
-                      프리미엄 코스
-                    </span>
-
-                  </div>
-
-                  <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
-                    <p>동반샤워+오일마사지+연애+휴식+누루+연애</p>
-                    <p>연애 2번 코스</p>
-                  </div>
-
-                </div>
-
-                <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
-
-                  <div className="text-2xl font-black text-[#e7c793]">
-                    350만동
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-                        <div className="border-t border-[#8c6a3d]/30 px-6 py-7 text-center">
-
-              <div className="text-sm font-bold text-[#c9aa7b]">
-                가격은 2026년 1월 인상 전 제공 자료 기준이며,
-                현재 금액은 방문 전 확인해 주세요.
-              </div>
-
+            <div className="text-2xl font-black text-[#e7c793]">
+              160만동
             </div>
 
           </div>
 
         </div>
 
-      </section>
+      </div>
+
+
+      {/* =====================================================
+          B COURSE
+      ===================================================== */}
+      <div className="border-b border-white/10 px-6 py-9 md:px-10">
+
+        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+
+          <div>
+
+            <div className="flex items-baseline gap-3">
+
+              <span className="text-2xl font-black text-[#e7c793]">
+                B코스
+              </span>
+
+              <span className="text-sm text-zinc-400">
+                VIP · 인기
+              </span>
+
+            </div>
+
+            <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
+
+              <p>
+                A코스+연애
+              </p>
+
+              <p>
+                가장 인기, 처음 추천
+              </p>
+
+            </div>
+
+          </div>
+
+          <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
+
+            <div className="text-2xl font-black text-[#e7c793]">
+              210만동
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* =====================================================
+          C COURSE
+      ===================================================== */}
+      <div className="border-b border-white/10 px-6 py-9 md:px-10">
+
+        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+
+          <div>
+
+            <div className="flex items-baseline gap-3">
+
+              <span className="text-2xl font-black text-[#e7c793]">
+                C코스
+              </span>
+
+              <span className="text-sm text-zinc-400">
+                프리미엄
+              </span>
+
+            </div>
+
+            <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
+
+              <p>
+                동반샤워+연애
+              </p>
+
+              <p>
+                A코스보다 한 단계 위 코스
+              </p>
+
+            </div>
+
+          </div>
+
+          <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
+
+            <div className="text-2xl font-black text-[#e7c793]">
+              170만동
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* =====================================================
+          D COURSE
+      ===================================================== */}
+      <div className="border-b border-white/10 px-6 py-9 md:px-10">
+
+        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+
+          <div>
+
+            <div className="flex items-baseline gap-3">
+
+              <span className="text-2xl font-black text-[#e7c793]">
+                D코스
+              </span>
+
+              <span className="text-sm text-zinc-400">
+                스페셜 황제 코스
+              </span>
+
+            </div>
+
+            <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
+
+              <p>
+                B코스+2:1 연애
+              </p>
+
+              <p>
+                2:1 황제 코스
+              </p>
+
+            </div>
+
+          </div>
+
+          <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
+
+            <div className="text-2xl font-black text-[#e7c793]">
+              350만동
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* =====================================================
+          E COURSE
+      ===================================================== */}
+      <div className="px-6 py-9 md:px-10">
+
+        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+
+          <div>
+
+            <div className="flex items-baseline gap-3">
+
+              <span className="text-2xl font-black text-[#e7c793]">
+                E코스
+              </span>
+
+              <span className="text-sm text-zinc-400">
+                프리미엄 코스
+              </span>
+
+            </div>
+
+            <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
+
+              <p>
+                동반샤워+오일마사지+연애+휴식+누루+연애
+              </p>
+
+              <p>
+                연애 2번 코스
+              </p>
+
+            </div>
+
+          </div>
+
+          <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
+
+            <div className="text-2xl font-black text-[#e7c793]">
+              350만동
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* =====================================================
+          PRICE NOTICE
+      ===================================================== */}
+      <div className="border-t border-[#8c6a3d]/30 px-6 py-7 text-center">
+
+        <div className="text-sm font-bold text-[#c9aa7b]">
+          가격은 2026년 1월 인상 전 제공 자료 기준이며,
+          현재 금액은 방문 전 확인해 주세요.
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* =========================================================
           BASIC INFORMATION
