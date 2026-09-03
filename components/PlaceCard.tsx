@@ -47,9 +47,9 @@ export default function PlaceCard({ place }: { place: Place }) {
           </div>
 
           {/* DESCRIPTION */}
-          <p className="mt-2 line-clamp-2 text-[10px] leading-4 text-zinc-500 sm:text-xs sm:leading-5 lg:mt-4 lg:text-sm lg:leading-6">
-            {place.description}
-          </p>
+          <p className="mt-4 hidden text-sm leading-6 text-zinc-500 md:line-clamp-2 md:block">
+  {place.description}
+</p>
 
           {/* DETAIL */}
           <div className="mt-3 text-[10px] font-black red sm:mt-4 sm:text-xs lg:mt-5 lg:text-sm">
