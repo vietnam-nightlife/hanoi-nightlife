@@ -214,30 +214,36 @@ export const places: Place[] = [
 
  /*
    * =======================================================
-   * 하노이 소라 마사
+   * 하노이 소라 마사지
    * =======================================================
    */
   
 {
-  city: "hanoi",
-  category: "massage",
-  slug: "sora-massage",
-  name: "소라 마사지",
-  englishName: "SORA MASSAGE",
-  location: "미딩 딩톤시장 인근",
-  address: "48 Ngh. 1/8 Đ. Đình Thôn, Đình Thôn, Từ Liêm, Hà Nội",
-  hours: "11:00 ~ 02:00",
-  image: "/하노이 소라 마사지 메인.webp",
-  description:
-    "하노이 미딩 딩톤시장 인근 소라 마사지는 프라이빗 룸 약 10개와 전용 샤워·화장실, 한국인 매니저 상주로 편리하며, A~F 정찰제 코스로 원하는 구성에 맞춰 이용하기 좋은 마사지샵입니다.",
-  tags: [
-    "미딩 딩톤",
-    "프라이빗 룸",
-    "전용 샤워",
-    "한국인 매니저",
-  ],
-  featured: false,
-},
+    slug: "sora-massage",
+    name: "하노이 소 마사지",
+    city: "hanoi",
+    category: "massage",
+
+    district: "하노이",
+
+    rating: 4.6,
+    reviews: 54,
+
+    description:
+      "하노이 미딩 딩톤시장 인근 소라 마사지는 프라이빗 룸 약 10개와 전용 샤워·화장실, 한국인 매니저 상주로 편리하며, A~F 정찰제 코스로 원하는 구성에 맞춰 이용하기 좋은 마사지샵입니다.",
+
+    address: "하노이",
+
+    hours: "영업시간 확인 필요",
+
+    image: "/하노이 소라마사지 메인.webp",
+
+    featured: true,
+
+    koreanSupport: true,
+    recommended: true,
+    revisitRecommended: true,
+  },
   
   /*
    * =======================================================
