@@ -186,7 +186,7 @@ export const places: Place[] = [
    */
 
   {
-    slug: "hanoi-d-salon-massage",
+    slug: "d-salon",
     name: "하노이 디살롱 마사지",
     city: "hanoi",
     category: "massage",
@@ -194,10 +194,10 @@ export const places: Place[] = [
     district: "하노이",
 
     rating: 4.8,
-    reviews: 0,
+    reviews: 32,
 
     description:
-      "하노이 디살롱 마사지 업소 정보입니다. 디살롱의 위치와 영업시간, 마사지 코스와 가격, 시설 및 이용 방법 등 방문 전에 필요한 정보를 확인할 수 있도록 정리했습니다.",
+      "하노이 디살롱 마사지 정보입니다. 위치, 영업시간, 마사지 코스와 가격, 내부 시설 등 실제 방문 전에 필요한 정보를 확인할 수 있습니다.",
 
     address: "하노이",
 
@@ -206,6 +206,10 @@ export const places: Place[] = [
     image: "/하노이 디살롱 마사지 메인.webp",
 
     featured: true,
+
+    koreanSupport: true,
+    recommended: true,
+    revisitRecommended: true,
   },
 
   /*
