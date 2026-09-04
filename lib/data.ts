@@ -203,7 +203,7 @@ export const places: Place[] = [
 
     hours: "영업시간 확인 필요",
 
-    image: "/하노이 디살롱 마사지 메인.webp",
+    image: "/하노이 디살롱 메인.webp",
 
     featured: true,
 
