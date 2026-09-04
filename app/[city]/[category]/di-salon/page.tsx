@@ -14,6 +14,10 @@ const galleryImages = [
     title: "디살롱 리셉션",
   },
   {
+    src: "/하노이 디살롱 휴게실.webp",
+    title: "디살롱 휴게실",
+  },
+  {
     src: "/하노이 디살롱 룸1.webp",
     title: "디살롱 룸1",
   },
@@ -32,10 +36,6 @@ const galleryImages = [
   {
     src: "/하노이 디살롱 룸5.webp",
     title: "디살롱 룸5",
-  },
-  {
-    src: "/하노이 디살롱 휴게실.webp",
-    title: "디살롱 휴게실",
   },
 ];
 
@@ -336,11 +336,11 @@ export default function DSalonPage() {
                   <div className="flex items-baseline gap-3">
 
                     <span className="text-2xl font-black text-[#e7c793]">
-                      핵심 코스
+                      A코스
                     </span>
 
                     <span className="text-sm text-zinc-400">
-                      (약 30분)
+                      (30분 팁포함)
                     </span>
 
                   </div>
@@ -348,7 +348,7 @@ export default function DSalonPage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      샤워 + 기본 관리
+                      샤워 + ㅇㅆ마무리
                     </p>
 
                     <p>
@@ -363,7 +363,7 @@ export default function DSalonPage() {
                 <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
 
                   <div className="text-2xl font-black text-[#e7c793]">
-                    170만동
+                    100만동
                   </div>
 
                 </div>
@@ -383,11 +383,11 @@ export default function DSalonPage() {
                   <div className="flex items-baseline gap-3">
 
                     <span className="text-2xl font-black text-[#e7c793]">
-                      기본 코스
+                      B코스
                     </span>
 
                     <span className="text-sm text-zinc-400">
-                      (약 60분)
+                      (60분 팁포함)
                     </span>
 
                   </div>
@@ -395,7 +395,7 @@ export default function DSalonPage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      샤워 + 마사지 중심 구성
+                      샤워 + 동반샤워 + 마사지 + 누루 + ㅇㅆ마무리
                     </p>
 
                     <p>
@@ -410,7 +410,7 @@ export default function DSalonPage() {
                 <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
 
                   <div className="text-2xl font-black text-[#e7c793]">
-                    210만동
+                    150만동
                   </div>
 
                 </div>
@@ -434,7 +434,7 @@ export default function DSalonPage() {
                     </span>
 
                     <span className="text-sm text-zinc-400">
-                      (약 120분)
+                      (약 90분 팁포함)
                     </span>
 
                   </div>
@@ -442,11 +442,11 @@ export default function DSalonPage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      여유롭게 이용하는 장시간 코스
+                      술자리 + 동반샤워 + 누루 + ㅇㅆ 마무리
                     </p>
 
                     <p>
-                      별도의 코스 운영 방식이 적용될 수 있습니다
+                      술자리를 같이하는 코스로 기분이 더 업업!
                     </p>
 
                   </div>
@@ -457,7 +457,7 @@ export default function DSalonPage() {
                 <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
 
                   <div className="text-2xl font-black text-[#e7c793]">
-                    350만동
+                    300만동
                   </div>
 
                 </div>
@@ -480,6 +480,52 @@ export default function DSalonPage() {
 
         </div>
 
+            {/* T COURSE */}
+            <div className="border-b border-white/10 px-6 py-9 md:px-10">
+
+              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+
+                <div>
+
+                  <div className="flex items-baseline gap-3">
+
+                    <span className="text-2xl font-black text-[#e7c793]">
+                      T코스
+                    </span>
+
+                    <span className="text-sm text-zinc-400">
+                      (때밀이 코스 팁포함)
+                    </span>
+
+                  </div>
+
+                  <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
+
+                    <p>
+                      사우나 + 동반샤워 + 때밀이(세신) + 누루 + ㅇㅆ마무리
+                    </p>
+
+                    <p>
+                      사우나와 세신을 동시에하는 프리미엄 코스
+                    </p>
+
+                  </div>
+
+                </div>
+
+
+                <div className="shrink-0 rounded-2xl border border-[#9b7545] px-7 py-4 text-center">
+
+                  <div className="text-2xl font-black text-[#e7c793]">
+                    200만동
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+        
       </section>
 
 
