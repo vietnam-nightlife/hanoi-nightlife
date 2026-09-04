@@ -349,7 +349,7 @@ export default function DSalonPage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      샤워 + 기본 케어
+                      샤워 + ㅇㅁ + ㅇㅆ마무리
                     </p>
 
                     <p>
@@ -396,7 +396,7 @@ export default function DSalonPage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      샤워 + 동반샤워 + 마사지 + 스파 케어
+                      샤워 + 동반샤워 + 마사지 + 누루 + ㅇㅆ마무리
                     </p>
 
                     <p>
@@ -443,11 +443,11 @@ export default function DSalonPage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      별도 공간에서 여유롭게 이용하는 장시간 코스
+                      술자리 + 동반샤워 + 누루 + ㅇㅆ마무리
                     </p>
 
                     <p>
-                      술자리와 함께 이용하는 형태로 안내된 코스
+                      술자리와 함께 이용하는 디살롱 시그니쳐 코스
                     </p>
 
                   </div>
@@ -490,7 +490,7 @@ export default function DSalonPage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      사우나 + 동반샤워 + 때밀이(세신) + 스파 케어
+                      사우나 + 동반샤워 + 때밀이(세신) + 누루 + ㅇㅆ마무리
                     </p>
 
                     <p>
