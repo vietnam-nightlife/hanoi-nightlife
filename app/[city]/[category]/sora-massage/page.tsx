@@ -163,7 +163,7 @@ export default function SoraMassagePage() {
               </span>
 
               <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-zinc-300">
-                11:00 ~ 02:00
+                12:00 ~ 02:00
               </span>
 
               <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-zinc-300">
@@ -171,7 +171,7 @@ export default function SoraMassagePage() {
               </span>
 
               <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-zinc-300">
-                한국인 매니저
+                한국어 응대 가능
               </span>
 
             </div>
@@ -347,11 +347,11 @@ export default function SoraMassagePage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      40분 기본 마사지 코스
+                      샤워 + 서비스
                     </p>
 
                     <p>
-                      짧은 시간에 이용하기 좋은 구성
+                      기본적인 마사지로 피로 회복과 편안한 서비스
                     </p>
 
                   </div>
@@ -393,11 +393,11 @@ export default function SoraMassagePage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      60분 표준 마사지 코스
+                      샤워 + 누루 + 핸플
                     </p>
 
                     <p>
-                      가장 기본적으로 선택하기 좋은 구성
+                      누루 마사지와 핸플 서비스로 더욱 가성비 있는 힐링 코드
                     </p>
 
                   </div>
@@ -439,11 +439,11 @@ export default function SoraMassagePage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      60분 업그레이드 구성
+                      샤워 + 누루 + 서비스
                     </p>
 
                     <p>
-                      기본 코스보다 다양한 구성을 원하는 경우 선택
+                      누루 마사지와 전문 서비스로 최고의 만족감을 선사하는 베스트 코스
                     </p>
 
                   </div>
@@ -485,11 +485,11 @@ export default function SoraMassagePage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      90분 장시간 마사지 구성
+                      샤워 + 누루 + 서비스1 + 핸플1
                     </p>
 
                     <p>
-                      충분한 시간을 두고 케어받고 싶은 경우 적합
+                      여유로운 시간동안 집중 케어를 원하시는분께 추천하는 프리미엄 코스
                     </p>
 
                   </div>
@@ -531,11 +531,11 @@ export default function SoraMassagePage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      100분 장시간 풀 케어 구성
+                      샤워 + 누루 + 서비스2
                     </p>
 
                     <p>
-                      여유 있게 이용하고 싶은 경우 선택
+                      더 길어진 시간과 더 업그레이된 서비스 코스
                     </p>
 
                   </div>
@@ -577,11 +577,11 @@ export default function SoraMassagePage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      60분 프리미엄 구성
+                      샤워 + 누루 + 서비스1(2:1)
                     </p>
 
                     <p>
-                      짧은 시간에도 한 단계 높은 구성을 원하는 경우 선택
+                      2:1 집중 관리로 특별한 서비스를 제공하는 스페셜 황제 코스
                     </p>
 
                   </div>
