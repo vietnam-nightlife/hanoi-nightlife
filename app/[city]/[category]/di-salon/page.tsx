@@ -42,28 +42,29 @@ const galleryImages = [
 const faqItems = [
   {
     q: "디살롱은 어디에 있나요?",
-    a: "디살롱은 하노이 미딩 한인타운 딩톤 지역의 C15 FIVESTAR, Ng. 154 Đình Thôn에 위치한 마사지·스파 업소입니다. 처음 방문한다면 예약 전에 정확한 위치와 건물 위치를 확인하는 것을 권장합니다.",
+    a: "디살롱은 하노이 미딩 한인타운 딩톤 지역의 C15 FIVESTAR, Ng. 154 Đình Thôn에 위치한 마사지·스파 업소입니다. 처음 방문한다면 예약 전에 정확한 건물 위치를 확인하는 것을 권장합니다.",
   },
   {
     q: "디살롱 영업시간은 어떻게 되나요?",
-    a: "현재 온라인에 확인되는 정보 기준으로 매일 12:00부터 익일 02:00까지 운영하는 것으로 안내되고 있습니다. 현지 사정에 따라 변경될 수 있으므로 방문 당일 운영 여부를 확인해 주세요.",
+    a: "현재 확인된 공개 정보 기준으로 12:00부터 익일 02:00까지 운영되는 것으로 안내되고 있습니다. 현지 사정에 따라 변경될 수 있으므로 방문 당일 확인해 주세요.",
   },
   {
     q: "디살롱 코스는 어떻게 구성되어 있나요?",
-    a: "온라인 공개 자료에서는 약 30분의 핵심 코스, 약 60분의 기본 코스, 약 120분의 방석집 코스 등 세 가지 형태가 확인됩니다. 코스별 구성과 이용 가능 여부는 방문 전 최신 안내를 확인하는 것이 좋습니다.",
+    a: "공개 자료 기준으로 A코스, B코스, 방석집 코스 및 T코스 등 여러 선택지가 안내되어 있습니다. 각 코스의 시간과 구성은 방문 전 최신 안내를 확인하는 것이 좋습니다.",
   },
   {
     q: "가격은 얼마인가요?",
-    a: "2026년 1월 공개 자료에서는 핵심 코스 170만동, 기본 코스 210만동, 방석집 코스 350만동으로 안내되고 있습니다. 온라인 자료마다 가격 차이가 확인되므로 실제 이용 전 최신 가격을 반드시 확인해 주세요.",
+    a: "현재 페이지에는 제공받은 공개 자료 기준 가격을 표시하고 있습니다. 가격이나 코스는 변경될 수 있으므로 실제 이용 전 최신 가격을 확인해 주세요.",
   },
   {
     q: "예약 없이 방문해도 되나요?",
-    a: "현장 상황에 따라 이용 가능 여부가 달라질 수 있습니다. 특히 저녁 시간이나 주말에는 방문객이 몰릴 수 있으므로 원하는 시간에 이용하려면 사전 문의를 권장합니다.",
+    a: "현장 상황에 따라 이용 가능 여부가 달라질 수 있습니다. 원하는 시간에 방문하려면 사전 문의를 권장합니다.",
   },
 ];
 
 export default function DSalonPage() {
   const params = useParams();
+
   const city =
     typeof params?.city === "string" ? params.city : "hanoi";
 
@@ -177,9 +178,8 @@ export default function DSalonPage() {
 
           </div>
 
-          {/* =========================================================
-              MAIN IMAGE
-          ========================================================= */}
+
+          {/* MAIN IMAGE */}
           <button
             type="button"
             onClick={() => openGallery(0)}
@@ -220,7 +220,7 @@ export default function DSalonPage() {
 
 
       {/* =========================================================
-          FACILITY GALLERY
+          GALLERY
       ========================================================= */}
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
 
@@ -237,7 +237,6 @@ export default function DSalonPage() {
           <p className="mt-3 text-sm leading-7 text-zinc-500">
             디살롱의 리셉션과 객실, 휴게공간 등
             실제 시설 사진을 확인해 보세요.
-            사진을 클릭하면 전체 화면으로 확대해서 볼 수 있습니다.
           </p>
 
         </div>
@@ -276,6 +275,7 @@ export default function DSalonPage() {
 
               </button>
             );
+
           })}
 
         </div>
@@ -310,6 +310,7 @@ export default function DSalonPage() {
 
           <div className="mt-10 overflow-hidden rounded-3xl border border-[#8c6a3d]/40 bg-gradient-to-b from-[#17130e] to-[#0c0c0c] shadow-2xl">
 
+
             {/* PRICE HEADER */}
             <div className="border-b border-[#8c6a3d]/30 px-6 py-8 text-center md:px-10">
 
@@ -326,7 +327,7 @@ export default function DSalonPage() {
             </div>
 
 
-            {/* CORE COURSE */}
+            {/* A COURSE */}
             <div className="border-b border-white/10 px-6 py-9 md:px-10">
 
               <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
@@ -348,7 +349,7 @@ export default function DSalonPage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      샤워 + ㅇㅆ마무리
+                      샤워 + 기본 케어
                     </p>
 
                     <p>
@@ -373,7 +374,7 @@ export default function DSalonPage() {
             </div>
 
 
-            {/* BASIC COURSE */}
+            {/* B COURSE */}
             <div className="border-b border-white/10 px-6 py-9 md:px-10">
 
               <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
@@ -395,7 +396,7 @@ export default function DSalonPage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      샤워 + 동반샤워 + 마사지 + 누루 + ㅇㅆ마무리
+                      샤워 + 동반샤워 + 마사지 + 스파 케어
                     </p>
 
                     <p>
@@ -421,7 +422,7 @@ export default function DSalonPage() {
 
 
             {/* CUSHION COURSE */}
-            <div className="px-6 py-9 md:px-10">
+            <div className="border-b border-white/10 px-6 py-9 md:px-10">
 
               <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
 
@@ -442,11 +443,11 @@ export default function DSalonPage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      술자리 + 동반샤워 + 누루 + ㅇㅆ 마무리
+                      별도 공간에서 여유롭게 이용하는 장시간 코스
                     </p>
 
                     <p>
-                      술자리를 같이하는 코스로 기분이 더 업업!
+                      술자리와 함께 이용하는 형태로 안내된 코스
                     </p>
 
                   </div>
@@ -467,19 +468,6 @@ export default function DSalonPage() {
             </div>
 
 
-            <div className="border-t border-[#8c6a3d]/30 px-6 py-7 text-center">
-
-              <div className="text-sm font-bold text-[#c9aa7b]">
-                위 금액은 2026년 공개 온라인 자료 기준이며,
-                실제 가격과 코스는 방문 전 확인해 주세요.
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
             {/* T COURSE */}
             <div className="border-b border-white/10 px-6 py-9 md:px-10">
 
@@ -494,7 +482,7 @@ export default function DSalonPage() {
                     </span>
 
                     <span className="text-sm text-zinc-400">
-                      (때밀이 코스 팁포함)
+                      (때밀이 코스 · 팁포함)
                     </span>
 
                   </div>
@@ -502,11 +490,11 @@ export default function DSalonPage() {
                   <div className="mt-5 space-y-2 text-sm leading-7 text-zinc-300 md:text-base">
 
                     <p>
-                      사우나 + 동반샤워 + 때밀이(세신) + 누루 + ㅇㅆ마무리
+                      사우나 + 동반샤워 + 때밀이(세신) + 스파 케어
                     </p>
 
                     <p>
-                      사우나와 세신을 동시에하는 프리미엄 코스
+                      사우나와 세신을 함께 이용하는 프리미엄 코스
                     </p>
 
                   </div>
@@ -525,7 +513,23 @@ export default function DSalonPage() {
               </div>
 
             </div>
-        
+
+
+            {/* PRICE NOTICE */}
+            <div className="border-t border-[#8c6a3d]/30 px-6 py-7 text-center">
+
+              <div className="text-sm font-bold leading-7 text-[#c9aa7b]">
+                위 금액은 제공받은 공개 자료를 기준으로 정리했습니다.
+                <br />
+                실제 가격과 코스는 변경될 수 있으므로 방문 전 확인해 주세요.
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
       </section>
 
 
@@ -566,7 +570,7 @@ export default function DSalonPage() {
             </div>
 
             <p className="mt-3 text-sm leading-7 text-zinc-500">
-              현재 온라인에 확인되는 정보 기준입니다.
+              현재 확인되는 공개 정보 기준입니다.
               현지 상황에 따라 운영시간이 변경될 수 있으므로
               방문 전 확인을 권장합니다.
             </p>
@@ -586,8 +590,7 @@ export default function DSalonPage() {
 
             <p className="mt-3 text-sm leading-7 text-zinc-500">
               미딩 지역에서 이용할 수 있는
-              남성 전용 마사지·스파 형태의 업소로
-              온라인에 소개되고 있습니다.
+              마사지·스파 형태의 업소입니다.
             </p>
 
           </div>
@@ -624,25 +627,23 @@ export default function DSalonPage() {
               </p>
 
               <p>
-                온라인 공개 자료에서는 디살롱의 특징으로
-                개별 공간 중심의 실내 구성과 다양한 시간대의
-                코스 선택지를 소개하고 있습니다.
-                짧게 이용할 수 있는 핵심 코스부터
-                약 60분의 기본 코스, 장시간 코스까지
-                선택할 수 있는 형태로 안내되고 있습니다.
+                공개 자료에서는 짧게 이용할 수 있는 코스부터
+                60분 전후의 기본 코스, 장시간 이용 코스와
+                사우나·세신을 함께 이용하는 코스 등
+                여러 선택지가 안내되고 있습니다.
               </p>
 
               <p>
-                특히 미딩 한인타운 안에 위치해 있어
+                미딩 한인타운 안에 위치해 있어
                 주변 식당과 숙박시설을 함께 이용하기 편리하며,
                 늦은 시간까지 운영되는 것으로 안내되고 있다는 점도
-                방문객들이 확인할 만한 부분입니다.
+                방문 전 확인할 만한 부분입니다.
               </p>
 
               <p>
-                다만 온라인에 공개된 가격과 운영시간은
-                서로 다른 자료에서 차이가 확인되므로
-                예약이나 방문 전 최신 정보를 직접 확인하는 것이 좋습니다.
+                온라인에 공개된 가격과 운영시간은
+                변경될 수 있으므로 예약이나 방문 전
+                최신 정보를 직접 확인하는 것을 권장합니다.
               </p>
 
             </div>
@@ -713,7 +714,7 @@ export default function DSalonPage() {
 
 
       {/* =========================================================
-          LOCATION / TRANSPORT
+          LOCATION
       ========================================================= */}
       <section className="border-y border-white/10 bg-[#090909]">
 
@@ -766,7 +767,7 @@ export default function DSalonPage() {
                   <p className="mt-2 text-sm leading-7 text-zinc-500">
                     C15 FIVESTAR,
                     Ng. 154 Đình Thôn 주소를 기준으로
-                    이동하고, 기사에게 건물 위치를 보여주는 것을 권장합니다.
+                    이동하고 기사에게 건물 위치를 확인하는 것을 권장합니다.
                   </p>
 
                 </div>
