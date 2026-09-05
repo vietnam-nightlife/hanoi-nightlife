@@ -479,102 +479,101 @@ export default function TheRedKaraokePage() {
       {/* =========================================================
           PRICE
       ========================================================= */}
-      <section className="border-y border-white/10 bg-[#090909]">
+      {/* =========================================================
+    PRICE
+========================================================= */}
 
-        <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-20">
+<section className="border-y border-white/10 bg-[#090909]">
+  <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-20">
 
-          <div className="text-center">
+    <div className="text-center">
+      <div className="text-xs font-black tracking-[0.3em] text-red-500">
+        PRICE
+      </div>
 
-            <div className="text-xs font-black tracking-[0.3em] text-red-500">
-              PRICE
-            </div>
+      <h2 className="mt-3 text-2xl font-bold">
+        더 레드 가라오케 가격 안내
+      </h2>
 
-            <h2 className="mt-3 text-3xl font-black md:text-4xl">
-              더 레드 가라오케 이용요금
-            </h2>
+      <p className="mt-4 text-sm leading-7 text-white/60">
+        소주 · 맥주 · 기본 안주 무제한 제공
+      </p>
+    </div>
 
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-zinc-500">
-              제공받은 안내 내용을 기준으로 정리한 정보입니다.
-              현지 상황에 따라 가격 및 이용 조건이 변경될 수 있습니다.
-            </p>
+    <div className="mt-10 overflow-hidden rounded-2xl border border-white/10">
+      <table className="w-full text-sm">
+        <thead className="bg-white/5">
+          <tr className="border-b border-white/10">
+            <th className="px-4 py-4 text-left">구분</th>
+            <th className="px-4 py-4 text-left">가격</th>
+            <th className="px-4 py-4 text-left">내용</th>
+          </tr>
+        </thead>
 
-          </div>
+        <tbody>
+          <tr className="border-b border-white/10">
+            <td className="px-4 py-4 font-semibold">1인 (혼술)</td>
+            <td className="px-4 py-4 font-bold text-yellow-400">
+              150만 VND
+            </td>
+            <td className="px-4 py-4 text-white/70">
+              소주 · 맥주 · 기본 안주 무제한
+            </td>
+          </tr>
 
+          <tr className="border-b border-white/10">
+            <td className="px-4 py-4 font-semibold">2인 이상</td>
+            <td className="px-4 py-4 font-bold text-yellow-400">
+              100만 VND / 1인
+            </td>
+            <td className="px-4 py-4 text-white/70">
+              소주 · 맥주 · 기본 안주 무제한
+            </td>
+          </tr>
 
-          <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-[#101010]">
+          <tr className="border-b border-white/10">
+            <td className="px-4 py-4 font-semibold">TC (2시간)</td>
+            <td className="px-4 py-4 font-bold text-yellow-400">
+              50만 VND
+            </td>
+            <td className="px-4 py-4 text-white/70">
+              2시간 기준
+            </td>
+          </tr>
 
-            <div className="border-b border-white/10 px-6 py-8 text-center">
+          <tr className="border-b border-white/10">
+            <td className="px-4 py-4 font-semibold">숏타임</td>
+            <td className="px-4 py-4 font-bold text-yellow-400">
+              350만 VND
+            </td>
+            <td className="px-4 py-4 text-white/70">
+              1시간 1분
+            </td>
+          </tr>
 
-              <div className="text-2xl font-black tracking-[0.2em] text-white">
-                THE RED
-              </div>
+          <tr>
+            <td className="px-4 py-4 font-semibold">롱타임</td>
+            <td className="px-4 py-4 font-bold text-yellow-400">
+              500만 VND
+            </td>
+            <td className="px-4 py-4 text-white/70">
+              다음날 아침까지 · 2분
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-              <div className="mt-2 text-xs tracking-[0.35em] text-zinc-600">
-                KARAOKE PRICE
-              </div>
+    <div className="mt-6 rounded-xl border border-yellow-500/20 bg-yellow-500/5 p-5 text-sm leading-7 text-white/70">
+      <p>• TC 시간 내 숏/롱 진행 시 추가 TC 없음</p>
+      <p>• 2시간 초과 시 주대 + TC 추가 발생</p>
+      <p className="font-semibold text-yellow-400">
+        • 카드 결제 시 10% 별도
+      </p>
+    </div>
 
-            </div>
-
-
-            <div className="divide-y divide-white/10">
-
-              <div className="flex flex-col gap-4 px-6 py-7 md:flex-row md:items-center md:justify-between md:px-10">
-
-                <div>
-                  <div className="text-xl font-black">
-                    기본 주대
-                  </div>
-
-                  <div className="mt-2 text-sm leading-7 text-zinc-500">
-                    1인 이용 기준 안내
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border border-red-500/30 bg-red-500/5 px-7 py-4 text-center">
-                  <div className="text-2xl font-black text-red-400">
-                    200만 동
-                  </div>
-                </div>
-
-              </div>
-
-
-              <div className="flex flex-col gap-4 px-6 py-7 md:flex-row md:items-center md:justify-between md:px-10">
-
-                <div>
-                  <div className="text-xl font-black">
-                    2인 이상
-                  </div>
-
-                  <div className="mt-2 text-sm leading-7 text-zinc-500">
-                    인원에 따라 적용되는 기본 주대
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border border-red-500/30 bg-red-500/5 px-7 py-4 text-center">
-                  <div className="text-2xl font-black text-red-400">
-                    1인 150만 동
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div className="border-t border-white/10 px-6 py-6 text-center">
-
-              <p className="text-xs leading-6 text-zinc-600">
-                ※ 실제 결제 금액과 이용 조건은 방문 시점 및 현지 운영 상황에 따라
-                달라질 수 있으므로 방문 전 최신 내용을 확인해 주세요.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
+  </div>
+</section>
 
 
       {/* =========================================================
