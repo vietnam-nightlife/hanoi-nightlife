@@ -252,7 +252,7 @@ export const places: Place[] = [
    */
 
   {
-    slug: "the red - karaoke",
+    slug: "the-red-karaoke",
     name: "하노이 더 레드 가라오케",
     city: "hanoi",
     category: "karaoke",
