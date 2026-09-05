@@ -475,10 +475,6 @@ export default function TheRedKaraokePage() {
         </div>
       </section>
 
-
-      {/* =========================================================
-          PRICE
-      ========================================================= */}
       {/* =========================================================
     PRICE
 ========================================================= */}
@@ -514,7 +510,7 @@ export default function TheRedKaraokePage() {
           <tr className="border-b border-white/10">
             <td className="px-4 py-4 font-semibold">1인 (혼술)</td>
             <td className="px-4 py-4 font-bold text-yellow-400">
-              150만 VND
+              200만 VND
             </td>
             <td className="px-4 py-4 text-white/70">
               소주 · 맥주 · 기본 안주 무제한
@@ -524,7 +520,7 @@ export default function TheRedKaraokePage() {
           <tr className="border-b border-white/10">
             <td className="px-4 py-4 font-semibold">2인 이상</td>
             <td className="px-4 py-4 font-bold text-yellow-400">
-              100만 VND / 1인
+              150만 VND / 1인
             </td>
             <td className="px-4 py-4 text-white/70">
               소주 · 맥주 · 기본 안주 무제한
@@ -544,20 +540,20 @@ export default function TheRedKaraokePage() {
           <tr className="border-b border-white/10">
             <td className="px-4 py-4 font-semibold">숏타임</td>
             <td className="px-4 py-4 font-bold text-yellow-400">
-              350만 VND
+              400만 VND
             </td>
             <td className="px-4 py-4 text-white/70">
-              1시간 1분
+              1시간~2시간 (1붐붐)
             </td>
           </tr>
 
           <tr>
             <td className="px-4 py-4 font-semibold">롱타임</td>
             <td className="px-4 py-4 font-bold text-yellow-400">
-              500만 VND
+              550만 VND
             </td>
             <td className="px-4 py-4 text-white/70">
-              다음날 아침까지 · 2분
+              다음날 새벽 5~6시 아침까지 (2붐붐)
             </td>
           </tr>
         </tbody>
