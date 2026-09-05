@@ -244,6 +244,40 @@ export const places: Place[] = [
     recommended: true,
     revisitRecommended: true,
   },
+
+  /*
+   * =======================================================
+   * 하노이 더레드 가라오케
+   * =======================================================
+   */
+
+  {
+    slug: "the red - karaoke",
+    name: "하노이 더레드 가라오케",
+    city: "hanoi",
+    category: "karaoke",
+
+    district: "미딩 · 딘톤",
+
+    rating: 4.7,
+    reviews: 58,
+
+    description:
+      "하노이 미딩 딘톤 거리에 위치한 더레드 가라오케는 붉은 건물 외관이 눈에 띄어 찾기 편하며, 리모델링을 거쳐 깔끔하게 꾸며진 룸과 복도가 특징입니다. 소맥·과일·기본 안주가 무제한으로 제공되며 한국인 관계자가 상주해 편하게 이용할 수 있습니다.",
+
+    address:
+      "5 Ng. 1 Đ. Đình Thôn, Đình Thôn, Từ Liêm, Hà Nội",
+
+    hours: "18:00 - 늦은 새벽",
+
+    image: "/하노이 더레드 가라오케 메인.webp",
+
+    featured: true,
+
+    koreanSupport: true,
+    recommended: true,
+    revisitRecommended: true,
+  },
   
   /*
    * =======================================================
