@@ -29,32 +29,29 @@ export default function EcoGirlPage() {
         {/* 프로필 1 */}
         <div className="max-w-sm">
 
-          <Link
-            href="/hanoi/ecogirl/profiles"
-            className="group block overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 transition hover:border-red-500/70"
-          >
-            <div className="aspect-[3/4] overflow-hidden bg-zinc-900">
-              <img
-                src="/하노이눈탱이방지피씨.webp"
-                alt="하노이 에코걸 프로필"
-                className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-              />
-            </div>
+          <button
+  type="button"
+  onClick={() => setShowProfile(true)}
+  className="group overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 text-left transition hover:border-red-500/70"
+>
+  <div className="aspect-[3/4] overflow-hidden bg-zinc-900">
+    <img
+      src="/하노이눈탱이방지피씨.webp"
+      alt="하노이 에코걸 프로필 1"
+      className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+    />
+  </div>
 
-            <div className="p-5 text-center">
-              <p className="text-xs font-black tracking-[0.2em] text-red-500">
-                HANOI
-              </p>
+  <div className="p-3 text-center sm:p-4">
+    <p className="text-xs font-black text-red-500">
+      HANOI
+    </p>
 
-              <p className="mt-2 text-lg font-black">
-                에코걸 프로필 1
-              </p>
-
-              <p className="mt-2 text-sm text-zinc-500">
-                프로필 및 이용 안내 확인
-              </p>
-            </div>
-          </Link>
+    <p className="mt-1 text-sm font-black">
+      프로필 보기
+    </p>
+  </div>
+</button>
 
         </div>
 
@@ -500,6 +497,36 @@ export default function EcoGirlPage() {
         </div>
       </section>
 
+{/* =========================
+    프로필 사진 확대
+========================= */}
+{showProfile && (
+  <div
+    className="fixed inset-0 z-[999] flex items-center justify-center bg-black/90 p-4"
+    onClick={() => setShowProfile(false)}
+  >
+    <div
+      className="relative max-h-[90vh] max-w-[90vw]"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        type="button"
+        onClick={() => setShowProfile(false)}
+        className="absolute right-2 top-2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/70 text-2xl font-bold text-white hover:bg-black"
+        aria-label="닫기"
+      >
+        ×
+      </button>
+
+      <img
+        src="/하노이눈탱이방지피씨.webp"
+        alt="하노이 에코걸 프로필"
+        className="max-h-[90vh] max-w-[90vw] rounded-xl object-contain"
+      />
+    </div>
+  </div>
+)}
+      
     </main>
   );
 }
