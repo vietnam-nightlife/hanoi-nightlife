@@ -312,7 +312,40 @@ export const places: Place[] = [
     recommended: true,
     revisitRecommended: true,
   },
-  
+
+    /*
+   * =======================================================
+   * 하노이 존슨 가라오케
+   * =======================================================
+   */
+
+  {
+    slug: "johnson-karaoke",
+    name: "하노이 존슨 가라오케",
+    city: "hanoi",
+    category: "karaoke",
+
+    district: "미딩 · 딘톤",
+
+    rating: 4.8,
+    reviews: 35,
+
+    description:
+      "하노이 미딩 메인스트리트의 존슨 가라오케는 구 원클럽 자리를 리뉴얼한 프리미엄 한국식 가라오케입니다. 한국어 매니저와 TJ미디어 반주기, 룸별 화장실·에어컨·공기청정기를 갖춰 쾌적하게 이용하기 좋습니다.",
+
+    address:
+      "8 P. Trần Văn Lai, Đình Thôn, Từ Liêm, Hà Nội",
+
+    hours: "18:00 - 늦은 새벽",
+
+    image: "/하노이 존슨 가라오케 메인.webp",
+
+    featured: true,
+
+    koreanSupport: true,
+    recommended: true,
+    revisitRecommended: true,
+  },
   
 ];
 
