@@ -278,6 +278,40 @@ export const places: Place[] = [
     recommended: true,
     revisitRecommended: true,
   },
+
+  /*
+   * =======================================================
+   * 하노이 박카스 가라오케
+   * =======================================================
+   */
+
+  {
+    slug: "bacchus-karaoke",
+    name: "하노이 박카스 가라오케",
+    city: "hanoi",
+    category: "karaoke",
+
+    district: "미딩 · 딘톤",
+
+    rating: 4.8,
+    reviews: 38,
+
+    description:
+      "하노이 미딩의 박카스 가라오케는 넓은 룸과 활기찬 분위기가 강점인 한인 KTV입니다. 한국인 관리자가 상주하고 출근 인원이 많아 선택의 폭이 넓으며, 초행 형님도 편하게 즐기기 좋습니다.",
+
+    address:
+      "34 Ngõ 2 P. Trần Văn Lai, Đình Thôn, Từ Liêm, Hà Nội",
+
+    hours: "14:00 - 손님 퇴장까지",
+
+    image: "/하노이 박카스 가라오케 메인.webp",
+
+    featured: true,
+
+    koreanSupport: true,
+    recommended: true,
+    revisitRecommended: true,
+  },
   
   /*
    * =======================================================
