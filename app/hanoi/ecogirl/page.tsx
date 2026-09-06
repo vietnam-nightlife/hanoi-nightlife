@@ -1,385 +1,251 @@
-import Link from "next/link";
+"use client";
+
+import { useEffect, useState } from "react";
 
 const profiles = [
-  {
-    image: "/하노이눈팅이방지피씨.webp",
-    title: "하노이 에코걸 프로필 1",
-  },
-  {
-    image: "/하노이눈팅이방지모바일.webp",
-    title: "하노이 에코걸 프로필 2",
-  },
-  {
-    image: "/하노이눈팅이방지피씨.webp",
-    title: "하노이 에코걸 프로필 3",
-  },
-  {
-    image: "/하노이눈팅이방지모바일.webp",
-    title: "하노이 에코걸 프로필 4",
-  },
-  {
-    image: "/하노이눈팅이방지피씨.webp",
-    title: "하노이 에코걸 프로필 5",
-  },
-  {
-    image: "/하노이눈팅이방지모바일.webp",
-    title: "하노이 에코걸 프로필 6",
-  },
+  "/하노이눈탱이방지피씨.webp",
+  "/하노이눈탱이방지모바일.webp",
+  "/하노이눈탱이방지피씨.webp",
+  "/하노이눈탱이방지모바일.webp",
+  "/하노이눈탱이방지피씨.webp",
+  "/하노이눈탱이방지모바일.webp",
 ];
 
 export default function EcoGirlPage() {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  const closeModal = () => {
+    setSelectedIndex(null);
+  };
+
+  const nextImage = () => {
+    if (selectedIndex === null) return;
+
+    setSelectedIndex(
+      (selectedIndex + 1) % profiles.length
+    );
+  };
+
+  const prevImage = () => {
+    if (selectedIndex === null) return;
+
+    setSelectedIndex(
+      (selectedIndex - 1 + profiles.length) % profiles.length
+    );
+  };
+
+  /* ESC 키로 닫기 */
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (selectedIndex === null) return;
+
+      if (event.key === "Escape") {
+        closeModal();
+      }
+
+      if (event.key === "ArrowRight") {
+        nextImage();
+      }
+
+      if (event.key === "ArrowLeft") {
+        prevImage();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedIndex]);
+
+  /* 모바일 스와이프 */
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+
+  const handleTouchStart = (
+    event: React.TouchEvent<HTMLDivElement>
+  ) => {
+    setTouchStart(event.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (
+    event: React.TouchEvent<HTMLDivElement>
+  ) => {
+    if (touchStart === null) return;
+
+    const touchEnd = event.changedTouches[0].clientX;
+    const distance = touchStart - touchEnd;
+
+    if (Math.abs(distance) > 50) {
+      if (distance > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+    }
+
+    setTouchStart(null);
+  };
+
   return (
     <main className="min-h-screen bg-black text-white">
 
       {/* =========================
-          HERO
+          프로필
       ========================= */}
-      <section className="border-b border-white/10 bg-black">
-        <div className="container px-4 py-14 sm:py-20">
+      <section className="container px-4 py-14 sm:py-20">
 
-          <p className="text-xs font-black tracking-[0.3em] text-red-500">
-            HANOI ECOGIRL
+        <div className="mb-8">
+          <p className="text-xs font-black tracking-[0.25em] text-red-500">
+            PROFILE
           </p>
 
-          <h1 className="mt-3 text-3xl font-black leading-tight sm:text-5xl">
-            하노이 에코걸
-            <br />
-            1:1 맞춤 여행 가이드
+          <h1 className="mt-2 text-3xl font-black sm:text-4xl">
+            하노이 에코걸 프로필
           </h1>
 
-          <p className="mt-5 max-w-3xl text-sm leading-7 text-zinc-400 sm:text-base">
-            베트남 여행을 보다 편하게 즐기고 싶다면 에코걸 서비스를
-            이용해보세요. 관광 가이드부터 현지 통역, 식사와 여행 일정까지
-            여행객의 일정에 맞춰 편하게 계획할 수 있습니다.
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-400">
+            하노이 에코걸 프로필을 사진으로 먼저 확인하고
+            원하는 프로필을 선택해 자세히 확인해보세요.
           </p>
+        </div>
 
-          <div className="mt-7">
-            <Link
-              href="#contact"
-              className="inline-flex items-center rounded-xl bg-red-600 px-7 py-3 text-sm font-black transition hover:bg-red-500"
+        {/* =========================
+            프로필 3 × 2
+        ========================= */}
+        <div className="grid grid-cols-3 gap-3 sm:gap-5">
+
+          {profiles.map((image, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => setSelectedIndex(index)}
+              className="group overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 text-left transition hover:border-red-500/70 focus:outline-none focus:ring-2 focus:ring-red-500/70"
             >
-              문의하기 →
-            </Link>
-          </div>
+              <div className="aspect-[3/4] overflow-hidden bg-zinc-900">
+                <img
+                  src={image}
+                  alt={`하노이 에코걸 프로필 ${index + 1}`}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              <div className="p-3 text-center sm:p-4">
+                <p className="text-xs font-black text-red-500">
+                  HANOI
+                </p>
+
+                <p className="mt-1 text-sm font-black">
+                  프로필 {index + 1}
+                </p>
+              </div>
+            </button>
+          ))}
 
         </div>
+
+        {/* =========================
+            문의하기
+        ========================= */}
+        <div className="mt-8 text-center">
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center rounded-xl border border-red-500/60 bg-red-600 px-8 py-3 text-sm font-black transition hover:bg-red-500"
+          >
+            문의하기 →
+          </a>
+        </div>
+
       </section>
 
 
       {/* =========================
-          PROFILE
-      ========================= */}
-      <section className="bg-[#080808]">
-        <div className="container px-4 py-14 sm:py-20">
-
-          <div className="mb-8">
-            <p className="text-xs font-black tracking-[0.25em] text-red-500">
-              PROFILE
-            </p>
-
-            <h2 className="mt-2 text-3xl font-black sm:text-4xl">
-              하노이 에코걸 프로필
-            </h2>
-
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-400">
-              프로필 사진을 확인하고 원하는 스타일을 비교해보세요.
-              사진은 좌우로 밀어서 다음 프로필을 확인할 수 있습니다.
-            </p>
-          </div>
-
-
-          {/* =========================
-              가로 스크롤 프로필
-              3개 × 2줄
-          ========================= */}
-          <div className="overflow-x-auto pb-5 [scrollbar-width:thin]">
-
-            <div
-              className="
-                grid
-                grid-flow-col
-                grid-rows-2
-                auto-cols-[calc((100vw-3rem)/1.15)]
-                gap-3
-                sm:auto-cols-[calc((100vw-5rem)/2.15)]
-                lg:auto-cols-[calc((100vw-10rem)/3.15)]
-              "
-            >
-
-              {profiles.map((profile, index) => (
-                <div
-                  key={index}
-                  className="
-                    group
-                    overflow-hidden
-                    rounded-2xl
-                    border
-                    border-white/10
-                    bg-zinc-950
-                    shadow-lg
-                    transition
-                    hover:border-red-500/60
-                  "
-                >
-
-                  {/* 사진 */}
-                  <div className="aspect-[3/4] overflow-hidden bg-zinc-900">
-
-                    <img
-                      src={profile.image}
-                      alt={profile.title}
-                      className="
-                        h-full
-                        w-full
-                        object-cover
-                        transition
-                        duration-500
-                        group-hover:scale-105
-                      "
-                    />
-
-                  </div>
-
-                  {/* 제목 */}
-                  <div className="p-3 text-center sm:p-4">
-
-                    <p className="text-[10px] font-black tracking-[0.2em] text-red-500 sm:text-xs">
-                      HANOI ECOGIRL
-                    </p>
-
-                    <p className="mt-1 text-sm font-black">
-                      {profile.title}
-                    </p>
-
-                  </div>
-
-                </div>
-              ))}
-
-            </div>
-
-          </div>
-
-
-          {/* 스크롤 안내 */}
-          <div className="mt-4 flex items-center justify-center gap-2 text-xs font-bold text-zinc-500">
-            <span>←</span>
-            <span>사진을 좌우로 밀어보세요</span>
-            <span>→</span>
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================
-          INTRO
-      ========================= */}
-      <section className="border-t border-white/10">
-        <div className="container px-4 py-14 sm:py-20">
-
-          <p className="text-xs font-black tracking-[0.25em] text-red-500">
-            ABOUT
-          </p>
-
-          <h2 className="mt-2 text-3xl font-black sm:text-4xl">
-            베트남 에코걸이란?
-          </h2>
-
-          <div className="mt-8 max-w-4xl space-y-6 text-sm leading-7 text-zinc-400 sm:text-base">
-
-            <p>
-              베트남 에코걸은 여행객의 일정에 맞춰 현지 관광과
-              통역을 도와주는 1:1 맞춤형 가이드 서비스입니다.
-              패키지 여행보다 자유로운 개인 여행을 선호하는 분들이
-              자신의 일정에 맞춰 이용하기 좋은 것이 특징입니다.
-            </p>
-
-            <p>
-              하노이를 비롯해 다낭, 호치민 등 베트남 주요 지역에서
-              이용할 수 있으며, 지역마다 서비스 구성과 비용에 차이가
-              있을 수 있습니다.
-            </p>
-
-            <p>
-              여행 일정과 원하는 활동을 미리 상담하고 자신에게 맞는
-              프로필을 선택하면 보다 편안하게 현지 여행을 즐길 수 있습니다.
-            </p>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================
-          추천 코스
+          하노이 에코걸 소개
       ========================= */}
       <section className="border-t border-white/10 bg-[#080808]">
         <div className="container px-4 py-14 sm:py-20">
 
           <p className="text-xs font-black tracking-[0.25em] text-red-500">
-            RECOMMENDED COURSE
+            HANOI ECOGIRL
           </p>
 
           <h2 className="mt-2 text-3xl font-black sm:text-4xl">
-            하노이 에코걸 추천 코스
+            하노이 에코걸 소개
           </h2>
 
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-zinc-400 sm:text-base">
-            하노이 여행 일정에 맞춰 관광과 식사, 현지 문화 체험 등을
-            자유롭게 구성할 수 있습니다. 단체 패키지와 달리 원하는
-            장소와 시간을 중심으로 일정을 조정할 수 있다는 점이 장점입니다.
-          </p>
+          <div className="mt-6 max-w-4xl space-y-5 text-sm leading-7 text-zinc-400 sm:text-base">
 
+            <p>
+              하노이 에코걸은 베트남 여행 중 현지 관광과
+              통역, 일정 안내 등을 보다 편하게 이용할 수 있도록
+              도와주는 1:1 맞춤형 가이드 서비스입니다.
+            </p>
 
+            <p>
+              일반적인 단체 패키지 여행과 달리 여행객의 일정과
+              취향에 맞춰 자유롭게 움직일 수 있다는 점이
+              특징입니다. 하노이를 처음 방문하는 여행객이라면
+              현지 음식과 관광지, 주변 상권 등을 편하게
+              경험하는 데 도움을 받을 수 있습니다.
+            </p>
+
+            <p>
+              에코걸을 선택할 때는 프로필과 경력, 언어 구사 능력,
+              이용 후기 등을 꼼꼼하게 확인하는 것이 좋습니다.
+              비용 역시 프로필과 서비스 구성에 따라 달라질 수
+              있으므로 예약 전에 전체 비용과 이용 조건을
+              확인하는 것을 권장합니다.
+            </p>
+
+          </div>
+
+          {/* 정보 박스 */}
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 
             <div className="rounded-2xl border border-white/10 bg-black p-6">
               <p className="text-xs font-black text-red-500">
-                01
+                PROFILE
               </p>
 
-              <h3 className="mt-3 text-xl font-black">
-                관광 &amp; 가이드
+              <h3 className="mt-2 text-lg font-black">
+                프로필 확인
               </h3>
 
               <p className="mt-3 text-sm leading-6 text-zinc-400">
-                하노이 주요 관광지를 둘러보고 현지 이동과
-                의사소통을 편하게 할 수 있도록 일정을 구성합니다.
+                사진과 프로필 정보를 먼저 확인한 후
+                원하는 프로필을 선택해보세요.
               </p>
             </div>
 
 
             <div className="rounded-2xl border border-white/10 bg-black p-6">
-              <p className="text-xs font-black text-red-500">
-                02
-              </p>
-
-              <h3 className="mt-3 text-xl font-black">
-                현지 음식 &amp; 맛집
-              </h3>
-
-              <p className="mt-3 text-sm leading-6 text-zinc-400">
-                베트남 현지 음식과 하노이의 다양한 맛집을
-                여행 일정에 맞춰 방문할 수 있습니다.
-              </p>
-            </div>
-
-
-            <div className="rounded-2xl border border-white/10 bg-black p-6">
-              <p className="text-xs font-black text-red-500">
-                03
-              </p>
-
-              <h3 className="mt-3 text-xl font-black">
-                자유 일정
-              </h3>
-
-              <p className="mt-3 text-sm leading-6 text-zinc-400">
-                정해진 패키지 일정이 아니라 여행객이 원하는
-                시간과 장소를 중심으로 일정을 조정할 수 있습니다.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================
-          이용 정보
-      ========================= */}
-      <section className="border-t border-white/10">
-        <div className="container px-4 py-14 sm:py-20">
-
-          <p className="text-xs font-black tracking-[0.25em] text-red-500">
-            INFORMATION
-          </p>
-
-          <h2 className="mt-2 text-3xl font-black sm:text-4xl">
-            에코걸 비용 및 이용 방법
-          </h2>
-
-          <div className="mt-8 max-w-4xl space-y-6 text-sm leading-7 text-zinc-400 sm:text-base">
-
-            <p>
-              에코걸 서비스의 비용은 지역과 프로필, 이용 시간 및
-              일정 구성에 따라 달라질 수 있습니다. 하노이의 경우
-              일반적으로 상담을 통해 일정과 서비스 내용을 먼저 확인한
-              후 최종 비용을 안내받는 방식으로 이용할 수 있습니다.
-            </p>
-
-            <p>
-              프로필을 확인할 때는 가이드 경험과 언어 구사 능력,
-              고객 후기 등을 함께 확인하는 것이 좋습니다.
-              이용 전에 포함되는 서비스와 추가 비용 여부를
-              미리 확인하면 보다 편하게 여행 일정을 계획할 수 있습니다.
-            </p>
-
-          </div>
-
-
-          {/* 정보 카드 */}
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-
-            <div className="rounded-2xl border border-white/10 bg-zinc-950 p-5">
-              <p className="text-xs font-black text-red-500">
-                SERVICE
-              </p>
-
-              <h3 className="mt-2 font-black">
-                1:1 맞춤형
-              </h3>
-
-              <p className="mt-2 text-sm leading-6 text-zinc-500">
-                여행 일정에 맞춰 자유롭게 구성
-              </p>
-            </div>
-
-
-            <div className="rounded-2xl border border-white/10 bg-zinc-950 p-5">
               <p className="text-xs font-black text-red-500">
                 GUIDE
               </p>
 
-              <h3 className="mt-2 font-black">
-                관광 &amp; 통역
+              <h3 className="mt-2 text-lg font-black">
+                맞춤형 여행
               </h3>
 
-              <p className="mt-2 text-sm leading-6 text-zinc-500">
-                현지 이동과 의사소통을 편하게
+              <p className="mt-3 text-sm leading-6 text-zinc-400">
+                관광과 통역, 일정 안내 등 여행 일정에 맞춰
+                편하게 이용할 수 있습니다.
               </p>
             </div>
 
 
-            <div className="rounded-2xl border border-white/10 bg-zinc-950 p-5">
-              <p className="text-xs font-black text-red-500">
-                SCHEDULE
-              </p>
-
-              <h3 className="mt-2 font-black">
-                일정 상담
-              </h3>
-
-              <p className="mt-2 text-sm leading-6 text-zinc-500">
-                원하는 시간과 장소를 사전 상담
-              </p>
-            </div>
-
-
-            <div className="rounded-2xl border border-white/10 bg-zinc-950 p-5">
+            <div className="rounded-2xl border border-white/10 bg-black p-6">
               <p className="text-xs font-black text-red-500">
                 CONTACT
               </p>
 
-              <h3 className="mt-2 font-black">
-                예약 문의
+              <h3 className="mt-2 text-lg font-black">
+                상담 및 문의
               </h3>
 
-              <p className="mt-2 text-sm leading-6 text-zinc-500">
-                프로필 확인 후 문의 가능
+              <p className="mt-3 text-sm leading-6 text-zinc-400">
+                원하는 프로필과 여행 일정 등을 상담을 통해
+                미리 확인할 수 있습니다.
               </p>
             </div>
 
@@ -390,12 +256,12 @@ export default function EcoGirlPage() {
 
 
       {/* =========================
-          이용시간
+          추천 이용 방법
       ========================= */}
-      <section className="border-t border-white/10 bg-[#080808]">
+      <section className="border-t border-white/10">
         <div className="container px-4 py-14 sm:py-20">
 
-          <p className="text-xs font-black tracking-[0.25em] text-red-500">
+          <p className="text-xs font-black tracking-[0.25em] text-zinc-500">
             GUIDE
           </p>
 
@@ -403,52 +269,41 @@ export default function EcoGirlPage() {
             이용 안내
           </h2>
 
-
           <div className="mt-8 space-y-4">
 
-            <div className="rounded-2xl border border-white/10 bg-black p-5 sm:p-6">
+            <div className="rounded-xl border border-white/10 bg-zinc-950 p-5">
               <h3 className="font-black">
                 01. 프로필 확인
               </h3>
 
               <p className="mt-2 text-sm leading-6 text-zinc-400">
-                위 프로필 사진을 좌우로 넘겨 원하는 프로필을
-                확인해주세요.
+                위 프로필 사진을 클릭하면 큰 이미지로
+                확인할 수 있으며 좌우로 다른 프로필을
+                넘겨볼 수 있습니다.
               </p>
             </div>
 
 
-            <div className="rounded-2xl border border-white/10 bg-black p-5 sm:p-6">
+            <div className="rounded-xl border border-white/10 bg-zinc-950 p-5">
               <h3 className="font-black">
-                02. 일정 상담
+                02. 원하는 프로필 선택
               </h3>
 
               <p className="mt-2 text-sm leading-6 text-zinc-400">
-                여행 날짜와 원하는 관광 일정, 이용 시간 등을
-                상담해주세요.
+                원하는 프로필을 확인한 후 여행 일정과
+                원하는 이용 조건을 상담해주세요.
               </p>
             </div>
 
 
-            <div className="rounded-2xl border border-white/10 bg-black p-5 sm:p-6">
+            <div className="rounded-xl border border-white/10 bg-zinc-950 p-5">
               <h3 className="font-black">
-                03. 비용 확인
+                03. 예약 및 일정 확인
               </h3>
 
               <p className="mt-2 text-sm leading-6 text-zinc-400">
-                프로필과 일정에 따른 비용 및 포함 서비스를
-                사전에 확인해주세요.
-              </p>
-            </div>
-
-
-            <div className="rounded-2xl border border-white/10 bg-black p-5 sm:p-6">
-              <h3 className="font-black">
-                04. 예약 진행
-              </h3>
-
-              <p className="mt-2 text-sm leading-6 text-zinc-400">
-                일정과 조건을 확인한 후 예약을 진행할 수 있습니다.
+                예약 전에 이용 요금과 일정, 포함 사항 및
+                추가 비용 여부를 미리 확인하는 것을 권장합니다.
               </p>
             </div>
 
@@ -459,38 +314,118 @@ export default function EcoGirlPage() {
 
 
       {/* =========================
-          CONTACT
+          문의
       ========================= */}
       <section
         id="contact"
-        className="border-t border-white/10 bg-black"
+        className="border-t border-white/10 bg-[#080808]"
       >
-        <div className="container px-4 py-16 text-center sm:py-24">
+        <div className="container px-4 py-14 text-center sm:py-20">
 
-          <p className="text-xs font-black tracking-[0.3em] text-red-500">
+          <p className="text-xs font-black tracking-[0.25em] text-red-500">
             CONTACT
           </p>
 
-          <h2 className="mt-3 text-3xl font-black sm:text-4xl">
+          <h2 className="mt-2 text-2xl font-black sm:text-3xl">
             하노이 에코걸 문의
           </h2>
 
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-zinc-400">
-            원하는 프로필과 여행 일정이 있다면 편하게 문의해주세요.
-            이용 가능 여부와 일정에 맞는 서비스를 안내해드립니다.
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-zinc-400">
+            원하는 프로필과 여행 일정, 이용 요금 등을
+            상담을 통해 확인해보세요.
           </p>
 
-          <div className="mt-8">
-            <Link
-              href="#"
-              className="inline-flex items-center rounded-xl bg-red-600 px-8 py-3.5 text-sm font-black transition hover:bg-red-500"
+          <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+
+            <button
+              type="button"
+              className="rounded-xl bg-red-600 px-7 py-3 text-sm font-black transition hover:bg-red-500"
             >
-              문의하기 →
-            </Link>
+              카카오톡 문의
+            </button>
+
+            <button
+              type="button"
+              className="rounded-xl border border-white/10 bg-black px-7 py-3 text-sm font-black transition hover:border-red-500/60"
+            >
+              텔레그램 문의
+            </button>
+
           </div>
 
         </div>
       </section>
+
+
+      {/* =========================
+          사진 확대 모달
+      ========================= */}
+      {selectedIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
+          onClick={closeModal}
+        >
+
+          {/* 닫기 */}
+          <button
+            type="button"
+            onClick={closeModal}
+            aria-label="닫기"
+            className="absolute right-4 top-4 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/60 text-2xl font-light text-white transition hover:bg-white/10"
+          >
+            ×
+          </button>
+
+
+          {/* 이전 */}
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              prevImage();
+            }}
+            aria-label="이전 사진"
+            className="absolute left-3 top-1/2 z-50 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-3xl text-white transition hover:bg-white/10 sm:left-6"
+          >
+            ‹
+          </button>
+
+
+          {/* 사진 */}
+          <div
+            className="relative flex h-full w-full max-w-5xl items-center justify-center"
+            onClick={(event) => event.stopPropagation()}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            <img
+              src={profiles[selectedIndex]}
+              alt={`하노이 에코걸 프로필 ${selectedIndex + 1}`}
+              className="max-h-[88vh] max-w-full rounded-xl object-contain"
+            />
+
+            {/* 사진 번호 */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/70 px-4 py-2 text-xs font-bold text-white">
+              {selectedIndex + 1} / {profiles.length}
+            </div>
+          </div>
+
+
+          {/* 다음 */}
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              nextImage();
+            }}
+            aria-label="다음 사진"
+            className="absolute right-3 top-1/2 z-50 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-3xl text-white transition hover:bg-white/10 sm:right-6"
+          >
+            ›
+          </button>
+
+        </div>
+      )}
 
     </main>
   );
