@@ -346,6 +346,40 @@ export const places: Place[] = [
     recommended: true,
     revisitRecommended: true,
   },
+
+  /*
+   * =======================================================
+   * 하노이 발렌타인 가라오케
+   * =======================================================
+   */
+
+  {
+    slug: "valentine-karaoke",
+    name: "하노이 발렌타인 가라오케",
+    city: "hanoi",
+    category: "karaoke",
+
+    district: "미딩 · 딘톤",
+
+    rating: 4.8,
+    reviews: 35,
+
+    description:
+      "하노이 미딩 중심 거리인 딘톤에 위치한 발렌타인 가라오케는 한국인 사장이 직접 상주하며 편하게 응대하는 한인 KTV입니다. 주대에 맥주·소주 무제한과 기본 안주가 포함되며, 3인 이상 무료 픽업을 지원해 술자리 중심의 소·중 인원 모임에 잘 맞습니다.",
+
+    address:
+      "48 Đ. Đình Thôn, Đình Thôn, Từ Liêm, Hà Nội",
+
+    hours: "19:00 - 00:00",
+
+    image: "/하노이 발렌타인 가라오케 메인.webp",
+
+    featured: true,
+
+    koreanSupport: true,
+    recommended: true,
+    revisitRecommended: true,
+  },
   
 ];
 
