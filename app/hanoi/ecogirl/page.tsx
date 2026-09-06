@@ -51,7 +51,7 @@ export default function EcoGirlPage() {
           </p>
 
           <h1 className="mt-2 text-3xl font-black sm:text-4xl">
-            하노이 에코걸 프로필
+            하노이 에코걸 프로필 예시
           </h1>
 
           <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-400">
