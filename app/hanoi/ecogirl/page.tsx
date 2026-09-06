@@ -1,6 +1,70 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
+const profileImages = [
+  "/하노이눈탱이방지피씨.webp",
+  "/하노이눈탱이방지모바일.webp",
+  "/하노이눈탱이방지피씨.webp",
+  "/하노이눈탱이방지모바일.webp",
+  "/하노이눈탱이방지피씨.webp",
+  "/하노이눈탱이방지모바일.webp",
+];
+
 export default function EcoGirlPage() {
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
+  const prevImage = () => {
+    if (selectedImage === null) return;
+
+    setSelectedImage(
+      selectedImage === 0
+        ? profileImages.length - 1
+        : selectedImage - 1
+    );
+  };
+
+  const nextImage = () => {
+    if (selectedImage === null) return;
+
+    setSelectedImage(
+      selectedImage === profileImages.length - 1
+        ? 0
+        : selectedImage + 1
+    );
+  };
+
+  useEffect(() => {
+    if (selectedImage === null) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+
+      if (event.key === "ArrowLeft") {
+        prevImage();
+      }
+
+      if (event.key === "ArrowRight") {
+        nextImage();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [selectedImage]);
+
   return (
     <main className="min-h-screen bg-black text-white">
 
@@ -24,28 +88,35 @@ export default function EcoGirlPage() {
           </p>
         </div>
 
-        {/* 프로필 1개 */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {/* 프로필 6개 / PC 3개씩 2줄 */}
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">
 
-          <div className="group overflow-hidden rounded-2xl border border-white/10 bg-zinc-950">
-            <div className="aspect-[3/4] overflow-hidden bg-zinc-900">
-              <img
-                src="/하노이눈탱이방지피씨.webp"
-                alt="하노이 에코걸 프로필"
-                className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-              />
-            </div>
+          {profileImages.map((image, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => setSelectedImage(index)}
+              className="group overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 text-left transition hover:border-red-500/70"
+            >
+              <div className="aspect-[3/4] overflow-hidden bg-zinc-900">
+                <img
+                  src={image}
+                  alt={`하노이 에코걸 프로필 ${index + 1}`}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </div>
 
-            <div className="p-4 text-center">
-              <p className="text-xs font-black text-red-500">
-                HANOI
-              </p>
+              <div className="p-3 text-center sm:p-4">
+                <p className="text-xs font-black text-red-500">
+                  HANOI
+                </p>
 
-              <p className="mt-1 text-sm font-black">
-                프로필
-              </p>
-            </div>
-          </div>
+                <p className="mt-1 text-sm font-black">
+                  프로필 {index + 1}
+                </p>
+              </div>
+            </button>
+          ))}
 
         </div>
 
@@ -223,7 +294,6 @@ export default function EcoGirlPage() {
 
           </div>
 
-          {/* 가격 카드 */}
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
 
             <div className="rounded-2xl border border-white/10 bg-black p-6">
@@ -329,9 +399,7 @@ export default function EcoGirlPage() {
 
           <div className="mt-10 space-y-5">
 
-            {/* 01 */}
             <div className="rounded-2xl border border-white/10 bg-black p-6 sm:p-8">
-
               <p className="text-xs font-black text-red-500">
                 01
               </p>
@@ -346,12 +414,9 @@ export default function EcoGirlPage() {
                 구성할 수 있습니다. 여행 스타일에 맞춰
                 보다 자유롭게 움직일 수 있다는 점이 장점입니다.
               </p>
-
             </div>
 
-            {/* 02 */}
             <div className="rounded-2xl border border-white/10 bg-black p-6 sm:p-8">
-
               <p className="text-xs font-black text-red-500">
                 02
               </p>
@@ -367,12 +432,9 @@ export default function EcoGirlPage() {
                 통역과 현지 안내를 함께 받을 수 있어
                 처음 방문하는 여행객에게 특히 편리합니다.
               </p>
-
             </div>
 
-            {/* 03 */}
             <div className="rounded-2xl border border-white/10 bg-black p-6 sm:p-8">
-
               <p className="text-xs font-black text-red-500">
                 03
               </p>
@@ -388,7 +450,6 @@ export default function EcoGirlPage() {
                 실제 여행 목적과 잘 맞는 프로필을 선택하면
                 보다 만족스러운 여행 일정을 구성할 수 있습니다.
               </p>
-
             </div>
 
           </div>
@@ -493,6 +554,71 @@ export default function EcoGirlPage() {
 
         </div>
       </section>
+
+
+      {/* =========================
+          사진 확대 모달
+      ========================= */}
+      {selectedImage !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
+          onClick={closeModal}
+        >
+
+          {/* 닫기 */}
+          <button
+            type="button"
+            onClick={closeModal}
+            className="absolute right-4 top-4 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/70 text-2xl text-white transition hover:bg-white/10"
+            aria-label="닫기"
+          >
+            ×
+          </button>
+
+          {/* 이전 */}
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              prevImage();
+            }}
+            className="absolute left-3 top-1/2 z-50 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/70 text-3xl text-white transition hover:bg-white/10 sm:left-6"
+            aria-label="이전 사진"
+          >
+            ‹
+          </button>
+
+          {/* 이미지 */}
+          <div
+            className="relative max-h-[90vh] max-w-[90vw]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <img
+              src={profileImages[selectedImage]}
+              alt={`하노이 에코걸 프로필 ${selectedImage + 1}`}
+              className="max-h-[88vh] max-w-[90vw] rounded-xl object-contain"
+            />
+
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-black/70 px-4 py-2 text-xs font-bold text-white">
+              {selectedImage + 1} / {profileImages.length}
+            </div>
+          </div>
+
+          {/* 다음 */}
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              nextImage();
+            }}
+            className="absolute right-3 top-1/2 z-50 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/70 text-3xl text-white transition hover:bg-white/10 sm:right-6"
+            aria-label="다음 사진"
+          >
+            ›
+          </button>
+
+        </div>
+      )}
 
     </main>
   );
