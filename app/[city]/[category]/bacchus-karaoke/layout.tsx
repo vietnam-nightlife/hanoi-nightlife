@@ -53,16 +53,10 @@ export const metadata: Metadata = {
   },
 };
 
-type Props = {
-  children: React.ReactNode;
-  params: Promise<{
-    city: string;
-    category: string;
-  }>;
-};
-
 export default function BacchusKaraokeLayout({
   children,
-}: Props) {
+}: {
+  children: React.ReactNode;
+}) {
   return children;
 }
