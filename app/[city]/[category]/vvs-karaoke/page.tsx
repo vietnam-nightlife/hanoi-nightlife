@@ -1,25 +1,84 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+
+const galleryImages = [
+  {
+    src: "/하노이 vvs 가라오케 메인.webp",
+    title: "VVS 가라오케 메인",
+  },
+  {
+    src: "/하노이 vvs 가라오케 외관.webp",
+    title: "VVS 가라오케 외관",
+  },
+  {
+    src: "/하노이 vvs 가라오케 느낌.webp",
+    title: "VVS 가라오케 분위기",
+  },
+  {
+    src: "/하노이 vvs 가라오케 리셉션.webp",
+    title: "VVS 가라오케 리셉션",
+  },
+  {
+    src: "/하노이 vvs 가라오케 룸1.webp",
+    title: "VVS 가라오케 룸 1",
+  },
+  {
+    src: "/하노이 vvs 가라오케 룸2.webp",
+    title: "VVS 가라오케 룸 2",
+  },
+  {
+    src: "/하노이 vvs 가라오케 골프존.webp",
+    title: "VVS 스크린골프",
+  },
+];
+
+const faqItems = [
+  {
+    q: "하노이 VVS 가라오케는 어디에 있나요?",
+    a: "VVS 가라오케는 46 P. Mễ Trì Hạ, Nam Từ Liêm, Hà Nội의 VVS Glory Hotel 건물에 위치해 있습니다. 미딩 한인타운과 가까운 메찌하 권역이라 숙소나 식당가에서 이동하기 편한 편입니다.",
+  },
+  {
+    q: "VVS 가라오케 영업시간은 어떻게 되나요?",
+    a: "기본 안내 기준으로 오후 2시부터 새벽 2시까지 운영되는 곳으로 안내되어 있습니다. 현지 운영 상황에 따라 영업시간이 달라질 수 있으므로 방문 전 확인을 권장합니다.",
+  },
+  {
+    q: "VVS 가라오케의 가장 큰 특징은 무엇인가요?",
+    a: "VVS Glory Hotel 건물을 통째로 활용하는 단일건물형 한인 KTV로, 룸 12개와 별도 스크린골프 룸을 갖추고 있습니다. 노래와 술자리뿐 아니라 중간에 스크린골프까지 한 건물에서 즐길 수 있다는 점이 특징입니다.",
+  },
+  {
+    q: "VVS 가라오케 가격은 어떻게 구성되나요?",
+    a: "주대는 1인 기준 200만 동이며, 2인 이상이면 인당 150만 동으로 안내되어 있습니다. 기본 TC는 2시간 기준 50만 동이며, 스크린골프 이용이나 시간 연장 등은 별도 비용이 발생할 수 있으므로 방문 전 확인하는 것이 좋습니다.",
+  },
+  {
+    q: "VVS 가라오케는 어떤 분에게 추천하나요?",
+    a: "미딩·메찌 권역에서 노래와 술자리뿐 아니라 스크린골프까지 한 건물에서 즐기고 싶은 분, 한국어 응대를 선호하는 분, 인원과 시간을 기준으로 비용을 미리 계산하고 싶은 분에게 잘 맞습니다.",
+  },
+  {
+    q: "방문 전에 확인해야 할 사항이 있나요?",
+    a: "방문 전 영업 여부와 최신 이용요금, 이용시간, 스크린골프 이용 가능 여부, 시간 연장 및 추가 비용 등을 확인하는 것을 권장합니다. 특히 피크 시간대에는 골프룸 이용 가능 여부를 미리 확인하는 것이 좋습니다.",
+  },
+];
 
 export default function VVSKaraokePage() {
-  const images = [
-    "/하노이 vvs 가라오케 메인.webp",
-    "/하노이 vvs 가라오케 외관.webp",
-    "/하노이 vvs 가라오케 느낌.webp",
-    "/하노이 vvs 가라오케 리셉션.webp",
-    "/하노이 vvs 가라오케 룸1.webp",
-    "/하노이 vvs 가라오케 룸2.webp",
-    "/하노이 vvs 가라오케 골프존.webp",
-  ];
-
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  const prevImage = () => {
+  const openGallery = (index: number) => {
+    setSelectedImage(index);
+  };
+
+  const closeGallery = () => {
+    setSelectedImage(null);
+  };
+
+  const previousImage = () => {
     if (selectedImage === null) return;
 
     setSelectedImage(
-      selectedImage === 0 ? images.length - 1 : selectedImage - 1
+      selectedImage === 0
+        ? galleryImages.length - 1
+        : selectedImage - 1
     );
   };
 
@@ -27,718 +86,869 @@ export default function VVSKaraokePage() {
     if (selectedImage === null) return;
 
     setSelectedImage(
-      selectedImage === images.length - 1 ? 0 : selectedImage + 1
+      selectedImage === galleryImages.length - 1
+        ? 0
+        : selectedImage + 1
     );
   };
 
+  useEffect(() => {
+    if (selectedImage === null) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeGallery();
+      }
+
+      if (event.key === "ArrowLeft") {
+        previousImage();
+      }
+
+      if (event.key === "ArrowRight") {
+        nextImage();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [selectedImage]);
+
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-[#050505] text-white">
 
-      {/* =========================
+      {/* =========================================================
           HERO
-      ========================= */}
-      <section className="relative overflow-hidden border-b border-white/10 bg-[#080808]">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20 lg:py-24">
+      ========================================================= */}
+      <section className="relative overflow-hidden border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-14">
 
-          <p className="text-xs font-black tracking-[0.3em] text-red-500">
-            HANOI · MỄ TRÌ HẠ
-          </p>
+          <div className="mb-8">
 
-          <h1 className="mt-3 text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
-            하노이 VVS 가라오케
-          </h1>
-
-          <p className="mt-5 max-w-3xl text-base leading-7 text-zinc-400 sm:text-lg">
-            노래와 술자리부터 스크린골프까지 한 건물에서 즐길 수 있는
-            하노이 미딩·메찌 권역의 VVS 가라오케를 소개합니다.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <span className="rounded-full border border-red-500/30 bg-red-500/10 px-4 py-2 text-xs font-bold text-red-400">
-              미딩 인접
-            </span>
-
-            <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold text-zinc-300">
-              룸 12개
-            </span>
-
-            <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold text-zinc-300">
-              스크린골프
-            </span>
-
-            <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold text-zinc-300">
-              14:00 ~ 02:00
-            </span>
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================
-          PHOTO GALLERY
-      ========================= */}
-      <section className="border-b border-white/10 bg-black">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
-
-          <div className="mb-7">
-            <p className="text-xs font-black tracking-[0.25em] text-red-500">
-              VVS GALLERY
-            </p>
-
-            <h2 className="mt-2 text-2xl font-black sm:text-3xl">
-              VVS 가라오케 사진
-            </h2>
-
-            <p className="mt-3 text-sm text-zinc-500">
-              사진을 클릭하면 크게 확인할 수 있으며 좌우로 넘겨볼 수 있습니다.
-            </p>
-          </div>
-
-          {/* 3개씩 3줄 */}
-          <div className="grid grid-cols-3 gap-2 sm:gap-4">
-            {images.map((image, index) => (
-              <button
-                key={image}
-                type="button"
-                onClick={() => setSelectedImage(index)}
-                className="group relative aspect-[3/2] overflow-hidden rounded-xl border border-white/10 bg-zinc-900"
-              >
-                <img
-                  src={image}
-                  alt={`하노이 VVS 가라오케 ${index + 1}`}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                />
-
-                <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
-              </button>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================
-          INTRO
-      ========================= */}
-      <section className="border-b border-white/10 bg-[#080808]">
-        <div className="mx-auto max-w-5xl px-4 py-14 sm:py-20">
-
-          <p className="text-xs font-black tracking-[0.25em] text-red-500">
-            ABOUT VVS
-          </p>
-
-          <h2 className="mt-2 text-3xl font-black sm:text-4xl">
-            하노이 VVS 가라오케 소개
-          </h2>
-
-          <div className="mt-7 space-y-5 text-sm leading-7 text-zinc-400 sm:text-base">
-
-            <p>
-              하노이 미딩 권역에서 노래도 하고 술잔도 기울이면서
-              사이사이 스크린골프까지 한 건물에서 즐기고 싶다면
-              <strong className="text-white"> VVS 가라오케</strong>를
-              먼저 살펴볼 만합니다.
-            </p>
-
-            <p>
-              VVS는 메찌하 거리에 위치한
-              <strong className="text-white"> VVS Glory Hotel 건물을
-              통째로 활용하는 단일건물형 한인 KTV</strong>로,
-              층마다 룸이 정돈되어 있으며 별도의 스크린골프 룸도
-              마련되어 있습니다.
-            </p>
-
-            <p>
-              특히 미딩 한인타운과 가까워 숙소나 식당가에서 이동하기
-              편하다는 점도 장점입니다. 처음 하노이 미딩 지역을
-              방문하는 분들도 비교적 쉽게 찾아갈 수 있는 위치입니다.
-            </p>
-
-            <p>
-              VVS는 주대와 기본 TC를 구분해서 정산하는 방식이라
-              인원과 이용시간을 먼저 정하면 대략적인 예산을 잡기
-              편합니다. 한국어로 응대가 가능한 마담과 매니저가 있어
-              주문이나 기본적인 요청을 전달하기에도 편리합니다.
-            </p>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================
-          WHY VVS
-      ========================= */}
-      <section className="border-b border-white/10 bg-black">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:py-20">
-
-          <p className="text-xs font-black tracking-[0.25em] text-red-500">
-            WHY VVS
-          </p>
-
-          <h2 className="mt-2 text-3xl font-black sm:text-4xl">
-            왜 VVS 가라오케인가
-          </h2>
-
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-zinc-400 sm:text-base">
-            VVS의 가장 큰 특징은 노래와 술자리, 스크린골프를
-            한 건물 안에서 이어갈 수 있다는 점입니다.
-          </p>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-
-            <div className="rounded-2xl border border-white/10 bg-zinc-950 p-6">
-              <p className="text-2xl font-black text-red-500">01</p>
-              <h3 className="mt-4 text-lg font-black">
-                한 건물에서 해결
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-zinc-500">
-                호텔 건물 전체를 활용하는 구조로 이동을 최소화하면서
-                노래와 술자리, 골프를 함께 즐길 수 있습니다.
-              </p>
+            <div className="text-xs font-black tracking-[0.35em] text-red-500">
+              HANOI · MY DINH · KARAOKE
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-zinc-950 p-6">
-              <p className="text-2xl font-black text-red-500">02</p>
-              <h3 className="mt-4 text-lg font-black">
-                룸 12개 운영
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-zinc-500">
-                일행 규모에 따라 룸을 선택하기 좋으며
-                깔끔하게 정돈된 공간에서 편하게 이용할 수 있습니다.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-zinc-950 p-6">
-              <p className="text-2xl font-black text-red-500">03</p>
-              <h3 className="mt-4 text-lg font-black">
-                스크린골프
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-zinc-500">
-                노래방 분위기를 잠시 바꾸고 싶을 때
-                별도 스크린골프 룸을 이용할 수 있습니다.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-zinc-950 p-6">
-              <p className="text-2xl font-black text-red-500">04</p>
-              <h3 className="mt-4 text-lg font-black">
-                한국어 응대
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-zinc-500">
-                한국어로 상담과 요청을 전달할 수 있어
-                처음 방문하는 분들도 비교적 편하게 이용할 수 있습니다.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================
-          BASIC INFO
-      ========================= */}
-      <section className="border-b border-white/10 bg-[#080808]">
-        <div className="mx-auto max-w-5xl px-4 py-14 sm:py-20">
-
-          <p className="text-xs font-black tracking-[0.25em] text-red-500">
-            BASIC INFORMATION
-          </p>
-
-          <h2 className="mt-2 text-3xl font-black sm:text-4xl">
-            VVS 가라오케 기본 정보
-          </h2>
-
-          <div className="mt-8 overflow-hidden rounded-2xl border border-white/10">
-
-            <div className="grid grid-cols-[110px_1fr] border-b border-white/10">
-              <div className="bg-zinc-950 p-4 text-sm font-black text-red-500">
-                위치
-              </div>
-
-              <div className="p-4 text-sm leading-6 text-zinc-300">
-                46 P. Mễ Trì Hạ, Nam Từ Liêm, Hà Nội
-                <br />
-                VVS Glory Hotel 건물 · 미딩 인접
-              </div>
-            </div>
-
-            <div className="grid grid-cols-[110px_1fr] border-b border-white/10">
-              <div className="bg-zinc-950 p-4 text-sm font-black text-red-500">
-                영업시간
-              </div>
-
-              <div className="p-4 text-sm text-zinc-300">
-                오후 2시 ~ 새벽 2시
-              </div>
-            </div>
-
-            <div className="grid grid-cols-[110px_1fr] border-b border-white/10">
-              <div className="bg-zinc-950 p-4 text-sm font-black text-red-500">
-                룸
-              </div>
-
-              <div className="p-4 text-sm text-zinc-300">
-                총 12개 룸 + 별도 스크린골프 룸
-              </div>
-            </div>
-
-            <div className="grid grid-cols-[110px_1fr]">
-              <div className="bg-zinc-950 p-4 text-sm font-black text-red-500">
-                추천대상
-              </div>
-
-              <div className="p-4 text-sm leading-6 text-zinc-300">
-                미딩 권역에서 노래·골프·술자리를
-                한 건물에서 즐기고 싶은 한국인 여행객
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================
-          FACILITIES
-      ========================= */}
-      <section className="border-b border-white/10 bg-black">
-        <div className="mx-auto max-w-5xl px-4 py-14 sm:py-20">
-
-          <p className="text-xs font-black tracking-[0.25em] text-red-500">
-            FACILITIES
-          </p>
-
-          <h2 className="mt-2 text-3xl font-black sm:text-4xl">
-            VVS 룸·시설·분위기
-          </h2>
-
-          <div className="mt-7 space-y-5 text-sm leading-7 text-zinc-400 sm:text-base">
-
-            <p>
-              호텔 건물을 통째로 사용하는 만큼 룸 배치가 비교적
-              깔끔하게 정돈되어 있습니다. 층마다 복도를 따라
-              룸이 배치되어 있어 일행 규모에 맞는 공간을 안내받을 수 있습니다.
-            </p>
-
-            <p>
-              룸 내부에는 일행이 함께 앉기 편한 소파가 마련되어 있으며,
-              조명은 가라오케 특유의 컬러감 있는 분위기로 구성되어 있습니다.
-              편하게 음악을 틀어놓고 술자리를 즐기기에 적합한 분위기입니다.
-            </p>
-
-            <p>
-              반주기는 금영·태진 계열을 갖추고 있어 한국 노래를
-              찾기도 편합니다. 한국 최신곡을 비롯해 익숙한 노래를
-              선택하면서 자연스럽게 분위기를 이어갈 수 있습니다.
-            </p>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================
-          PRICE
-      ========================= */}
-      <section className="border-b border-white/10 bg-[#080808]">
-        <div className="mx-auto max-w-5xl px-4 py-14 sm:py-20">
-
-          <p className="text-xs font-black tracking-[0.25em] text-red-500">
-            PRICE
-          </p>
-
-          <h2 className="mt-2 text-3xl font-black sm:text-4xl">
-            VVS 가라오케 가격 안내
-          </h2>
-
-          <p className="mt-5 text-sm leading-7 text-zinc-400 sm:text-base">
-            VVS는 주대와 기본 TC를 구분하여 정산하는 방식입니다.
-            인원과 이용시간을 먼저 정하고 스크린골프나 시간 연장 등의
-            추가 이용 여부를 함께 확인하면 예산을 잡기 편합니다.
-          </p>
-
-          <div className="mt-8 overflow-hidden rounded-2xl border border-white/10">
-
-            <div className="grid grid-cols-3 bg-zinc-950 text-xs font-black sm:grid-cols-4">
-              <div className="p-4 text-red-500">구분</div>
-              <div className="p-4 text-red-500">가격</div>
-              <div className="p-4 text-red-500">시간/인원</div>
-              <div className="hidden p-4 text-red-500 sm:block">내용</div>
-            </div>
-
-            <div className="grid grid-cols-3 border-t border-white/10 text-sm sm:grid-cols-4">
-              <div className="p-4 font-bold">주대</div>
-              <div className="p-4 font-black">200만 동</div>
-              <div className="p-4">1인</div>
-              <div className="hidden p-4 text-zinc-500 sm:block">
-                소주·맥주·기본 안주 무제한
-              </div>
-            </div>
-
-            <div className="grid grid-cols-3 border-t border-white/10 text-sm sm:grid-cols-4">
-              <div className="p-4 font-bold">주대</div>
-              <div className="p-4 font-black text-red-400">
-                인당 150만 동
-              </div>
-              <div className="p-4">2인 이상</div>
-              <div className="hidden p-4 text-zinc-500 sm:block">
-                소주·맥주·안주 무제한
-              </div>
-            </div>
-
-            <div className="grid grid-cols-3 border-t border-white/10 text-sm sm:grid-cols-4">
-              <div className="p-4 font-bold">기본 TC</div>
-              <div className="p-4 font-black">50만 동</div>
-              <div className="p-4">2시간</div>
-              <div className="hidden p-4 text-zinc-500 sm:block">
-                기본 TC
-              </div>
-            </div>
-
-            <div className="grid grid-cols-3 border-t border-white/10 text-sm sm:grid-cols-4">
-              <div className="p-4 font-bold">스크린골프·연장</div>
-              <div className="p-4 font-black">현장 문의</div>
-              <div className="p-4">별도</div>
-              <div className="hidden p-4 text-zinc-500 sm:block">
-                골프룸 및 시간 연장
-              </div>
-            </div>
-
-          </div>
-
-          <div className="mt-5 rounded-xl border border-red-500/20 bg-red-500/5 p-5">
-            <p className="text-sm font-bold leading-6 text-red-300">
-              주대와 TC는 별도 정산이며, 도우미 동반·스크린골프·시간
-              연장 등의 추가 이용은 현장 안내를 확인해 주세요.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================
-          SYSTEM
-      ========================= */}
-      <section className="border-b border-white/10 bg-black">
-        <div className="mx-auto max-w-5xl px-4 py-14 sm:py-20">
-
-          <p className="text-xs font-black tracking-[0.25em] text-red-500">
-            SYSTEM
-          </p>
-
-          <h2 className="mt-2 text-3xl font-black sm:text-4xl">
-            세트·이용 시스템
-          </h2>
-
-          <div className="mt-7 space-y-5 text-sm leading-7 text-zinc-400 sm:text-base">
-
-            <p>
-              VVS는 정해진 패키지 하나만 이용하는 방식보다는
-              <strong className="text-white">
-                {" "}주대와 기본 TC를 기준으로 인원과 시간,
-                추가 이용 여부를 조합
-              </strong>
-              하는 형태로 이해하면 쉽습니다.
-            </p>
-
-            <p>
-              1인 이용 시 주대는 200만 동이며, 2인 이상부터는
-              인당 150만 동으로 내려갑니다. 주대에는 소주와 맥주,
-              기본 안주가 포함되는 구조입니다.
-            </p>
-
-            <p>
-              기본 TC는 2시간 기준 50만 동이며, 스크린골프 룸을
-              함께 이용하거나 시간을 연장하는 경우에는 별도 비용이
-              발생할 수 있으므로 이용 전에 확인하는 것이 좋습니다.
-            </p>
-
-            <p>
-              결국 총액은 방문 인원과 이용시간, 그리고 골프룸이나
-              추가 서비스 이용 여부에 따라 달라집니다.
-              방문 전에 예산을 먼저 정해두고 필요한 구성만 선택하면
-              정산을 보다 깔끔하게 관리할 수 있습니다.
-            </p>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================
-          FIELD TIPS
-      ========================= */}
-      <section className="border-b border-white/10 bg-[#080808]">
-        <div className="mx-auto max-w-5xl px-4 py-14 sm:py-20">
-
-          <p className="text-xs font-black tracking-[0.25em] text-red-500">
-            FIELD TIPS
-          </p>
-
-          <h2 className="mt-2 text-3xl font-black sm:text-4xl">
-            직접 짚는 현장 포인트
-          </h2>
-
-          <div className="mt-8 space-y-3">
-
-            {[
-              "두 명 이상이면 주대가 인당 150만 동으로 내려가기 때문에 일행을 함께 구성하면 1인 비용을 줄이는 데 도움이 됩니다.",
-              "기본 TC는 2시간 기준이므로 이용 예정 시간을 미리 정하고 연장 여부를 생각해 두면 정산이 편합니다.",
-              "스크린골프 룸을 함께 이용할 계획이라면 피크 시간대 이용 가능 여부를 입장할 때 미리 확인하는 것이 좋습니다.",
-              "합의되지 않은 추가 비용이나 별도 팁이 발생하는 경우에는 이용 전에 비용을 확인해 두는 것이 좋습니다.",
-              "현금으로 결제할 예정이라면 베트남 동을 준비하고, 카드 결제 가능 여부와 환율 기준도 방문 전에 확인해 주세요.",
-            ].map((text, index) => (
-              <div
-                key={index}
-                className="flex gap-4 rounded-xl border border-white/10 bg-black p-5"
-              >
-                <span className="shrink-0 text-sm font-black text-red-500">
-                  0{index + 1}
-                </span>
-
-                <p className="text-sm leading-6 text-zinc-400">
-                  {text}
-                </p>
-              </div>
-            ))}
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================
-          WHO IS IT FOR
-      ========================= */}
-      <section className="border-b border-white/10 bg-black">
-        <div className="mx-auto max-w-5xl px-4 py-14 sm:py-20">
-
-          <p className="text-xs font-black tracking-[0.25em] text-red-500">
-            RECOMMENDED
-          </p>
-
-          <h2 className="mt-2 text-3xl font-black sm:text-4xl">
-            이런 분께 추천합니다
-          </h2>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-
-            <div className="rounded-2xl border border-white/10 bg-zinc-950 p-6">
-              <h3 className="text-lg font-black">
-                미딩·메찌 권역 숙소 이용객
-              </h3>
-
-              <p className="mt-3 text-sm leading-6 text-zinc-500">
-                미딩 한인타운과 가까운 곳에서 숙소와 식당가,
-                가라오케 이동 동선을 짧게 가져가고 싶은 분들에게
-                편리합니다.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-zinc-950 p-6">
-              <h3 className="text-lg font-black">
-                노래와 골프를 함께 즐기는 일행
-              </h3>
-
-              <p className="mt-3 text-sm leading-6 text-zinc-500">
-                노래방만 이용하기보다 중간에 스크린골프를 섞어
-                분위기를 바꾸고 싶은 일행에게 잘 맞습니다.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-zinc-950 p-6">
-              <h3 className="text-lg font-black">
-                한국어 응대를 원하는 분
-              </h3>
-
-              <p className="mt-3 text-sm leading-6 text-zinc-500">
-                주문이나 기본적인 요청을 한국어로 편하게
-                전달하고 싶은 여행객에게 적합합니다.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-zinc-950 p-6">
-              <h3 className="text-lg font-black">
-                비용을 미리 계산하고 싶은 분
-              </h3>
-
-              <p className="mt-3 text-sm leading-6 text-zinc-500">
-                주대와 기본 TC가 구분되어 있어 인원과 시간을
-                기준으로 예산을 잡기 편합니다.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================
-          LOCATION
-      ========================= */}
-      <section className="border-b border-white/10 bg-[#080808]">
-        <div className="mx-auto max-w-5xl px-4 py-14 sm:py-20">
-
-          <p className="text-xs font-black tracking-[0.25em] text-red-500">
-            LOCATION
-          </p>
-
-          <h2 className="mt-2 text-3xl font-black sm:text-4xl">
-            찾아가는 길
-          </h2>
-
-          <div className="mt-7 rounded-2xl border border-white/10 bg-black p-6 sm:p-8">
-
-            <p className="text-lg font-black">
-              VVS Glory Hotel
-            </p>
-
-            <p className="mt-2 text-sm text-zinc-400">
-              46 P. Mễ Trì Hạ, Nam Từ Liêm, Hà Nội
-            </p>
-
-            <div className="mt-6 h-px bg-white/10" />
-
-            <div className="mt-6 space-y-4 text-sm leading-6 text-zinc-400">
-
-              <p>
-                VVS 가라오케는 미딩 한인타운과 가까운 메찌하 거리에
-                위치해 있습니다.
-              </p>
-
-              <p>
-                그랩을 이용한다면 기사에게
-                <strong className="text-white">
-                  {" "}“VVS Glory Hotel, Mễ Trì Hạ”
-                </strong>
-                를 보여주면 찾아가기 편합니다.
-              </p>
-
-              <p>
-                단일 건물 형태라 건물 앞에서 입구를 확인하기
-                비교적 쉽습니다. 초행이라면 숙소 위치를 미리 알려주고
-                이동 동선을 맞춰두는 것도 좋습니다.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================
-          FINAL SUMMARY
-      ========================= */}
-      <section className="border-b border-white/10 bg-black">
-        <div className="mx-auto max-w-5xl px-4 py-14 sm:py-20">
-
-          <div className="rounded-3xl border border-red-500/20 bg-[#0c0c0c] p-7 sm:p-10">
-
-            <p className="text-xs font-black tracking-[0.25em] text-red-500">
+            <h1 className="mt-3 text-4xl font-black tracking-tight md:text-6xl">
+              하노이 VVS 가라오케
+            </h1>
+
+            <div className="mt-3 text-lg font-medium tracking-[0.2em] text-zinc-500">
               VVS KARAOKE
+            </div>
+
+            <p className="mt-6 max-w-4xl text-sm leading-8 text-zinc-400 md:text-base">
+              미딩 권역에서 노래와 술자리는 물론 스크린골프까지
+              한 건물에서 즐길 수 있는 VVS 가라오케를 정리했습니다.
+              VVS Glory Hotel 건물을 통째로 활용하는 단일건물형
+              한인 KTV로, 미딩 한인타운과 가까운 메찌하 권역에
+              위치해 접근성도 편리한 편입니다.
             </p>
 
-            <h2 className="mt-3 text-2xl font-black sm:text-3xl">
-              하노이 미딩에서 한 번에 즐기는 VVS
-            </h2>
+            <div className="mt-7 flex flex-wrap gap-3">
 
-            <p className="mt-5 text-sm leading-7 text-zinc-400 sm:text-base">
-              VVS 가라오케는 미딩·메찌 권역에서 노래와 술자리,
-              스크린골프까지 한 건물에서 이어갈 수 있다는 점이
-              가장 큰 특징입니다.
-            </p>
+              <span className="rounded-full border border-red-500/20 bg-red-500/10 px-4 py-2 text-xs text-red-300">
+                미딩 · 메찌
+              </span>
 
-            <p className="mt-4 text-sm leading-7 text-zinc-400 sm:text-base">
-              룸 12개와 별도 골프룸을 갖추고 있으며,
-              주대와 기본 TC를 구분해 정산하기 때문에
-              인원과 시간을 먼저 정하고 이용 계획을 세우기 좋습니다.
-            </p>
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-zinc-300">
+                룸 12개
+              </span>
 
-            <p className="mt-4 text-sm leading-7 text-zinc-400 sm:text-base">
-              방문 전에는 실제 이용 인원과 시간, 골프룸 이용 여부,
-              추가 비용 등을 미리 확인하고 방문하는 것을 추천합니다.
-            </p>
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-zinc-300">
+                스크린골프
+              </span>
 
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-zinc-300">
+                14:00 ~ 02:00
+              </span>
+
+            </div>
           </div>
 
-        </div>
-      </section>
-
-
-      {/* =========================
-          IMAGE MODAL
-      ========================= */}
-      {selectedImage !== null && (
-        <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          {/* 닫기 */}
+          {/* =========================================================
+              MAIN IMAGE
+          ========================================================= */}
           <button
             type="button"
-            onClick={() => setSelectedImage(null)}
-            className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-2xl text-white backdrop-blur transition hover:bg-white/20"
+            onClick={() => openGallery(0)}
+            className="group relative block w-full overflow-hidden rounded-3xl border border-white/10 bg-[#101010] text-left"
+          >
+
+            <div className="aspect-[16/8] overflow-hidden">
+              <img
+                src={galleryImages[0].src}
+                alt={galleryImages[0].title}
+                className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]"
+              />
+            </div>
+
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-6">
+
+              <div className="text-xs font-bold tracking-[0.25em] text-red-400">
+                VVS KARAOKE
+              </div>
+
+              <div className="mt-2 text-xl font-black">
+                하노이 VVS 가라오케
+              </div>
+
+              <div className="mt-1 text-xs text-zinc-300">
+                사진을 클릭하면 크게 볼 수 있습니다
+              </div>
+
+            </div>
+
+          </button>
+
+        </div>
+      </section>
+
+
+      {/* =========================================================
+          GALLERY
+      ========================================================= */}
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+
+        <div className="mb-8">
+
+          <div className="text-xs font-black tracking-[0.3em] text-red-500">
+            GALLERY
+          </div>
+
+          <h2 className="mt-3 text-3xl font-black md:text-4xl">
+            VVS 가라오케 시설 사진
+          </h2>
+
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-zinc-500">
+            VVS 가라오케의 외관과 리셉션, 내부 룸,
+            스크린골프 공간 등을 확인해 보세요.
+            사진을 클릭하면 전체 화면으로 확대해서 볼 수 있습니다.
+          </p>
+
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+
+          {galleryImages.slice(1).map((image, index) => {
+
+            const realIndex = index + 1;
+
+            return (
+              <button
+                key={image.src}
+                type="button"
+                onClick={() => openGallery(realIndex)}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#111]"
+              >
+
+                <div className="aspect-[4/3] overflow-hidden">
+
+                  <img
+                    src={image.src}
+                    alt={image.title}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+
+                </div>
+
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent px-4 pb-4 pt-10 text-left">
+
+                  <div className="text-sm font-bold">
+                    {image.title}
+                  </div>
+
+                </div>
+
+              </button>
+            );
+          })}
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          BASIC INFORMATION
+      ========================================================= */}
+      <section className="border-y border-white/10 bg-[#090909]">
+
+        <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+
+          <div className="grid gap-6 md:grid-cols-3">
+
+            <div className="rounded-3xl border border-white/10 bg-[#101010] p-7">
+
+              <div className="text-xs font-black tracking-[0.25em] text-zinc-600">
+                LOCATION
+              </div>
+
+              <div className="mt-4 text-lg font-black">
+                하노이 미딩 · 메찌
+              </div>
+
+              <p className="mt-3 text-sm leading-7 text-zinc-500">
+                46 P. Mễ Trì Hạ, Nam Từ Liêm, Hà Nội.
+                VVS Glory Hotel 건물에 위치해 있으며
+                미딩 한인타운과 가까운 편입니다.
+              </p>
+
+            </div>
+
+
+            <div className="rounded-3xl border border-white/10 bg-[#101010] p-7">
+
+              <div className="text-xs font-black tracking-[0.25em] text-zinc-600">
+                OPENING HOURS
+              </div>
+
+              <div className="mt-4 text-lg font-black">
+                14:00 ~ 02:00
+              </div>
+
+              <p className="mt-3 text-sm leading-7 text-zinc-500">
+                오후 2시부터 새벽 2시까지 운영되는 것으로
+                안내되어 있으며 현지 운영 상황에 따라
+                달라질 수 있습니다.
+              </p>
+
+            </div>
+
+
+            <div className="rounded-3xl border border-white/10 bg-[#101010] p-7">
+
+              <div className="text-xs font-black tracking-[0.25em] text-zinc-600">
+                CATEGORY
+              </div>
+
+              <div className="mt-4 text-lg font-black">
+                가라오케 · KTV
+              </div>
+
+              <p className="mt-3 text-sm leading-7 text-zinc-500">
+                룸 12개와 별도 스크린골프 룸을 갖춘
+                미딩·메찌 권역의 한인 가라오케입니다.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          ABOUT
+      ========================================================= */}
+      <section className="border-b border-white/10 bg-[#080808]">
+
+        <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+
+          <div className="max-w-4xl">
+
+            <div className="text-xs font-black tracking-[0.3em] text-red-500">
+              ABOUT
+            </div>
+
+            <h2 className="mt-3 text-3xl font-black md:text-4xl">
+              하노이 VVS 가라오케 소개
+            </h2>
+
+            <div className="mt-7 space-y-6 text-sm leading-8 text-zinc-400 md:text-base">
+
+              <p>
+                하노이 미딩 권역에서 노래도 하고 술잔도 기울이면서
+                사이사이 스크린골프까지 한 건물에서 즐기고 싶다면
+                <strong className="text-white"> VVS 가라오케</strong>를
+                먼저 살펴볼 만합니다.
+              </p>
+
+              <p>
+                VVS는 메찌하 거리에 있는
+                <strong className="text-white">
+                  {" "}VVS Glory Hotel 건물을 통째로 활용하는
+                  단일건물형 한인 KTV
+                </strong>
+                로, 층마다 룸이 정돈되어 있고 별도의
+                스크린골프 룸도 마련되어 있습니다.
+              </p>
+
+              <p>
+                특히 미딩 한인타운과 가까워 숙소나 식당가에서
+                이동하기 편하다는 점도 장점입니다.
+                처음 미딩 지역을 방문하는 분들도 비교적 쉽게
+                찾아갈 수 있는 위치입니다.
+              </p>
+
+              <p>
+                VVS는 주대와 기본 TC를 구분해서 정산하는 방식이라
+                인원과 이용시간을 먼저 정하면 대략적인 예산을
+                잡기 편합니다. 한국어로 응대가 가능한 마담과
+                매니저가 있어 주문이나 기본적인 요청을
+                전달하기에도 편리합니다.
+              </p>
+
+              <p>
+                룸은 총 12개가 마련되어 있어 일행 규모에 맞춰
+                이용하기 좋으며, 노래방 분위기를 잠시 바꾸고 싶을 때는
+                별도 스크린골프 룸을 이용할 수 있습니다.
+              </p>
+
+              <p>
+                금영·태진 계열 반주기를 갖추고 있어 한국 노래를
+                찾기도 편하며, 노래와 술자리, 골프를 한 건물에서
+                이어갈 수 있다는 점이 VVS의 가장 큰 특징입니다.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          WHY VVS
+      ========================================================= */}
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+
+        <div className="text-xs font-black tracking-[0.3em] text-red-500">
+          WHY VVS
+        </div>
+
+        <h2 className="mt-3 text-3xl font-black md:text-4xl">
+          왜 VVS 가라오케인가
+        </h2>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+
+          {[
+            {
+              title: "한 건물에서 해결",
+              text: "호텔 건물 전체를 활용하는 구조라 이동을 최소화하면서 노래와 술자리, 스크린골프를 한 번에 즐길 수 있습니다.",
+            },
+            {
+              title: "룸 12개 운영",
+              text: "총 12개의 룸이 있어 일행 규모와 상황에 맞는 공간을 선택하기 좋습니다.",
+            },
+            {
+              title: "별도 스크린골프 룸",
+              text: "노래방 분위기를 잠시 바꾸고 싶을 때 별도 스크린골프 룸을 이용할 수 있습니다.",
+            },
+            {
+              title: "한국어 응대",
+              text: "한국어로 기본적인 주문과 요청을 전달할 수 있어 처음 방문하는 분들도 비교적 편하게 이용할 수 있습니다.",
+            },
+          ].map((item) => (
+
+            <div
+              key={item.title}
+              className="rounded-2xl border border-white/10 bg-[#101010] p-6"
+            >
+
+              <div className="flex items-start gap-4">
+
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-600/10 text-sm font-black text-red-500">
+                  ✓
+                </div>
+
+                <div>
+
+                  <div className="font-bold">
+                    {item.title}
+                  </div>
+
+                  <p className="mt-2 text-sm leading-7 text-zinc-500">
+                    {item.text}
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          PRICE
+      ========================================================= */}
+      <section className="border-y border-white/10 bg-[#090909]">
+
+        <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-20">
+
+          <div className="text-center">
+
+            <div className="text-xs font-black tracking-[0.3em] text-red-500">
+              PRICE
+            </div>
+
+            <h2 className="mt-3 text-2xl font-bold">
+              VVS 가라오케 가격 안내
+            </h2>
+
+            <p className="mt-4 text-sm leading-7 text-white/60">
+              주대와 기본 TC를 별도로 정산하는 방식
+            </p>
+
+          </div>
+
+          <div className="mt-10 overflow-hidden rounded-2xl border border-white/10">
+
+            <table className="w-full text-sm">
+
+              <thead className="bg-white/5">
+
+                <tr className="border-b border-white/10">
+
+                  <th className="px-4 py-4 text-left">
+                    구분
+                  </th>
+
+                  <th className="px-4 py-4 text-left">
+                    가격
+                  </th>
+
+                  <th className="px-4 py-4 text-left">
+                    내용
+                  </th>
+
+                </tr>
+
+              </thead>
+
+              <tbody>
+
+                <tr className="border-b border-white/10">
+
+                  <td className="px-4 py-4 font-semibold">
+                    주대
+                  </td>
+
+                  <td className="px-4 py-4 font-bold text-yellow-400">
+                    200만 VND
+                  </td>
+
+                  <td className="px-4 py-4 text-white/70">
+                    1인 기준
+                  </td>
+
+                </tr>
+
+
+                <tr className="border-b border-white/10">
+
+                  <td className="px-4 py-4 font-semibold">
+                    주대
+                  </td>
+
+                  <td className="px-4 py-4 font-bold text-yellow-400">
+                    150만 VND / 1인
+                  </td>
+
+                  <td className="px-4 py-4 text-white/70">
+                    2인 이상
+                  </td>
+
+                </tr>
+
+
+                <tr className="border-b border-white/10">
+
+                  <td className="px-4 py-4 font-semibold">
+                    기본 TC
+                  </td>
+
+                  <td className="px-4 py-4 font-bold text-yellow-400">
+                    50만 VND
+                  </td>
+
+                  <td className="px-4 py-4 text-white/70">
+                    2시간 기준
+                  </td>
+
+                </tr>
+
+
+                <tr>
+
+                  <td className="px-4 py-4 font-semibold">
+                    스크린골프·연장
+                  </td>
+
+                  <td className="px-4 py-4 font-bold text-yellow-400">
+                    현장 문의
+                  </td>
+
+                  <td className="px-4 py-4 text-white/70">
+                    별도 골프룸 / 시간 연장
+                  </td>
+
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+
+          <div className="mt-6 rounded-xl border border-yellow-500/20 bg-yellow-500/5 p-5 text-sm leading-7 text-white/70">
+
+            <p>
+              • 주대와 기본 TC는 별도로 정산됩니다.
+            </p>
+
+            <p>
+              • 2인 이상 이용 시 주대는 인당 150만 동으로 안내됩니다.
+            </p>
+
+            <p>
+              • 기본 TC는 2시간 기준 50만 동입니다.
+            </p>
+
+            <p>
+              • 스크린골프 룸 및 시간 연장은 별도 비용이 발생할 수 있습니다.
+            </p>
+
+            <p className="font-semibold text-yellow-400">
+              • 방문 전 최신 이용요금과 추가 비용을 확인하는 것을 권장합니다.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          LOCATION
+      ========================================================= */}
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+
+        <div className="grid gap-12 lg:grid-cols-2">
+
+          <div>
+
+            <div className="text-xs font-black tracking-[0.3em] text-red-500">
+              LOCATION
+            </div>
+
+            <h2 className="mt-3 text-3xl font-black">
+              VVS 가라오케 위치
+            </h2>
+
+            <p className="mt-6 text-sm leading-8 text-zinc-400 md:text-base">
+              VVS 가라오케는
+              46 P. Mễ Trì Hạ, Nam Từ Liêm, Hà Nội,
+              VVS Glory Hotel 건물에 위치해 있습니다.
+            </p>
+
+            <p className="mt-4 text-sm leading-8 text-zinc-400 md:text-base">
+              미딩 한인타운과 가까운 메찌하 거리에 있어
+              한인 숙소나 식당가에서 이동하기 편한 편입니다.
+            </p>
+
+          </div>
+
+
+          <div>
+
+            <div className="text-xs font-black tracking-[0.3em] text-red-500">
+              TRANSPORT
+            </div>
+
+            <h2 className="mt-3 text-3xl font-black">
+              찾아가는 방법
+            </h2>
+
+            <div className="mt-6 space-y-4">
+
+              <div className="rounded-2xl border border-white/10 bg-[#111] p-5">
+
+                <div className="font-bold">
+                  그랩 이용
+                </div>
+
+                <p className="mt-2 text-sm leading-7 text-zinc-500">
+                  그랩 목적지에 주소를 입력하고 이동하는 방법이
+                  가장 편리합니다. 기사에게
+                  "VVS Glory Hotel, Mễ Trì Hạ"를 보여주면
+                  찾기 수월합니다.
+                </p>
+
+              </div>
+
+
+              <div className="rounded-2xl border border-white/10 bg-[#111] p-5">
+
+                <div className="font-bold">
+                  VVS Glory Hotel
+                </div>
+
+                <p className="mt-2 text-sm leading-7 text-zinc-500">
+                  VVS Glory Hotel 건물을 통째로 활용하는
+                  단일건물형 구조라 건물 앞에서 입구를
+                  확인하기 비교적 쉽습니다.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          CHECK
+      ========================================================= */}
+      <section className="border-y border-white/10 bg-[#090909]">
+
+        <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+
+          <div className="rounded-3xl border border-white/10 bg-[#101010] p-7 md:p-10">
+
+            <div className="text-xs font-black tracking-[0.3em] text-red-500">
+              CHECK
+            </div>
+
+            <h2 className="mt-3 text-3xl font-black">
+              방문 전 확인사항
+            </h2>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+
+              {[
+                "방문 전 영업 여부 확인",
+                "최신 이용요금 확인",
+                "이용시간 확인",
+                "스크린골프 이용 가능 여부 확인",
+                "시간 연장 및 추가 비용 확인",
+                "그랩 목적지 및 위치 확인",
+              ].map((item) => (
+
+                <div
+                  key={item}
+                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/20 px-5 py-4"
+                >
+
+                  <span className="text-red-500">
+                    ✓
+                  </span>
+
+                  <span className="text-sm text-zinc-300">
+                    {item}
+                  </span>
+
+                </div>
+
+              ))}
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          FAQ
+      ========================================================= */}
+      <section className="border-y border-white/10 bg-[#080808]">
+
+        <div className="mx-auto max-w-4xl px-5 py-16 md:px-8 md:py-20">
+
+          <div className="text-center">
+
+            <div className="text-xs font-black tracking-[0.3em] text-red-500">
+              FAQ
+            </div>
+
+            <h2 className="mt-3 text-3xl font-black md:text-4xl">
+              자주 묻는 질문
+            </h2>
+
+          </div>
+
+
+          <div className="mt-10 space-y-3">
+
+            {faqItems.map((item) => (
+
+              <details
+                key={item.q}
+                className="group rounded-2xl border border-white/10 bg-[#101010]"
+              >
+
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-6 py-5 font-bold">
+
+                  <span>
+                    {item.q}
+                  </span>
+
+                  <span className="text-xl text-zinc-500 transition group-open:rotate-45">
+                    +
+                  </span>
+
+                </summary>
+
+                <div className="border-t border-white/10 px-6 py-5 text-sm leading-7 text-zinc-500">
+                  {item.a}
+                </div>
+
+              </details>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          FINAL CTA
+      ========================================================= */}
+      <section className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-24">
+
+        <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-[#171717] to-[#0c0c0c] p-8 text-center md:p-14">
+
+          <div className="text-xs font-black tracking-[0.3em] text-red-500">
+            VVS KARAOKE
+          </div>
+
+          <h2 className="mt-4 text-3xl font-black md:text-4xl">
+            하노이 VVS 가라오케
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-zinc-500">
+            미딩·메찌에서 노래와 술자리, 스크린골프까지
+            한 건물에서 즐기고 싶다면 VVS 가라오케를
+            확인해 보세요. 방문 전 영업 여부와 최신
+            이용 조건을 확인하는 것을 권장합니다.
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+
+            <a
+              href="#"
+              className="rounded-xl bg-red-600 px-8 py-4 text-sm font-black transition hover:bg-red-500"
+            >
+              문의하기
+            </a>
+
+            <Link
+              href="/hanoi/karaoke"
+              className="rounded-xl border border-white/15 bg-white/[0.03] px-8 py-4 text-sm font-black transition hover:bg-white/[0.08]"
+            >
+              하노이 가라오케 더보기
+            </Link>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          IMAGE LIGHTBOX
+      ========================================================= */}
+      {selectedImage !== null && (
+
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 p-4"
+          onMouseDown={(event) => {
+
+            if (event.target === event.currentTarget) {
+              closeGallery();
+            }
+
+          }}
+        >
+
+          {/* CLOSE */}
+          <button
+            type="button"
+            onClick={closeGallery}
             aria-label="닫기"
+            className="absolute right-5 top-5 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/60 text-2xl text-white transition hover:bg-white/10"
           >
             ×
           </button>
 
-          {/* 이전 */}
+
+          {/* PREVIOUS */}
           <button
             type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              prevImage();
-            }}
-            className="absolute left-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-3xl text-white backdrop-blur transition hover:bg-white/20 sm:left-6"
+            onClick={previousImage}
             aria-label="이전 사진"
+            className="absolute left-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-3xl text-white transition hover:bg-white/10 md:left-8"
           >
             ‹
           </button>
 
-          {/* 이미지 */}
-          <div
-            className="relative max-h-[90vh] max-w-[95vw]"
-            onClick={(e) => e.stopPropagation()}
-          >
+
+          {/* IMAGE */}
+          <div className="relative flex max-h-[90vh] max-w-[92vw] flex-col items-center">
+
             <img
-              src={images[selectedImage]}
-              alt={`VVS 가라오케 확대 사진 ${selectedImage + 1}`}
-              className="max-h-[88vh] max-w-[95vw] rounded-xl object-contain"
+              src={galleryImages[selectedImage].src}
+              alt={galleryImages[selectedImage].title}
+              className="max-h-[82vh] max-w-[92vw] rounded-xl object-contain shadow-2xl"
             />
 
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-black/70 px-4 py-2 text-xs font-bold text-white">
-              {selectedImage + 1} / {images.length}
+            <div className="mt-4 text-center text-sm text-zinc-300">
+              {galleryImages[selectedImage].title}
             </div>
+
+            <div className="mt-1 text-xs text-zinc-600">
+              {selectedImage + 1} / {galleryImages.length}
+            </div>
+
           </div>
 
-          {/* 다음 */}
+
+          {/* NEXT */}
           <button
             type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              nextImage();
-            }}
-            className="absolute right-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-3xl text-white backdrop-blur transition hover:bg-white/20 sm:right-6"
+            onClick={nextImage}
             aria-label="다음 사진"
+            className="absolute right-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-3xl text-white transition hover:bg-white/10 md:right-8"
           >
             ›
           </button>
+
+
+          {/* BOTTOM HINT */}
+          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-center text-xs text-zinc-600">
+            ← → 사진 이동 · ESC 닫기
+          </div>
+
         </div>
+
       )}
 
     </main>
