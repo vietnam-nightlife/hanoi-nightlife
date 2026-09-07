@@ -406,7 +406,7 @@ export const places: Place[] = [
 
     hours: "14:00 - 02:00",
 
-    image: "/하노이 vvs 가라오케 메.webp",
+    image: "/하노이 vvs 가라오케 메인.webp",
 
     featured: true,
 
