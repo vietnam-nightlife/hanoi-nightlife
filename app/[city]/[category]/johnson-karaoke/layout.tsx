@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "하노이 존슨 가라오케 | 미딩 한인타운 KTV 시설·가격·위치",
   description:
-    "하노이 미딩 한인타운 존슨 가라오케의 시설, 룸, 분위기, 가격, 위치와 이용 정보를 한눈에 확인하세요.",
+    "하노이 미딩 한인타운 존슨 가라오케의 시설, 룸, 분위기, 가격, 위치와 이용 정보를 확인하세요. 방문 전 필요한 정보를 한눈에 확인할 수 있습니다.",
 
   keywords: [
     "하노이 존슨 가라오케",
