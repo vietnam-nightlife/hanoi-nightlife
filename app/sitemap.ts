@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://hanoinightboom.com";
+  const baseUrl = "https://www.hanoinightboom.com";
 
   return [
     {
@@ -54,12 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-{
-  url: `${baseUrl}/hanoi/ecogirl`,
-  lastModified: new Date(),
-  changeFrequency: "weekly",
-  priority: 0.9,
-},
+
     // 가라오케
     {
       url: `${baseUrl}/hanoi/karaoke`,
@@ -108,6 +103,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
+    },
+
+    // 에코걸
+    {
+      url: `${baseUrl}/hanoi/ecogirl`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
   ];
 }
