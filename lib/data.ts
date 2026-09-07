@@ -86,6 +86,39 @@ export const places: Place[] = [
     featured: true,
   },
 
+/*
+   * =======================================================
+   * 하노이 소라 마사지
+   * =======================================================
+   */
+  
+{
+    slug: "sora-massage",
+    name: "하노이 소라 마사지",
+    city: "hanoi",
+    category: "massage",
+
+    district: "하노이",
+
+    rating: 4.6,
+    reviews: 54,
+
+    description:
+      "하노이 미딩 딩톤시장 인근 소라 마사지는 프라이빗 룸 약 10개와 전용 샤워·화장실, 한국인 매니저 상주로 편리하며, A~F 정찰제 코스로 원하는 구성에 맞춰 이용하기 좋은 마사지샵입니다.",
+
+    address: "하노이",
+
+    hours: "영업시간 확인 필요",
+
+    image: "/하노이 소라 마사지 메인.webp",
+
+    featured: true,
+
+    koreanSupport: true,
+    recommended: true,
+    revisitRecommended: true,
+  },
+  
   /*
    * =======================================================
    * 하노이 문 마사지
@@ -204,39 +237,6 @@ export const places: Place[] = [
     hours: "영업시간 확인 필요",
 
     image: "/하노이 디살롱 메인.webp",
-
-    featured: true,
-
-    koreanSupport: true,
-    recommended: true,
-    revisitRecommended: true,
-  },
-
- /*
-   * =======================================================
-   * 하노이 소라 마사지
-   * =======================================================
-   */
-  
-{
-    slug: "sora-massage",
-    name: "하노이 소라 마사지",
-    city: "hanoi",
-    category: "massage",
-
-    district: "하노이",
-
-    rating: 4.6,
-    reviews: 54,
-
-    description:
-      "하노이 미딩 딩톤시장 인근 소라 마사지는 프라이빗 룸 약 10개와 전용 샤워·화장실, 한국인 매니저 상주로 편리하며, A~F 정찰제 코스로 원하는 구성에 맞춰 이용하기 좋은 마사지샵입니다.",
-
-    address: "하노이",
-
-    hours: "영업시간 확인 필요",
-
-    image: "/하노이 소라 마사지 메인.webp",
 
     featured: true,
 
@@ -441,6 +441,38 @@ export const places: Place[] = [
     hours: "12:00 - 02:00",
 
     image: "/하노이 런던 가라오케 메인.webp",
+
+    featured: true,
+
+    recommended: true,
+  },
+
+  /*
+   * =======================================================
+   * 하노이 V-POP 가라오케
+   * =======================================================
+   */
+
+  {
+    slug: "vpop-karaoke",
+    name: "하노이 V-POP 가라오케",
+    city: "hanoi",
+    category: "karaoke",
+
+    district: "중화 · 쭝호아",
+
+    rating: 4.5,
+    reviews: 128,
+
+    description:
+      "하노이 중화(Trung Hòa) 지역에 위치한 V-POP 가라오케는 5층 통건물을 사용하는 대형 로컬 KTV입니다. 총 20개의 룸을 갖추고 있어 소규모 일행부터 여러 명이 함께하는 모임까지 인원에 맞춰 룸을 선택하기 좋습니다. 한인 KTV와 달리 주대 패키지 방식이 아닌 맥주·안주·음료 등 주문한 항목별로 정산하는 로컬 소비제 방식이 특징입니다. 마신 만큼, 시킨 만큼만 계산하고 싶은 분들에게 잘 맞는 곳입니다.",
+
+    address:
+      "50 P. Trung Hòa, Yên Hòa, Hà Nội",
+
+    hours: "11:00 - 03:00",
+
+    image: "/하노이 vpop 가라오케 메인.webp",
 
     featured: true,
 
