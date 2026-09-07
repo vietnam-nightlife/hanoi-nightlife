@@ -12,10 +12,10 @@ export const metadata: Metadata = {
     "하노이 미딩 가라오케",
     "하노이 KTV",
     "하노이 가라오케",
+    "하노이 한인 가라오케",
+    "미딩 가라오케",
     "하노이 가라오케 가격",
     "하노이 가라오케 추천",
-    "미딩 가라오케",
-    "미딩 KTV",
   ],
 
   alternates: {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "하노이 박카스 가라오케 | 미딩 한인 KTV",
     description:
-      "하노이 미딩 박카스 가라오케의 시설, 룸, 가격, 위치와 이용 정보를 확인하세요.",
+      "하노이 미딩 박카스 가라오케의 시설, 룸, 분위기, 가격, 위치와 이용 정보를 확인하세요.",
     url: "https://hanoinightboom.com/hanoi/karaoke/bacchus-karaoke",
     siteName: "하노이 눈탱이 방지 위원회",
     locale: "ko_KR",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "하노이 박카스 가라오케 | 미딩 한인 KTV",
     description:
-      "하노이 미딩 박카스 가라오케의 시설, 룸, 가격, 위치와 이용 정보를 확인하세요.",
+      "하노이 미딩 박카스 가라오케의 시설, 룸, 분위기, 가격, 위치와 이용 정보를 확인하세요.",
   },
 
   robots: {
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
 };
 
-type LayoutProps = {
+type Props = {
   children: React.ReactNode;
   params: Promise<{
     city: string;
@@ -64,6 +64,6 @@ type LayoutProps = {
 
 export default function BacchusKaraokeLayout({
   children,
-}: LayoutProps) {
+}: Props) {
   return children;
 }
