@@ -52,10 +52,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function JohnsonKaraokeLayout({
+export default async function JohnsonKaraokeLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{
+    city: string;
+    category: string;
+  }>;
 }) {
+  await params;
+
   return children;
 }
