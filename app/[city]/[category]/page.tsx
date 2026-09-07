@@ -64,7 +64,7 @@ export default async function CategoryPage({
       {/* PLACES */}
       <section className="container py-16">
         {items.length > 0 ? (
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 sm:gap-4 lg:gap-6">
             {items.map((place) => (
               <div key={place.slug}>
                 {/* TAGS */}
