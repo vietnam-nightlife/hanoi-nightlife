@@ -10,8 +10,8 @@ export const metadata: Metadata = {
     "하노이 박카스",
     "하노이 미딩 박카스",
     "하노이 미딩 가라오케",
-    "하노이 KTV",
     "하노이 가라오케",
+    "하노이 KTV",
     "하노이 한인 가라오케",
     "미딩 가라오케",
     "하노이 가라오케 가격",
@@ -58,7 +58,6 @@ type Props = {
   params: Promise<{
     city: string;
     category: string;
-    slug: string;
   }>;
 };
 
