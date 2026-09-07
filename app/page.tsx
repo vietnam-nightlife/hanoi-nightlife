@@ -58,12 +58,6 @@ import { cities, places } from "@/lib/data";
 
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "하노이 밤문화 가이드 | 마사지·가라오케",
-  description:
-    "하노이의 마사지와 가라오케 정보를 지역별로 확인하세요. 가격, 위치, 영업시간 등 여행자에게 필요한 정보를 한곳에서 비교할 수 있습니다.",
-};
-
 export default function Home() {
   const featured = places.filter((p) => p.featured);
 
