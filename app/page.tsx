@@ -1,7 +1,59 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import CityCard from "@/components/CityCard";
 import PlaceCard from "@/components/PlaceCard";
 import ContactButtons from "@/components/ContactButtons";
+
+export const metadata: Metadata = {
+  title: "하노이 눈탱이 방지 위원회 | 하노이 마사지·가라오케·에코걸",
+  description:
+    "하노이 여행에서 바가지 걱정을 줄이세요. 하노이 마사지, 가라오케, 에코걸 정보를 지역별로 정리하고 가격과 이용 정보를 비교할 수 있습니다.",
+  keywords: [
+    "하노이 마사지",
+    "하노이 가라오케",
+    "하노이 에코걸",
+    "하노이 여행",
+    "하노이 마사지 가격",
+    "하노이 가라오케 가격",
+    "하노이 유흥",
+    "하노이 눈탱이 방지 위원회",
+  ],
+  authors: [{ name: "하노이 눈탱이 방지 위원회" }],
+  creator: "하노이 눈탱이 방지 위원회",
+  publisher: "하노이 눈탱이 방지 위원회",
+
+  metadataBase: new URL("https://hanoinightboom.com"),
+
+  alternates: {
+    canonical: "/",
+  },
+
+  openGraph: {
+    title: "하노이 눈탱이 방지 위원회",
+    description:
+      "하노이 마사지·가라오케·에코걸 정보를 지역별로 확인하고 비교하세요.",
+    url: "https://hanoinightboom.com/",
+    siteName: "하노이 눈탱이 방지 위원회",
+    locale: "ko_KR",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "하노이 눈탱이 방지 위원회",
+    description:
+      "하노이 마사지·가라오케·에코걸 정보를 지역별로 확인하고 비교하세요.",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+};
 import { cities, places } from "@/lib/data";
 
 import type { Metadata } from "next";
