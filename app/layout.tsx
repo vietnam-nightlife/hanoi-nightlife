@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hanoinightboom.com"),
+  metadataBase: new URL("https://www.hanoinightboom.com"),
 
   title: {
     default: "하노이 눈탱이 방지 위원회 | 하노이 마사지·가라오케",
@@ -15,10 +15,15 @@ export const metadata: Metadata = {
   description:
     "하노이 마사지와 가라오케 정보를 지역별로 확인하세요. 미딩·딘톤·중화 등 지역별 업소 정보와 가격, 위치, 이용 팁을 정리했습니다.",
 
-verification: {
-  google: "WOAxlLDBeEHVW5gztZwbdc0r9zcXhlFAct44_U-lEFg",
-},
-  
+  verification: {
+    google: "WOAxlLDBeEHVW5gztZwbdc0r9zcXhlFAct44_U-lEFg",
+  },
+
+  other: {
+    "naver-site-verification":
+      "18777f70e7e694c4f1cff2a3a03a6d1d9685c462",
+  },
+
   keywords: [
     "하노이 마사지",
     "하노이 마사지 추천",
@@ -37,13 +42,13 @@ verification: {
   ],
 
   alternates: {
-    canonical: "https://hanoinightboom.com",
+    canonical: "https://www.hanoinightboom.com",
   },
 
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://hanoinightboom.com",
+    url: "https://www.hanoinightboom.com",
     siteName: "하노이 눈탱이 방지 위원회",
     title: "하노이 눈탱이 방지 위원회 | 하노이 마사지·가라오케",
     description:
