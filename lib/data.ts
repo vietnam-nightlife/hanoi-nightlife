@@ -380,6 +380,40 @@ export const places: Place[] = [
     recommended: true,
     revisitRecommended: true,
   },
+
+  /*
+   * =======================================================
+   * 하노이 VVS 가라오케
+   * =======================================================
+   */
+
+  {
+    slug: "vvs-karaoke",
+    name: "하노이 VVS 가라오케",
+    city: "hanoi",
+    category: "karaoke",
+
+    district: "미딩 · 메찌하",
+
+    rating: 4.9,
+    reviews: 0,
+
+    description:
+      "하노이 미딩 메찌하 거리에 위치한 VVS 가라오케는 VVS Glory Hotel 건물을 통째로 사용하는 단일건물형 한인 KTV입니다. 12개의 룸과 별도 스크린골프룸을 갖추고 있어 노래와 술자리뿐 아니라 골프까지 한 건물에서 즐기기 좋습니다. 주대와 기본 TC를 분리해 정산하며 한국어 마담과 매니저가 응대해 초행 손님도 편하게 이용할 수 있습니다.",
+
+    address:
+      "46 P. Mễ Trì Hạ, Nam Từ Liêm, Hà Nội",
+
+    hours: "14:00 - 02:00",
+
+    image: "/하노이 vvs 가라오케 메.webp",
+
+    featured: true,
+
+    koreanSupport: true,
+    recommended: true,
+    revisitRecommended: true,
+  },
   
 ];
 
