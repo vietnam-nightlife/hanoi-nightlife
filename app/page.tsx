@@ -56,8 +56,6 @@ export const metadata: Metadata = {
 };
 import { cities, places } from "@/lib/data";
 
-import type { Metadata } from "next";
-
 export default function Home() {
   const featured = places.filter((p) => p.featured);
 
