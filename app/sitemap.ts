@@ -54,7 +54,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-
+{
+  url: `${baseUrl}/hanoi/ecogirl`,
+  lastModified: new Date(),
+  changeFrequency: "weekly",
+  priority: 0.9,
+},
     // 가라오케
     {
       url: `${baseUrl}/hanoi/karaoke`,
