@@ -15,6 +15,10 @@ export const metadata: Metadata = {
   description:
     "하노이 마사지와 가라오케 정보를 지역별로 확인하세요. 미딩·딘톤·중화 등 지역별 업소 정보와 가격, 위치, 이용 팁을 정리했습니다.",
 
+verification: {
+  google: "WOAxlLDBeEHVW5gztZwbdc0r9zcXhlFAct44_U-lEFg",
+},
+  
   keywords: [
     "하노이 마사지",
     "하노이 마사지 추천",
