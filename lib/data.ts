@@ -414,6 +414,38 @@ export const places: Place[] = [
     recommended: true,
     revisitRecommended: true,
   },
+
+  /*
+   * =======================================================
+   * 하노이 런던 가라오케
+   * =======================================================
+   */
+
+  {
+    slug: "london-karaoke",
+    name: "하노이 런던 가라오케",
+    city: "hanoi",
+    category: "karaoke",
+
+    district: "까우저이 · 타인타이",
+
+    rating: 4.5,
+    reviews: 1940,
+
+    description:
+      "하노이 까우저이 타인타이에 위치한 런던 가라오케는 유럽풍의 고급스러운 인테리어와 다양한 콘셉트의 룸을 갖춘 대형 KTV입니다. 넓은 로비와 깔끔한 복도, 대형 소파룸부터 화려한 LED 조명룸까지 선택의 폭이 넓으며, 고출력 음향 시스템과 레이저·LED 조명으로 노래방 분위기를 제대로 즐기기 좋습니다. 소규모 모임부터 단체 행사까지 이용하기 편한 것이 특징입니다.",
+
+    address:
+      "28B Thành Thái, Dịch Vọng, Cầu Giấy, Hà Nội",
+
+    hours: "12:00 - 02:00",
+
+    image: "/하노이 런던 가라오케 메인.webp",
+
+    featured: true,
+
+    recommended: true,
+  },
   
 ];
 
