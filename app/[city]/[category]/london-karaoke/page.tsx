@@ -450,20 +450,20 @@ export default function LondonKaraokePage() {
             </h2>
 
             <p className="mt-4 text-sm leading-7 text-white/60">
-              정확한 가격은 현지 가라오케 문의를 통해 확인해 주세요.
+              정확한 가격은 현지 로컬 가라오케이므로 문의를 통해 확인해 주세요.
             </p>
           </div>
 
           <div className="mt-10 rounded-2xl border border-white/10 bg-[#101010] p-6 sm:p-8">
             <div className="text-lg font-black">
-              최신 가격은 현지 가라오케 문의
+              최신 가격은 문의를 통해 확인
             </div>
 
             <p className="mt-4 text-sm leading-7 text-white/60 sm:text-base">
               런던 가라오케는 온라인에 확인되는 지점과 룸별 안내가 서로 다를 수 있어
               이 페이지에서는 특정 금액을 고정해 안내하지 않습니다.
-              방문 날짜, 인원, 룸 크기와 이용시간을 알려주고 현지 가라오케에
-              최신 가격과 포함 항목을 직접 확인해 주세요.
+              방문 날짜, 인원, 룸 크기와 이용시간을 알려주고 
+              가격과 포함 항목을 직접 확인해 주세요.
             </p>
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -478,7 +478,7 @@ export default function LondonKaraokePage() {
                   className="rounded-xl border border-white/10 bg-black/20 px-4 py-4 text-sm text-zinc-300"
                 >
                   <span className="mr-2 text-red-500">✓</span>
-                  {item}는 현지 문의
+                  {item}는 눈탱이 방지 위원회 직접 문의
                 </div>
               ))}
             </div>
