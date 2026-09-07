@@ -334,35 +334,130 @@ export default function VpopKaraokePage() {
         </div>
       </section>
 
-      {/* PRICE - IMAGE ONLY */}
-      <section id="price" className="border-y border-white/10 bg-[#090909]">
-        <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-20">
-          <div className="text-center">
-            <div className="text-xs font-black tracking-[0.3em] text-red-500">PRICE</div>
-            <h2 className="mt-3 text-2xl font-bold md:text-3xl">브이팝 가라오케 가격표</h2>
-            <p className="mt-4 text-sm leading-7 text-white/60">
-              아래 가격표는 제공받은 현장 가격표 이미지를 그대로 표시합니다.
-            </p>
+      {/* PRICE */}
+<section id="price" className="border-y border-white/10 bg-[#090909]">
+  <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-20">
+    <div className="text-center">
+      <div className="text-xs font-black tracking-[0.3em] text-red-500">
+        PRICE
+      </div>
+
+      <h2 className="mt-3 text-2xl font-bold md:text-3xl">
+        브이팝 가라오케 가격표
+      </h2>
+
+      <p className="mt-4 text-sm leading-7 text-white/60">
+        브이팝은 주대 없이 룸 이용료와 주류·음료·안주 등을
+        항목별로 정산하는 로컬 소비제 방식입니다.
+      </p>
+    </div>
+
+    {/* PRICE TABLE */}
+    <div className="mt-10 grid gap-5 md:grid-cols-2">
+
+      {/* 1. 노래방 이용료 */}
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+        <h3 className="mb-4 text-lg font-bold text-white">
+          1. 노래방 이용료
+        </h3>
+
+        <div className="divide-y divide-white/10">
+          <PriceRow name="GH05 - VIP ROOM" price="600,000đ" />
+          <PriceRow name="GH04 - LARGE ROOM (대형)" price="480,000đ" />
+          <PriceRow name="GH03 - MEDIUM ROOM (중형)" price="430,000đ" />
+          <PriceRow name="GH01 - SMALL ROOM (소형)" price="330,000đ" />
+        </div>
+      </div>
+
+      {/* 2. 주류 및 음료 */}
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+        <h3 className="mb-4 text-lg font-bold text-white">
+          2. 주류 및 음료
+        </h3>
+
+        <div className="mb-3 text-xs font-bold tracking-wider text-white/40">
+          BEER · 맥주
+        </div>
+
+        <div className="divide-y divide-white/10">
+          <PriceRow name="Corona Extra" price="69,000đ" />
+          <PriceRow name="Heineken" price="50,000đ" />
+          <PriceRow name="Budweiser" price="48,000đ" />
+          <PriceRow name="Tiger Beer" price="45,000đ" />
+        </div>
+
+        <div className="mt-5 border-t border-white/10 pt-4">
+          <div className="mb-3 text-xs font-bold tracking-wider text-white/40">
+            SOFT DRINK · 음료
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-black p-2 sm:p-4">
-            <img
-              src="/하노이 vpop가라오케.png"
-              alt="브이팝 V-POP 가라오케 가격표"
-              className="mx-auto h-auto w-full max-w-3xl rounded-xl object-contain"
-            />
-          </div>
-
-          <div className="mt-6 rounded-xl border border-red-500/20 bg-red-500/5 p-5 text-sm leading-7 text-white/70">
-            <p className="font-semibold text-red-400">
-              가격은 방문 시점의 실제 적용 조건을 현지 가라오케에 직접 문의해 확인해 주세요.
-            </p>
-            <p className="mt-1">
-              룸 이용료, 주류·음료, 안주 및 기타 항목의 최신 가격과 결제 조건을 방문 전에 함께 확인하는 것을 권장합니다.
-            </p>
+          <div className="divide-y divide-white/10">
+            <PriceRow name="과일 주스" price="66,000đ" />
+            <PriceRow name="에너지 드링크" price="65,000đ" />
+            <PriceRow name="레몬 물" price="50,000đ" />
+            <PriceRow name="소프트 드링크" price="30,000đ" />
+            <PriceRow name="물 / 차" price="20,000đ" />
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* 3. 안주 및 스낵 */}
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+        <h3 className="mb-4 text-lg font-bold text-white">
+          3. 안주 및 스낵
+        </h3>
+
+        <div className="divide-y divide-white/10">
+          <PriceRow name="프리미엄 과일 세트" price="510,000đ" />
+          <PriceRow name="마른 오징어" price="510,000đ" />
+          <PriceRow name="바삭 닭튀김" price="500,000đ" />
+          <PriceRow name="프리미엄 과일 단품" price="350,000đ" />
+          <PriceRow name="프리미엄 안주" price="99,000đ" />
+          <PriceRow name="모듬 소시지" price="80,000đ" />
+          <PriceRow name="간식 모듬" price="55,000đ" />
+          <PriceRow name="감자튀김" price="30,000đ" />
+        </div>
+      </div>
+
+      {/* 4. 프리미엄 양주 */}
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+        <h3 className="mb-4 text-lg font-bold text-white">
+          4. 프리미엄 양주
+        </h3>
+
+        <div className="divide-y divide-white/10">
+          <PriceRow name="Macallan (UK)" price="5,200,000đ" />
+          <PriceRow name="Macallan 12 Years" price="4,150,000đ" />
+          <PriceRow name="Chivas 18 Years" price="2,500,000đ" />
+        </div>
+      </div>
+
+      {/* 5. 기타 */}
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 md:col-span-2">
+        <h3 className="mb-4 text-lg font-bold text-white">
+          5. 기타
+        </h3>
+
+        <div className="grid md:grid-cols-2 md:gap-x-8">
+          <PriceRow name="담배 (555)" price="70,000đ" />
+          <PriceRow name="담배 (Marlboro)" price="55,000đ" />
+        </div>
+      </div>
+    </div>
+
+    {/* 가격 안내 */}
+    <div className="mt-6 rounded-xl border border-red-500/20 bg-red-500/5 p-5 text-sm leading-7 text-white/70">
+      <p className="font-semibold text-red-400">
+        가격은 방문 시점의 실제 적용 조건을 현지 가라오케에 직접 문의해 확인해 주세요.
+      </p>
+
+      <p className="mt-1">
+        룸 이용료, 주류·음료, 안주 및 기타 항목의 최신 가격과
+        결제 조건은 방문 전에 함께 확인하는 것을 권장합니다.
+      </p>
+    </div>
+  </div>
+</section>
 
       {/* FIELD TIPS */}
       <section className="border-b border-white/10 bg-[#080808]">
