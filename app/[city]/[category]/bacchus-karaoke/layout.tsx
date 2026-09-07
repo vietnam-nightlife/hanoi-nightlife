@@ -3,17 +3,17 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "하노이 박카스 가라오케 | 미딩 한인 KTV 시설·가격·위치",
   description:
-    "하노이 미딩 박카스 가라오케의 시설, 룸, 분위기, 가격, 위치와 이용 정보를 확인하세요. 방문 전 필요한 정보를 한눈에 확인할 수 있습니다.",
+    "하노이 미딩 박카스 가라오케의 시설, 룸, 분위기, 가격, 위치와 이용 정보를 확인하세요.",
 
   keywords: [
     "하노이 박카스 가라오케",
     "하노이 박카스",
     "하노이 미딩 박카스",
-    "하노이 미딩 가라오케",
+    "하노이 미딩 박카스 가라오케",
     "하노이 가라오케",
+    "하노이 미딩 가라오케",
     "하노이 KTV",
-    "하노이 한인 가라오케",
-    "미딩 가라오케",
+    "미딩 KTV",
     "하노이 가라오케 가격",
     "하노이 가라오케 추천",
   ],
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "하노이 박카스 가라오케 | 미딩 한인 KTV",
+    title: "하노이 박카스 가라오케 | 미딩 한인타운",
     description:
       "하노이 미딩 박카스 가라오케의 시설, 룸, 분위기, 가격, 위치와 이용 정보를 확인하세요.",
     url: "https://hanoinightboom.com/hanoi/karaoke/bacchus-karaoke",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "하노이 박카스 가라오케 | 미딩 한인 KTV",
+    title: "하노이 박카스 가라오케 | 미딩 한인타운",
     description:
       "하노이 미딩 박카스 가라오케의 시설, 룸, 분위기, 가격, 위치와 이용 정보를 확인하세요.",
   },
@@ -53,10 +53,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BacchusKaraokeLayout({
+export default async function BacchusKaraokeLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{
+    city: string;
+    category: string;
+  }>;
 }) {
+  await params;
+
   return children;
 }
