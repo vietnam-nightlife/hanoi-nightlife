@@ -334,9 +334,16 @@ export default function VpopKaraokePage() {
         </div>
       </section>
 
-      {/* PRICE */}
-<section id="price" className="border-y border-white/10 bg-[#090909]">
+      {/* =========================================================
+    PRICE - VPOP KARAOKE
+    ========================================================= */}
+<section
+  id="price"
+  className="border-y border-white/10 bg-[#090909]"
+>
   <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-20">
+
+    {/* TITLE */}
     <div className="text-center">
       <div className="text-xs font-black tracking-[0.3em] text-red-500">
         PRICE
@@ -346,32 +353,77 @@ export default function VpopKaraokePage() {
         브이팝 가라오케 가격표
       </h2>
 
-      <p className="mt-4 text-sm leading-7 text-white/60">
+      <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-white/60">
         브이팝은 주대 없이 룸 이용료와 주류·음료·안주 등을
         항목별로 정산하는 로컬 소비제 방식입니다.
       </p>
     </div>
 
-    {/* PRICE TABLE */}
+    {/* =====================================================
+        PRICE CARDS
+        ===================================================== */}
     <div className="mt-10 grid gap-5 md:grid-cols-2">
 
-      {/* 1. 노래방 이용료 */}
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-        <h3 className="mb-4 text-lg font-bold text-white">
+      {/* ===================================================
           1. 노래방 이용료
-        </h3>
+          =================================================== */}
+      <div className="rounded-2xl border border-white/10 bg-[#111111] p-5 shadow-lg">
+        <div className="mb-5 flex items-center justify-between">
+          <h3 className="text-lg font-bold text-white">
+            1. 노래방 이용료
+          </h3>
+
+          <span className="text-xs font-bold tracking-wider text-red-400">
+            KARAOKE ROOM
+          </span>
+        </div>
 
         <div className="divide-y divide-white/10">
-          <PriceRow name="GH05 - VIP ROOM" price="600,000đ" />
-          <PriceRow name="GH04 - LARGE ROOM (대형)" price="480,000đ" />
-          <PriceRow name="GH03 - MEDIUM ROOM (중형)" price="430,000đ" />
-          <PriceRow name="GH01 - SMALL ROOM (소형)" price="330,000đ" />
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              GH05 - VIP ROOM
+            </span>
+            <span className="text-sm font-bold text-white">
+              600,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              GH04 - LARGE ROOM (대형)
+            </span>
+            <span className="text-sm font-bold text-white">
+              480,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              GH03 - MEDIUM ROOM (중형)
+            </span>
+            <span className="text-sm font-bold text-white">
+              430,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              GH01 - SMALL ROOM (소형)
+            </span>
+            <span className="text-sm font-bold text-white">
+              330,000đ
+            </span>
+          </div>
+
         </div>
       </div>
 
-      {/* 2. 주류 및 음료 */}
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-        <h3 className="mb-4 text-lg font-bold text-white">
+      {/* ===================================================
+          2. 주류 및 음료
+          =================================================== */}
+      <div className="rounded-2xl border border-white/10 bg-[#111111] p-5 shadow-lg">
+        <h3 className="mb-5 text-lg font-bold text-white">
           2. 주류 및 음료
         </h3>
 
@@ -380,73 +432,264 @@ export default function VpopKaraokePage() {
         </div>
 
         <div className="divide-y divide-white/10">
-          <PriceRow name="Corona Extra" price="69,000đ" />
-          <PriceRow name="Heineken" price="50,000đ" />
-          <PriceRow name="Budweiser" price="48,000đ" />
-          <PriceRow name="Tiger Beer" price="45,000đ" />
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              Corona Extra
+            </span>
+            <span className="text-sm font-bold text-white">
+              69,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              Heineken
+            </span>
+            <span className="text-sm font-bold text-white">
+              50,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              Budweiser
+            </span>
+            <span className="text-sm font-bold text-white">
+              48,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              Tiger Beer
+            </span>
+            <span className="text-sm font-bold text-white">
+              45,000đ
+            </span>
+          </div>
+
         </div>
 
-        <div className="mt-5 border-t border-white/10 pt-4">
+        <div className="my-5 border-t border-white/10 pt-4">
           <div className="mb-3 text-xs font-bold tracking-wider text-white/40">
             SOFT DRINK · 음료
           </div>
 
           <div className="divide-y divide-white/10">
-            <PriceRow name="과일 주스" price="66,000đ" />
-            <PriceRow name="에너지 드링크" price="65,000đ" />
-            <PriceRow name="레몬 물" price="50,000đ" />
-            <PriceRow name="소프트 드링크" price="30,000đ" />
-            <PriceRow name="물 / 차" price="20,000đ" />
+
+            <div className="flex items-center justify-between gap-4 py-3">
+              <span className="text-sm text-white/75">
+                과일 주스
+              </span>
+              <span className="text-sm font-bold text-white">
+                66,000đ
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between gap-4 py-3">
+              <span className="text-sm text-white/75">
+                에너지 드링크
+              </span>
+              <span className="text-sm font-bold text-white">
+                65,000đ
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between gap-4 py-3">
+              <span className="text-sm text-white/75">
+                레몬 물
+              </span>
+              <span className="text-sm font-bold text-white">
+                50,000đ
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between gap-4 py-3">
+              <span className="text-sm text-white/75">
+                소프트 드링크
+              </span>
+              <span className="text-sm font-bold text-white">
+                30,000đ
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between gap-4 py-3">
+              <span className="text-sm text-white/75">
+                물 / 차
+              </span>
+              <span className="text-sm font-bold text-white">
+                20,000đ
+              </span>
+            </div>
+
           </div>
         </div>
       </div>
 
-      {/* 3. 안주 및 스낵 */}
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-        <h3 className="mb-4 text-lg font-bold text-white">
+      {/* ===================================================
+          3. 안주 및 스낵
+          =================================================== */}
+      <div className="rounded-2xl border border-white/10 bg-[#111111] p-5 shadow-lg">
+        <h3 className="mb-5 text-lg font-bold text-white">
           3. 안주 및 스낵
         </h3>
 
         <div className="divide-y divide-white/10">
-          <PriceRow name="프리미엄 과일 세트" price="510,000đ" />
-          <PriceRow name="마른 오징어" price="510,000đ" />
-          <PriceRow name="바삭 닭튀김" price="500,000đ" />
-          <PriceRow name="프리미엄 과일 단품" price="350,000đ" />
-          <PriceRow name="프리미엄 안주" price="99,000đ" />
-          <PriceRow name="모듬 소시지" price="80,000đ" />
-          <PriceRow name="간식 모듬" price="55,000đ" />
-          <PriceRow name="감자튀김" price="30,000đ" />
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              프리미엄 과일 세트
+            </span>
+            <span className="text-sm font-bold text-white">
+              510,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              마른 오징어
+            </span>
+            <span className="text-sm font-bold text-white">
+              510,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              바삭 닭튀김
+            </span>
+            <span className="text-sm font-bold text-white">
+              500,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              프리미엄 과일 단품
+            </span>
+            <span className="text-sm font-bold text-white">
+              350,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              프리미엄 안주
+            </span>
+            <span className="text-sm font-bold text-white">
+              99,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              모듬 소시지
+            </span>
+            <span className="text-sm font-bold text-white">
+              80,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              간식 모듬
+            </span>
+            <span className="text-sm font-bold text-white">
+              55,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              감자튀김
+            </span>
+            <span className="text-sm font-bold text-white">
+              30,000đ
+            </span>
+          </div>
+
         </div>
       </div>
 
-      {/* 4. 프리미엄 양주 */}
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-        <h3 className="mb-4 text-lg font-bold text-white">
+      {/* ===================================================
+          4. 프리미엄 양주
+          =================================================== */}
+      <div className="rounded-2xl border border-white/10 bg-[#111111] p-5 shadow-lg">
+        <h3 className="mb-5 text-lg font-bold text-white">
           4. 프리미엄 양주
         </h3>
 
         <div className="divide-y divide-white/10">
-          <PriceRow name="Macallan (UK)" price="5,200,000đ" />
-          <PriceRow name="Macallan 12 Years" price="4,150,000đ" />
-          <PriceRow name="Chivas 18 Years" price="2,500,000đ" />
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              Macallan (UK)
+            </span>
+            <span className="text-sm font-bold text-white">
+              5,200,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              Macallan 12 Years
+            </span>
+            <span className="text-sm font-bold text-white">
+              4,150,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3">
+            <span className="text-sm text-white/75">
+              Chivas 18 Years
+            </span>
+            <span className="text-sm font-bold text-white">
+              2,500,000đ
+            </span>
+          </div>
+
         </div>
       </div>
 
-      {/* 5. 기타 */}
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 md:col-span-2">
-        <h3 className="mb-4 text-lg font-bold text-white">
+      {/* ===================================================
+          5. 기타
+          =================================================== */}
+      <div className="rounded-2xl border border-white/10 bg-[#111111] p-5 shadow-lg md:col-span-2">
+        <h3 className="mb-5 text-lg font-bold text-white">
           5. 기타
         </h3>
 
-        <div className="grid md:grid-cols-2 md:gap-x-8">
-          <PriceRow name="담배 (555)" price="70,000đ" />
-          <PriceRow name="담배 (Marlboro)" price="55,000đ" />
+        <div className="grid divide-y divide-white/10 md:grid-cols-2 md:divide-x md:divide-y-0">
+
+          <div className="flex items-center justify-between gap-4 py-3 md:pr-6">
+            <span className="text-sm text-white/75">
+              담배 (555)
+            </span>
+            <span className="text-sm font-bold text-white">
+              70,000đ
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-3 md:pl-6">
+            <span className="text-sm text-white/75">
+              담배 (Marlboro)
+            </span>
+            <span className="text-sm font-bold text-white">
+              55,000đ
+            </span>
+          </div>
+
         </div>
       </div>
+
     </div>
 
-    {/* 가격 안내 */}
+    {/* =====================================================
+        PRICE NOTICE
+        ===================================================== */}
     <div className="mt-6 rounded-xl border border-red-500/20 bg-red-500/5 p-5 text-sm leading-7 text-white/70">
+
       <p className="font-semibold text-red-400">
         가격은 방문 시점의 실제 적용 조건을 현지 가라오케에 직접 문의해 확인해 주세요.
       </p>
@@ -455,7 +698,9 @@ export default function VpopKaraokePage() {
         룸 이용료, 주류·음료, 안주 및 기타 항목의 최신 가격과
         결제 조건은 방문 전에 함께 확인하는 것을 권장합니다.
       </p>
+
     </div>
+
   </div>
 </section>
 
