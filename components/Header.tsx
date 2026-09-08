@@ -48,11 +48,11 @@ export default function Header() {
 
         {/* 모바일 문의 */}
         <Link
-          href="/hanoi/message"
-          className="shrink-0 rounded-full bg-red-600 px-3 py-2 text-xs font-black hover:bg-red-500 sm:hidden"
-        >
-          문의하기
-        </Link>
+  href="/contact"
+  className="shrink-0 rounded-full bg-red-600 px-3 py-2 text-xs font-black hover:bg-red-500 sm:hidden"
+>
+  문의하기
+</Link>
       </div>
     </header>
   );
