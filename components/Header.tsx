@@ -47,12 +47,14 @@ export default function Header() {
         </div>
 
         {/* 모바일 문의 */}
-        <Link
-  href="/contact"
+        <a
+  href="https://open.kakao.com/o/sZ2KKD4h"
+  target="_blank"
+  rel="noopener noreferrer"
   className="shrink-0 rounded-full bg-red-600 px-3 py-2 text-xs font-black hover:bg-red-500 sm:hidden"
 >
   문의하기
-</Link>
+</a>
       </div>
     </header>
   );
