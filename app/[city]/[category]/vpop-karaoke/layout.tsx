@@ -22,14 +22,14 @@ export const metadata: Metadata = {
 
   alternates: {
     canonical:
-      "https://hanoinightboom.com/hanoi/karaoke/vpop-karaoke",
+      "https://www.hanoinightboom.com/hanoi/karaoke/vpop-karaoke",
   },
 
   openGraph: {
     title: "하노이 V-POP 가라오케 | 중화 로컬 KTV",
     description:
       "하노이 중화(Trung Hòa) V-POP 가라오케의 시설, 룸, 가격, 위치와 이용 정보를 확인하세요.",
-    url: "https://hanoinightboom.com/hanoi/karaoke/vpop-karaoke",
+    url: "https://www.hanoinightboom.com/hanoi/karaoke/vpop-karaoke",
     siteName: "하노이 눈탱이 방지 위원회",
     locale: "ko_KR",
     type: "article",
