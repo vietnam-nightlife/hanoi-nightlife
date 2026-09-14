@@ -19,14 +19,14 @@ export const metadata: Metadata = {
 
   alternates: {
     canonical:
-      "https://hanoinightboom.com/hanoi/karaoke/london-karaoke",
+      "https://www.hanoinightboom.com/hanoi/karaoke/london-karaoke",
   },
 
   openGraph: {
     title: "하노이 런던 가라오케 | 미딩 한인타운",
     description:
       "하노이 미딩 한인타운 런던 가라오케의 시설, 룸, 분위기, 가격, 위치와 이용 정보를 확인하세요.",
-    url: "https://hanoinightboom.com/hanoi/karaoke/london-karaoke",
+    url: "https://www.hanoinightboom.com/hanoi/karaoke/london-karaoke",
     siteName: "하노이 눈탱이 방지 위원회",
     locale: "ko_KR",
     type: "article",
