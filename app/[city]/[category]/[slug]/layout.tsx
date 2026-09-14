@@ -38,20 +38,20 @@ export async function generateMetadata({
 
       alternates: {
         canonical:
-          "https://hanoinightboom.com/hanoi/massage/gangnam-spa",
+          "https://www.hanoinightboom.com/hanoi/massage/gangnam-spa",
       },
 
       openGraph: {
         title: "하노이 강남스파 | 미딩 마사지샵",
         description:
           "하노이 미딩 강남스파의 시설, 마사지 코스, 가격, 위치와 이용 정보를 확인하세요.",
-        url: "https://hanoinightboom.com/hanoi/massage/gangnam-spa",
+        url: "https://www.hanoinightboom.com/hanoi/massage/gangnam-spa",
         siteName: "하노이 눈탱이 방지 위원회",
         locale: "ko_KR",
         type: "article",
         images: [
           {
-            url: "https://hanoinightboom.com/하노이 강남스파 메인.webp",
+            url: "https://www.hanoinightboom.com/하노이 강남스파 메인.webp",
             width: 1200,
             height: 800,
             alt: "하노이 강남스파",
@@ -65,7 +65,7 @@ export async function generateMetadata({
         description:
           "하노이 미딩 강남스파의 시설, 마사지 코스, 가격, 위치와 이용 정보를 확인하세요.",
         images: [
-          "https://hanoinightboom.com/하노이 강남스파 메인.webp",
+          "https://www.hanoinightboom.com/하노이 강남스파 메인.webp",
         ],
       },
 
@@ -108,20 +108,20 @@ export async function generateMetadata({
 
       alternates: {
         canonical:
-          "https://hanoinightboom.com/hanoi/massage/hanoi-mun-massage",
+          "https://www.hanoinightboom.com/hanoi/massage/hanoi-mun-massage",
       },
 
       openGraph: {
         title: "하노이 문마사지 | 미딩 마사지샵",
         description:
           "하노이 미딩 문마사지의 시설, 마사지 코스, 가격, 위치와 이용 정보를 확인하세요.",
-        url: "https://hanoinightboom.com/hanoi/massage/hanoi-mun-massage",
+        url: "https://www.hanoinightboom.com/hanoi/massage/hanoi-mun-massage",
         siteName: "하노이 눈탱이 방지 위원회",
         locale: "ko_KR",
         type: "article",
         images: [
           {
-            url: "https://hanoinightboom.com/하노이 문 마사지 메인.webp",
+            url: "https://www.hanoinightboom.com/하노이 문 마사지 메인.webp",
             width: 1200,
             height: 800,
             alt: "하노이 문 마사지",
@@ -135,7 +135,7 @@ export async function generateMetadata({
         description:
           "하노이 미딩 문마사지의 시설, 마사지 코스, 가격, 위치와 영업시간을 확인하세요.",
         images: [
-          "https://hanoinightboom.com/하노이 문 마사지 메인.webp",
+          "https://www.hanoinightboom.com/하노이 문 마사지 메인.webp",
         ],
       },
 
