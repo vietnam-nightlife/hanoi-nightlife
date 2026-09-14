@@ -41,14 +41,9 @@ export const metadata: Metadata = {
     "하노이 밤문화",
   ],
 
-  alternates: {
-    canonical: "https://www.hanoinightboom.com",
-  },
-
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://www.hanoinightboom.com",
     siteName: "하노이 눈탱이 방지 위원회",
     title: "하노이 눈탱이 방지 위원회 | 하노이 마사지·가라오케",
     description:
