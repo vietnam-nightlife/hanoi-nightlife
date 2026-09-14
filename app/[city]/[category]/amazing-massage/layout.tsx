@@ -17,20 +17,20 @@ export const metadata: Metadata = {
     "하노이 불건마 추천",
   ],
   alternates: {
-    canonical:
-      "https://hanoinightboom.com/hanoi/massage/amazing-massage",
-  },
+  canonical:
+    "https://www.hanoinightboom.com/hanoi/massage/amazing-massage",
+},
   openGraph: {
     title: "하노이 어메이징 마사지 | 미딩 한인타운",
     description:
       "하노이 미딩 한인타운 어메이징 마사지의 시설, 코스, 가격, 위치와 이용 정보를 확인하세요.",
-    url: "https://hanoinightboom.com/hanoi/massage/amazing-massage",
+    url: "https://www.hanoinightboom.com/hanoi/massage/amazing-massage",
     siteName: "하노이 눈탱이 방지 위원회",
     locale: "ko_KR",
     type: "article",
     images: [
       {
-        url: "https://hanoinightboom.com/하노이 어메이징 마사지 메인.webp",
+        url: "https://www.hanoinightboom.com/하노이 어메이징 마사지 메인.webp",
         width: 1200,
         height: 800,
         alt: "하노이 어메이징 마사지",
