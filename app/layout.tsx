@@ -19,7 +19,7 @@ verification: {
   google: "WOAxlLDBeEHVW5gztZwbdc0r9zcXhlFAct44_U-lEFg",
   other: {
     "naver-site-verification":
-      "569675d2dcd58e9759e5b87bc7bdda6f8f8dfe9c",
+      "18777f70e7e694c4f1cff2a3a03a6d1d9685c462",
   },
 },
 
